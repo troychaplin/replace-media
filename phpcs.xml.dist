@@ -7,7 +7,6 @@
     <exclude-pattern>/build/</exclude-pattern>
     <exclude-pattern>/node_modules/</exclude-pattern>
     <exclude-pattern>/vendor/</exclude-pattern>
-	<exclude-pattern>src/blocks-manifest.php</exclude-pattern>
 
     <!-- How to scan -->
     <arg value="sp"/>
@@ -18,7 +17,7 @@
 
     <!-- Rules: WordPress Coding Standards -->
     <config name="minimum_supported_wp_version" value="6.6"/>
-    <config name="text_domain" value="multi-block-starter"/>
+    <config name="text_domain" value="replace-media"/>
     
     <rule ref="WordPress" />
 
@@ -46,7 +45,7 @@
     <rule ref="WordPress.WP.I18n">
         <properties>
             <property name="text_domain" type="array">
-                <element value="multi-block-starter"/>
+                <element value="replace-media"/>
             </property>
         </properties>
     </rule>
