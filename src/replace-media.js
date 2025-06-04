@@ -108,7 +108,10 @@ document.addEventListener('DOMContentLoaded', function () {
 						window.location.reload();
 					} else {
 						console.error('Error response:', data.data);
-						alert(data.data || __('Error replacing file.', 'replace-media'));
+						// Show error in a more user-friendly way
+						const errorMessage =
+							data.data || __('Error replacing file.', 'replace-media');
+						alert(errorMessage);
 						if (button) {
 							button.disabled = false;
 							button.textContent = __('Replace File', 'replace-media');

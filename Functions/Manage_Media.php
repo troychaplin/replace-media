@@ -22,6 +22,9 @@ class Manage_Media {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_action( 'wp_ajax_replace_media_file', array( $this, 'handle_media_replacement' ) );
 		add_filter( 'attachment_fields_to_edit', array( $this, 'add_replace_media_button' ), 10, 2 );
+
+        // TODO: delete
+        add_filter( 'big_image_size_threshold', '__return_false' );
 	}
 
 	/**
@@ -151,12 +154,23 @@ class Manage_Media {
 		require_once( ABSPATH . 'wp-admin/includes/media.php' );
 
 		try {
-			// Remove the old file
-			error_log( 'Replace Media: Removing old file' );
-			
 			// Get the current file path and directory
 			$current_file = get_attached_file( $attachment_id );
 			$current_dir = dirname( $current_file );
+			$current_filename = basename( $current_file );
+			
+			error_log( 'Replace Media: Current file path: ' . $current_file );
+			error_log( 'Replace Media: Current filename: ' . $current_filename );
+			
+			// Validate that the new file has the same name
+			$new_filename = basename( $file['name'] );
+			if ( $new_filename !== $current_filename ) {
+				error_log( 'Replace Media: Filename mismatch. Current: ' . $current_filename . ', New: ' . $new_filename );
+				wp_send_json_error( sprintf(
+					__( 'The new file must have the same name as the original file (%s). Please rename your file and try again.', 'replace-media' ),
+					$current_filename
+				) );
+			}
 			
 			// Delete the old file and its metadata
 			$meta = wp_get_attachment_metadata( $attachment_id );
@@ -177,20 +191,20 @@ class Manage_Media {
 				}
 			}
 
-			// Upload the new file
-			error_log( 'Replace Media: Uploading new file' );
-			$upload = wp_handle_upload( $file, array( 'test_form' => false ) );
-
-			if ( isset( $upload['error'] ) ) {
-				error_log( 'Replace Media: Upload error - ' . $upload['error'] );
-				wp_send_json_error( $upload['error'] );
+			// Move the uploaded file to the correct location with the original filename
+			$target_path = path_join( $current_dir, $current_filename );
+			
+			// Move the uploaded file to the target location
+			if ( ! move_uploaded_file( $file['tmp_name'], $target_path ) ) {
+				error_log( 'Replace Media: Failed to move uploaded file' );
+				wp_send_json_error( __( 'Failed to move uploaded file.', 'replace-media' ) );
 			}
 
-			error_log( 'Replace Media: File uploaded successfully. Path: ' . $upload['file'] );
+			error_log( 'Replace Media: File moved successfully to: ' . $target_path );
 
 			// Update the attachment metadata
 			error_log( 'Replace Media: Generating attachment metadata' );
-			$attachment_data = wp_generate_attachment_metadata( $attachment_id, $upload['file'] );
+			$attachment_data = wp_generate_attachment_metadata( $attachment_id, $target_path );
 			wp_update_attachment_metadata( $attachment_id, $attachment_data );
 
 			error_log( 'Replace Media: File replaced successfully' );
