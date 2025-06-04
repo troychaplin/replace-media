@@ -11,14 +11,14 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { addAction } from '@wordpress/hooks';
+import { dispatch } from '@wordpress/data';
 
 /**
  * Handle the media replacement functionality.
  */
 document.addEventListener('DOMContentLoaded', function () {
 	// Check if replaceMediaData is available
-	if (typeof replaceMediaData === 'undefined') {
+	if (typeof window.replaceMediaData === 'undefined') {
 		// Silently fail if data is not available
 		return;
 	}
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			const formData = new FormData();
 			formData.append('action', 'replace_media_file');
-			formData.append('nonce', replaceMediaData.nonce);
+			formData.append('nonce', window.replaceMediaData.nonce);
 			formData.append('attachment_id', attachmentId);
 			formData.append('replacement_file', this.files[0]);
 
@@ -67,11 +67,11 @@ document.addEventListener('DOMContentLoaded', function () {
 			);
 			if (button) {
 				button.disabled = true;
-				button.textContent = __('Replacing...', 'replace-media');
+				button.textContent = __('Replacing…', 'replace-media');
 			}
 
 			// Send AJAX request
-			fetch(replaceMediaData.ajaxUrl, {
+			fetch(window.replaceMediaData.ajaxUrl, {
 				method: 'POST',
 				body: formData,
 				credentials: 'same-origin',
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
 					} else {
 						const errorMessage =
 							data.data || __('Error replacing file.', 'replace-media');
-						alert(errorMessage);
+						dispatch('core/notices').createErrorNotice(errorMessage);
 						if (button) {
 							button.disabled = false;
 							button.textContent = __('Replace File', 'replace-media');
@@ -97,7 +97,9 @@ document.addEventListener('DOMContentLoaded', function () {
 					}
 				})
 				.catch(error => {
-					alert(__('Error replacing file:', 'replace-media') + error.message);
+					dispatch('core/notices').createErrorNotice(
+						__('Error replacing file:', 'replace-media') + error.message
+					);
 					if (button) {
 						button.disabled = false;
 						button.textContent = __('Replace File', 'replace-media');
