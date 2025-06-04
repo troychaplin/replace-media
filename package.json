@@ -1,7 +1,7 @@
 {
 	"name": "replace-media",
 	"version": "0.0.1",
-	"description": "A starter configuration for creating a WordPress plugin with multiple blocks.",
+	"description": "This plugin allows you to replace media in the media library.",
 	"author": "Troy Chaplin",
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
