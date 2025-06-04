@@ -28,22 +28,33 @@ class Manage_Media {
 	}
 
 	/**
+	 * Log debug messages if debug mode is enabled.
+	 *
+	 * @param string $message The message to log.
+	 */
+	private function log_debug( $message ) {
+		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+			error_log( 'Replace Media: ' . $message );
+		}
+	}
+
+	/**
 	 * Enqueue necessary scripts and styles.
 	 */
 	public function enqueue_scripts() {
 		$screen = get_current_screen();
-		error_log('Replace Media: Current screen ID: ' . $screen->id);
-		error_log('Replace Media: Current screen base: ' . $screen->base);
+		$this->log_debug( 'Current screen ID: ' . $screen->id );
+		$this->log_debug( 'Current screen base: ' . $screen->base );
 		
 		// Check for all possible media contexts
 		$allowed_screens = array( 'upload', 'media', 'attachment' );
 		if ( ! in_array( $screen->id, $allowed_screens ) && ! in_array( $screen->base, $allowed_screens ) ) {
-			error_log('Replace Media: Not on a media screen, skipping script enqueue');
+			$this->log_debug( 'Not on a media screen, skipping script enqueue' );
 			return;
 		}
 
-		error_log('Replace Media: Enqueueing scripts for media screen');
-		error_log('Replace Media: Script URL: ' . REPLACE_MEDIA_URL . 'build/replace-media.js');
+		$this->log_debug( 'Enqueueing scripts for media screen' );
+		$this->log_debug( 'Script URL: ' . REPLACE_MEDIA_URL . 'build/replace-media.js' );
 		
 		// Register the script first
 		wp_register_script(
@@ -54,12 +65,12 @@ class Manage_Media {
 			true
 		);
 
-		error_log('Replace Media: Localizing script data');
+		$this->log_debug( 'Localizing script data' );
 		$localized_data = array(
 			'ajaxUrl' => admin_url( 'admin-ajax.php' ),
 			'nonce'   => wp_create_nonce( 'replace_media_nonce' ),
 		);
-		error_log('Replace Media: Localized data: ' . print_r($localized_data, true));
+		$this->log_debug( 'Localized data: ' . print_r($localized_data, true) );
 		
 		wp_localize_script(
 			'replace-media-script',
@@ -70,7 +81,7 @@ class Manage_Media {
 		// Enqueue the script after localization
 		wp_enqueue_script('replace-media-script');
 		
-		error_log('Replace Media: Script enqueued and localized');
+		$this->log_debug( 'Script enqueued and localized' );
 	}
 
 	/**
@@ -81,7 +92,7 @@ class Manage_Media {
 	 * @return array Modified form fields.
 	 */
 	public function add_replace_media_button( $form_fields, $post ) {
-		error_log('Replace Media: Adding replace button for attachment ' . $post->ID);
+		$this->log_debug( 'Adding replace button for attachment ' . $post->ID );
 		
 		$form_fields['replace_media'] = array(
 			'label' => __( 'Replace Media', 'replace-media' ),
@@ -105,29 +116,29 @@ class Manage_Media {
 		ini_set( 'display_errors', 1 );
 
 		// Log the request
-		error_log( 'Replace Media: AJAX request received' );
-		error_log( 'POST data: ' . print_r( $_POST, true ) );
-		error_log( 'FILES data: ' . print_r( $_FILES, true ) );
+		$this->log_debug( 'AJAX request received' );
+		$this->log_debug( 'POST data: ' . print_r( $_POST, true ) );
+		$this->log_debug( 'FILES data: ' . print_r( $_FILES, true ) );
 
 		// Verify nonce
 		if ( ! check_ajax_referer( 'replace_media_nonce', 'nonce', false ) ) {
-			error_log( 'Replace Media: Nonce verification failed' );
+			$this->log_debug( 'Nonce verification failed' );
 			wp_send_json_error( __( 'Security check failed.', 'replace-media' ) );
 		}
 
 		if ( ! current_user_can( 'upload_files' ) ) {
-			error_log( 'Replace Media: User does not have upload_files capability' );
+			$this->log_debug( 'User does not have upload_files capability' );
 			wp_send_json_error( __( 'You do not have permission to replace media files.', 'replace-media' ) );
 		}
 
 		$attachment_id = isset( $_POST['attachment_id'] ) ? intval( $_POST['attachment_id'] ) : 0;
 		if ( ! $attachment_id ) {
-			error_log( 'Replace Media: Invalid attachment ID' );
+			$this->log_debug( 'Invalid attachment ID' );
 			wp_send_json_error( __( 'Invalid attachment ID.', 'replace-media' ) );
 		}
 
 		if ( ! isset( $_FILES['replacement_file'] ) ) {
-			error_log( 'Replace Media: No file uploaded' );
+			$this->log_debug( 'No file uploaded' );
 			wp_send_json_error( __( 'No file was uploaded.', 'replace-media' ) );
 		}
 
@@ -135,18 +146,18 @@ class Manage_Media {
 		$attachment = get_post( $attachment_id );
 
 		if ( ! $attachment ) {
-			error_log( 'Replace Media: Attachment not found' );
+			$this->log_debug( 'Attachment not found' );
 			wp_send_json_error( __( 'Attachment not found.', 'replace-media' ) );
 		}
 
 		// Get the current file path
 		$current_file = get_attached_file( $attachment_id );
 		if ( ! $current_file ) {
-			error_log( 'Replace Media: Current file not found' );
+			$this->log_debug( 'Current file not found' );
 			wp_send_json_error( __( 'Current file not found.', 'replace-media' ) );
 		}
 
-		error_log( 'Replace Media: Current file path: ' . $current_file );
+		$this->log_debug( 'Current file path: ' . $current_file );
 
 		// Handle the file upload
 		require_once( ABSPATH . 'wp-admin/includes/file.php' );
@@ -159,13 +170,13 @@ class Manage_Media {
 			$current_dir = dirname( $current_file );
 			$current_filename = basename( $current_file );
 			
-			error_log( 'Replace Media: Current file path: ' . $current_file );
-			error_log( 'Replace Media: Current filename: ' . $current_filename );
+			$this->log_debug( 'Current file path: ' . $current_file );
+			$this->log_debug( 'Current filename: ' . $current_filename );
 			
 			// Validate that the new file has the same name
 			$new_filename = basename( $file['name'] );
 			if ( $new_filename !== $current_filename ) {
-				error_log( 'Replace Media: Filename mismatch. Current: ' . $current_filename . ', New: ' . $new_filename );
+				$this->log_debug( 'Filename mismatch. Current: ' . $current_filename . ', New: ' . $new_filename );
 				wp_send_json_error( sprintf(
 					__( 'The new file must have the same name as the original file (%s). Please rename your file and try again.', 'replace-media' ),
 					$current_filename
@@ -196,24 +207,24 @@ class Manage_Media {
 			
 			// Move the uploaded file to the target location
 			if ( ! move_uploaded_file( $file['tmp_name'], $target_path ) ) {
-				error_log( 'Replace Media: Failed to move uploaded file' );
+				$this->log_debug( 'Failed to move uploaded file' );
 				wp_send_json_error( __( 'Failed to move uploaded file.', 'replace-media' ) );
 			}
 
-			error_log( 'Replace Media: File moved successfully to: ' . $target_path );
+			$this->log_debug( 'File moved successfully to: ' . $target_path );
 
 			// Update the attachment metadata
-			error_log( 'Replace Media: Generating attachment metadata' );
+			$this->log_debug( 'Generating attachment metadata' );
 			$attachment_data = wp_generate_attachment_metadata( $attachment_id, $target_path );
 			wp_update_attachment_metadata( $attachment_id, $attachment_data );
 
-			error_log( 'Replace Media: File replaced successfully' );
+			$this->log_debug( 'File replaced successfully' );
 			wp_send_json_success( array(
 				'message' => __( 'File replaced successfully.', 'replace-media' ),
 				'url'     => wp_get_attachment_url( $attachment_id ),
 			) );
 		} catch ( Exception $e ) {
-			error_log( 'Replace Media: Exception caught - ' . $e->getMessage() );
+			$this->log_debug( 'Exception caught - ' . $e->getMessage() );
 			wp_send_json_error( $e->getMessage() );
 		}
 	}
