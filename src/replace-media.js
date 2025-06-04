@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
 					}
 				})
 				.catch(error => {
-					alert(__('Error replacing file: ', 'replace-media') + error.message);
+					alert(__('Error replacing file:', 'replace-media') + error.message);
 					if (button) {
 						button.disabled = false;
 						button.textContent = __('Replace File', 'replace-media');
