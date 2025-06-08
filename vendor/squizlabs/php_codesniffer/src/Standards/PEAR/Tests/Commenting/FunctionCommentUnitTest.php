@@ -75,7 +75,6 @@ final class FunctionCommentUnitTest extends AbstractSniffUnitTest
             364 => 1,
             406 => 1,
             417 => 1,
-<<<<<<< HEAD
             456 => 1,
             466 => 1,
             474 => 1,
@@ -86,13 +85,6 @@ final class FunctionCommentUnitTest extends AbstractSniffUnitTest
             523 => 1,
             533 => 1,
             545 => 1,
-=======
-            455 => 1,
-            464 => 1,
-            473 => 1,
-            485 => 1,
-            501 => 1,
->>>>>>> ddb2375 (fix: console error)
         ];
 
     }//end getErrorList()

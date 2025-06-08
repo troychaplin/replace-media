@@ -63,7 +63,6 @@ class TypeIntersection
     /* testTypeIntersectionPropertyWithStaticKeyword */
     static Foo&Bar $obj;
 
-<<<<<<< HEAD
     /* testTypeIntersectionWithPHP84FinalKeyword */
     final className&InterfaceName $finalKeywordA;
 
@@ -82,8 +81,6 @@ class TypeIntersection
     /* testTypeIntersectionPropertyWithPublicProtectedSet */
     public protected(set) Foo&Bar $asym4;
 
-=======
->>>>>>> ddb2375 (fix: console error)
     public function paramTypes(
         /* testTypeIntersectionParam1 */
         Foo&Bar $paramA /* testBitwiseAndParamDefaultValue */ = CONSTANT_A & CONSTANT_B,

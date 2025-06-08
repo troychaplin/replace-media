@@ -58,11 +58,8 @@ final class UnnecessaryFinalModifierUnitTest extends AbstractSniffUnitTest
                 33 => 1,
                 37 => 1,
                 38 => 1,
-<<<<<<< HEAD
                 59 => 1,
                 60 => 1,
-=======
->>>>>>> ddb2375 (fix: console error)
             ];
         default:
             return [];

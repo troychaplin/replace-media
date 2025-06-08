@@ -104,7 +104,6 @@ $heredoc = <<<END
 $heredoc = <<< "END"
     some text
     some \$text
-<<<<<<< HEAD
     some text \\ including a backslash
     END;
 
@@ -121,7 +120,3 @@ echo <<<EOT
 echo <<<EOT
     Here we should have a tab and 2 'A's: \t \101 \u{41}
     EOT;
-=======
-    some text
-    END;
->>>>>>> ddb2375 (fix: console error)

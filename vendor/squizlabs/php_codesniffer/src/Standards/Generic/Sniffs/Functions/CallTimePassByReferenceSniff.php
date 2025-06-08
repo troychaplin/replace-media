@@ -5,28 +5,18 @@
  * @author    Florian Grandel <jerico.dev@gmail.com>
  * @copyright 2009-2014 Florian Grandel
  * @license   https://github.com/PHPCSStandards/PHP_CodeSniffer/blob/master/licence.txt BSD Licence
-<<<<<<< HEAD
  *
  * @deprecated 3.12.1
-=======
->>>>>>> ddb2375 (fix: console error)
  */
 
 namespace PHP_CodeSniffer\Standards\Generic\Sniffs\Functions;
 
 use PHP_CodeSniffer\Files\File;
-<<<<<<< HEAD
 use PHP_CodeSniffer\Sniffs\DeprecatedSniff;
 use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Util\Tokens;
 
 class CallTimePassByReferenceSniff implements Sniff, DeprecatedSniff
-=======
-use PHP_CodeSniffer\Sniffs\Sniff;
-use PHP_CodeSniffer\Util\Tokens;
-
-class CallTimePassByReferenceSniff implements Sniff
->>>>>>> ddb2375 (fix: console error)
 {
 
 
@@ -151,7 +141,6 @@ class CallTimePassByReferenceSniff implements Sniff
     }//end process()
 
 
-<<<<<<< HEAD
     /**
      * Provide the version number in which the sniff was deprecated.
      *
@@ -188,6 +177,4 @@ class CallTimePassByReferenceSniff implements Sniff
     }//end getDeprecationMessage()
 
 
-=======
->>>>>>> ddb2375 (fix: console error)
 }//end class

@@ -84,7 +84,6 @@ $input->getFilterChain()->attachByName('Null', ['type' => Null::TYPE_STRING]);
 
 // Issue #3332 - ignore type declarations, but not default values.
 class TypedThings {
-<<<<<<< HEAD
     const MYCONST = FALSE;
 
     public int|FALSE $int = FALSE;
@@ -94,17 +93,6 @@ class TypedThings {
     {
         if (TRUE === FALSE) {
             return NULL;
-=======
-	const MYCONST = FALSE;
-
-	public int|FALSE $int = FALSE;
-	public Type|NULL $int = new MyObj(NULL);
-
-	private function typed(int|FALSE $param = NULL, Type|NULL $obj = new MyObj(FALSE)) : string|FALSE|NULL
-	{
-		if (TRUE === FALSE) {
-			return NULL;
->>>>>>> ddb2375 (fix: console error)
         }
     }
 }
@@ -163,7 +151,6 @@ class TypedConstants {
 
 // Global constants can not be typed.
 const MYCONST = TRUE;
-<<<<<<< HEAD
 
 class SkipOverPHP82DNFTypes {
     protected (\FullyQualified&Partially\Qualified)|TRUE $propertyC;
@@ -185,5 +172,3 @@ class WithAsym {
 
     public protected(set) Type|NULL|bool $asym4 = TRUE;
 }
-=======
->>>>>>> ddb2375 (fix: console error)

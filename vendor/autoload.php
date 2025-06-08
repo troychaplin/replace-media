@@ -22,8 +22,4 @@ if (PHP_VERSION_ID < 50600) {
 
 require_once __DIR__ . '/composer/autoload_real.php';
 
-<<<<<<< HEAD
 return ComposerAutoloaderInit840f8980258e92d0e1fc2079ff806d2f::getLoader();
-=======
-return ComposerAutoloaderInite6297ad6a53537abcba068c1ef052801::getLoader();
->>>>>>> ddb2375 (fix: console error)

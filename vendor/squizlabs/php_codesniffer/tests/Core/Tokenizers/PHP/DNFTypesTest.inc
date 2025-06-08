@@ -175,7 +175,6 @@ abstract class DNFTypes {
     /* testDNFTypePropertyWithOnlyStaticKeyword */
     static (A&B&C)|true $onlyStaticModified;
 
-<<<<<<< HEAD
     /* testDNFTypeWithPHP84FinalKeyword */
     final (className&InterfaceName)|false $finalKeywordA;
 
@@ -194,8 +193,6 @@ abstract class DNFTypes {
     /* testDNFTypePropertyWithPublicProtectedSet */
     public protected(set) (A&B&C)|true $asym4;
 
-=======
->>>>>>> ddb2375 (fix: console error)
     public function paramTypes(
         /* testDNFTypeParam1WithAttribute */
         #[MyAttribute]

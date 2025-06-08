@@ -14,7 +14,6 @@ use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Util\Tokens;
 use PHPCSUtils\Fixers\SpacesFixer;
-<<<<<<< HEAD
 use PHPCSUtils\Tokens\Collections;
 
 /**
@@ -22,19 +21,11 @@ use PHPCSUtils\Tokens\Collections;
  *
  * @since 1.0.0
  * @since 1.3.0 Support for DNF types.
-=======
-
-/**
- * Enforce no space around union type and intersection type separators.
- *
- * @since 1.0.0
->>>>>>> ddb2375 (fix: console error)
  */
 final class TypeSeparatorSpacingSniff implements Sniff
 {
 
     /**
-<<<<<<< HEAD
      * Tokens this sniff targets.
      *
      * @since 1.3.0
@@ -49,8 +40,6 @@ final class TypeSeparatorSpacingSniff implements Sniff
     ];
 
     /**
-=======
->>>>>>> ddb2375 (fix: console error)
      * Returns an array of tokens this test wants to listen for.
      *
      * @since 1.0.0
@@ -59,14 +48,7 @@ final class TypeSeparatorSpacingSniff implements Sniff
      */
     public function register()
     {
-<<<<<<< HEAD
         return $this->targetTokens;
-=======
-        return [
-            \T_TYPE_UNION,
-            \T_TYPE_INTERSECTION,
-        ];
->>>>>>> ddb2375 (fix: console error)
     }
 
     /**
@@ -84,7 +66,6 @@ final class TypeSeparatorSpacingSniff implements Sniff
     {
         $tokens = $phpcsFile->getTokens();
 
-<<<<<<< HEAD
         $type = 'union';
         $code = 'UnionType';
         if ($tokens[$stackPtr]['code'] === \T_TYPE_INTERSECTION) {
@@ -152,34 +133,11 @@ final class TypeSeparatorSpacingSniff implements Sniff
             }
         }
 
-=======
-        $type = ($tokens[$stackPtr]['code'] === \T_TYPE_UNION) ? 'union' : 'intersection';
-        $code = \ucfirst($type) . 'Type';
-
-        $prevNonEmpty = $phpcsFile->findPrevious(Tokens::$emptyTokens, ($stackPtr - 1), null, true);
-        SpacesFixer::checkAndFix(
-            $phpcsFile,
-            $stackPtr,
-            $prevNonEmpty,
-            0, // Expected spaces.
-            'Expected %s before the ' . $type . ' type separator. Found: %s',
-            $code . 'SpacesBefore',
-            'error',
-            0, // Severity.
-            'Space before ' . $type . ' type separator'
-        );
-
-        $nextNonEmpty = $phpcsFile->findNext(Tokens::$emptyTokens, ($stackPtr + 1), null, true);
->>>>>>> ddb2375 (fix: console error)
         SpacesFixer::checkAndFix(
             $phpcsFile,
             $stackPtr,
             $nextNonEmpty,
-<<<<<<< HEAD
             $expectedSpaces,
-=======
-            0, // Expected spaces.
->>>>>>> ddb2375 (fix: console error)
             'Expected %s after the ' . $type . ' type separator. Found: %s',
             $code . 'SpacesAfter',
             'error',

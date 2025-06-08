@@ -487,14 +487,9 @@ final class Help
 
         $options['Reporting Options'] = [
             'report'             => [
-<<<<<<< HEAD
                 'argument'    => '--report=<report(s)>',
                 'description' => 'A comma-separated list of reports to print. Available reports: "full", "xml", "checkstyle", "csv", "json", "junit", "emacs", "source", "summary", "diff", "svnblame", "gitblame", "hgblame", "notifysend" or "performance".'."\n"
                     .'Or specify the path to a custom report class. By default, the "full" report is displayed.',
-=======
-                'argument'    => '--report=<report>',
-                'description' => 'Print either the "full", "xml", "checkstyle", "csv", "json", "junit", "emacs", "source", "summary", "diff", "svnblame", "gitblame", "hgblame", "notifysend" or "performance" report or specify the path to a custom report class. By default, the "full" report is displayed.',
->>>>>>> ddb2375 (fix: console error)
             ],
             'report-file'        => [
                 'argument'    => '--report-file=<reportFile>',

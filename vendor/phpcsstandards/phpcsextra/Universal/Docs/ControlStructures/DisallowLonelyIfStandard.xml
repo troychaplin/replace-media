@@ -11,11 +11,7 @@
     ]]>
     </standard>
     <code_comparison>
-<<<<<<< HEAD
         <code title="Valid: Use of elseif or if followed by another statement.">
-=======
-        <code title="Valid: use of elseif or if followed by another statement.">
->>>>>>> ddb2375 (fix: console error)
         <![CDATA[
 if ($foo) {
     // ...
@@ -36,11 +32,7 @@ if ($foo) {
 
         ]]>
         </code>
-<<<<<<< HEAD
         <code title="Invalid: Lonely if in an else block.">
-=======
-        <code title="Invalid: lonely if in an else block.">
->>>>>>> ddb2375 (fix: console error)
         <![CDATA[
 if ($foo) {
     // ...

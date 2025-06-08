@@ -11,18 +11,11 @@
 
 namespace PHP_CodeSniffer\Standards\MySource\Sniffs\Debug;
 
-<<<<<<< HEAD
 use PHP_CodeSniffer\Sniffs\DeprecatedSniff;
 use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
 
 class DebugCodeSniff implements Sniff, DeprecatedSniff
-=======
-use PHP_CodeSniffer\Sniffs\Sniff;
-use PHP_CodeSniffer\Files\File;
-
-class DebugCodeSniff implements Sniff
->>>>>>> ddb2375 (fix: console error)
 {
 
 
@@ -62,7 +55,6 @@ class DebugCodeSniff implements Sniff
     }//end process()
 
 
-<<<<<<< HEAD
     /**
      * Provide the version number in which the sniff was deprecated.
      *
@@ -99,6 +91,4 @@ class DebugCodeSniff implements Sniff
     }//end getDeprecationMessage()
 
 
-=======
->>>>>>> ddb2375 (fix: console error)
 }//end class

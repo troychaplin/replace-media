@@ -31,16 +31,10 @@ final class ForbiddenFunctionsUnitTest extends AbstractSniffUnitTest
     public function getErrorList()
     {
         $errors = [
-<<<<<<< HEAD
             2  => 1,
             4  => 1,
             6  => 1,
             62 => 1,
-=======
-            2 => 1,
-            4 => 1,
-            6 => 1,
->>>>>>> ddb2375 (fix: console error)
         ];
 
         return $errors;

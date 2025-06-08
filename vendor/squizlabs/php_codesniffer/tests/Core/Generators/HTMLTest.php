@@ -363,7 +363,6 @@ final class HTMLTest extends TestCase
     }//end testFooterDoesntThrowWarningOnMissingTimezone()
 
 
-<<<<<<< HEAD
     /**
      * Perfunctory test to verify that extenders which call deprecated methods will see a deprecation notice.
      *
@@ -424,6 +423,4 @@ final class HTMLTest extends TestCase
     }//end dataCallingDeprecatedMethodThrowsDeprecationNotice()
 
 
-=======
->>>>>>> ddb2375 (fix: console error)
 }//end class

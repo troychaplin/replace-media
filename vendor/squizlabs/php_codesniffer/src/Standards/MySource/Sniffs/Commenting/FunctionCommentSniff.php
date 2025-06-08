@@ -13,19 +13,12 @@
 
 namespace PHP_CodeSniffer\Standards\MySource\Sniffs\Commenting;
 
-<<<<<<< HEAD
 use PHP_CodeSniffer\Sniffs\DeprecatedSniff;
-=======
->>>>>>> ddb2375 (fix: console error)
 use PHP_CodeSniffer\Standards\Squiz\Sniffs\Commenting\FunctionCommentSniff as SquizFunctionCommentSniff;
 use PHP_CodeSniffer\Util\Tokens;
 use PHP_CodeSniffer\Files\File;
 
-<<<<<<< HEAD
 class FunctionCommentSniff extends SquizFunctionCommentSniff implements DeprecatedSniff
-=======
-class FunctionCommentSniff extends SquizFunctionCommentSniff
->>>>>>> ddb2375 (fix: console error)
 {
 
 
@@ -91,7 +84,6 @@ class FunctionCommentSniff extends SquizFunctionCommentSniff
     }//end process()
 
 
-<<<<<<< HEAD
     /**
      * Provide the version number in which the sniff was deprecated.
      *
@@ -128,6 +120,4 @@ class FunctionCommentSniff extends SquizFunctionCommentSniff
     }//end getDeprecationMessage()
 
 
-=======
->>>>>>> ddb2375 (fix: console error)
 }//end class

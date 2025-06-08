@@ -119,7 +119,6 @@ class FunctionCommentSniff implements Sniff
             return;
         }
 
-<<<<<<< HEAD
         // Check there are no blank lines in the preamble for the property,
         // but ignore blank lines _within_ attributes as that's not the concern of this sniff.
         if ($tokens[$commentEnd]['line'] !== ($tokens[$stackPtr]['line'] - 1)) {
@@ -158,35 +157,6 @@ class FunctionCommentSniff implements Sniff
                 }
 
                 $i = $nextNonWhitespace;
-=======
-        if ($tokens[$commentEnd]['line'] !== ($tokens[$stackPtr]['line'] - 1)) {
-            for ($i = ($commentEnd + 1); $i < $stackPtr; $i++) {
-                if ($tokens[$i]['column'] !== 1) {
-                    continue;
-                }
-
-                if ($tokens[$i]['code'] === T_WHITESPACE
-                    && $tokens[$i]['line'] !== $tokens[($i + 1)]['line']
-                ) {
-                    $error = 'There must be no blank lines after the function comment';
-                    $fix   = $phpcsFile->addFixableError($error, $commentEnd, 'SpacingAfter');
-
-                    if ($fix === true) {
-                        $phpcsFile->fixer->beginChangeset();
-
-                        while ($i < $stackPtr
-                            && $tokens[$i]['code'] === T_WHITESPACE
-                            && $tokens[$i]['line'] !== $tokens[($i + 1)]['line']
-                        ) {
-                            $phpcsFile->fixer->replaceToken($i++, '');
-                        }
-
-                        $phpcsFile->fixer->endChangeset();
-                    }
-
-                    break;
-                }
->>>>>>> ddb2375 (fix: console error)
             }//end for
         }//end if
 

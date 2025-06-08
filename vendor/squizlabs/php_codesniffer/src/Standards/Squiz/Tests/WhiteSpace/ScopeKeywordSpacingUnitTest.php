@@ -69,10 +69,7 @@ final class ScopeKeywordSpacingUnitTest extends AbstractSniffUnitTest
                 186 => 1,
                 187 => 1,
                 188 => 1,
-<<<<<<< HEAD
                 193 => 2,
-=======
->>>>>>> ddb2375 (fix: console error)
             ];
 
         case 'ScopeKeywordSpacingUnitTest.3.inc':

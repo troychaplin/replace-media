@@ -4,11 +4,7 @@
 
 namespace Composer\Autoload;
 
-<<<<<<< HEAD
 class ComposerStaticInit840f8980258e92d0e1fc2079ff806d2f
-=======
-class ComposerStaticInite6297ad6a53537abcba068c1ef052801
->>>>>>> ddb2375 (fix: console error)
 {
     public static $prefixLengthsPsr4 = array (
         'R' => 
@@ -76,15 +72,9 @@ class ComposerStaticInite6297ad6a53537abcba068c1ef052801
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-<<<<<<< HEAD
             $loader->prefixLengthsPsr4 = ComposerStaticInit840f8980258e92d0e1fc2079ff806d2f::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit840f8980258e92d0e1fc2079ff806d2f::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInit840f8980258e92d0e1fc2079ff806d2f::$classMap;
-=======
-            $loader->prefixLengthsPsr4 = ComposerStaticInite6297ad6a53537abcba068c1ef052801::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInite6297ad6a53537abcba068c1ef052801::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInite6297ad6a53537abcba068c1ef052801::$classMap;
->>>>>>> ddb2375 (fix: console error)
 
         }, null, ClassLoader::class);
     }

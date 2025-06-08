@@ -127,27 +127,18 @@ class FunctionSpacingSniff implements Sniff
         }
 
         // Skip past function docblocks and attributes.
-<<<<<<< HEAD
         // Only the first docblock is a function docblock. Other docblocks should be disregarded.
         $prev         = $startOfDeclarationLine;
         $seenDocblock = false;
-=======
-        $prev = $startOfDeclarationLine;
->>>>>>> ddb2375 (fix: console error)
         if ($startOfDeclarationLine > 0) {
             for ($prev = ($startOfDeclarationLine - 1); $prev > 0; $prev--) {
                 if ($tokens[$prev]['code'] === T_WHITESPACE) {
                     continue;
                 }
 
-<<<<<<< HEAD
                 if ($seenDocblock === false && $tokens[$prev]['code'] === T_DOC_COMMENT_CLOSE_TAG) {
                     $prev         = $tokens[$prev]['comment_opener'];
                     $seenDocblock = true;
-=======
-                if ($tokens[$prev]['code'] === T_DOC_COMMENT_CLOSE_TAG) {
-                    $prev = $tokens[$prev]['comment_opener'];
->>>>>>> ddb2375 (fix: console error)
                     continue;
                 }
 

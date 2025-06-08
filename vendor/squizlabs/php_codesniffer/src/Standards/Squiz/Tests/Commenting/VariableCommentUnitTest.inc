@@ -454,7 +454,6 @@ class MoreMissingButSupportedTypes
      */
     private namespace\SomeClass $variableName;
 }
-<<<<<<< HEAD
 
 class DNFTypes
 {
@@ -470,5 +469,3 @@ class PHP84FinalProperties {
      */
     final int $hasDocblock;
 }
-=======
->>>>>>> ddb2375 (fix: console error)

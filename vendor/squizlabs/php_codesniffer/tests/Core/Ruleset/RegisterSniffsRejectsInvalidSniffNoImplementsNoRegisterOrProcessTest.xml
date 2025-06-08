@@ -3,10 +3,6 @@
 
     <rule ref="./tests/Core/Ruleset/Fixtures/TestStandard/Sniffs/InvalidSniffError/NoImplementsNoRegisterOrProcessSniff.php"/>
 
-<<<<<<< HEAD
     <!-- Prevent a "no sniffs were registered" error. -->
-=======
-    <!-- Prevent a "no sniff were registered" error. -->
->>>>>>> ddb2375 (fix: console error)
     <rule ref="Generic.PHP.BacktickOperator"/>
 </ruleset>

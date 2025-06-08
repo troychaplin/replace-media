@@ -54,7 +54,6 @@ class Regular_Class_Regular_Constants {
     protected const PROTECTED_CONST = 'foo';
     private const PRIVATE_CONST = true;
 }
-<<<<<<< HEAD
 
 final class Final_Class_Final_Properties {
     final readonly public ?MyType $final_public;
@@ -77,5 +76,3 @@ class Regular_Class_Regular_Properties {
     protected $protected = 'foo';
     private static bool $private = true;
 }
-=======
->>>>>>> ddb2375 (fix: console error)

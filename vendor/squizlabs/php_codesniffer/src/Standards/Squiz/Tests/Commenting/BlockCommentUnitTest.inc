@@ -307,7 +307,6 @@ abstract class MyClass
 enum MyEnum {
 
 }
-<<<<<<< HEAD
 
 class FinalProperties {
     /**
@@ -315,5 +314,3 @@ class FinalProperties {
      */
     final int $prop = 1;
 }
-=======
->>>>>>> ddb2375 (fix: console error)

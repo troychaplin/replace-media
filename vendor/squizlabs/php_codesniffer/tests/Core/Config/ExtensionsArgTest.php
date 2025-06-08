@@ -44,11 +44,7 @@ final class ExtensionsArgTest extends TestCase
      *
      * @see self::testValidExtensions()
      *
-<<<<<<< HEAD
      * @return array<string, array<string, string|array<string, string>>>
-=======
-     * @return array<int, array<string>>
->>>>>>> ddb2375 (fix: console error)
      */
     public static function dataValidExtensions()
     {

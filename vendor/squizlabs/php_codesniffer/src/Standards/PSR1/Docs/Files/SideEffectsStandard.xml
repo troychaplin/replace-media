@@ -20,11 +20,7 @@ class Foo
 {
 }
 
-<<<<<<< HEAD
 <em>echo "Class Foo loaded.";</em>
-=======
-<em>echo "Class Foo loaded."</em>
->>>>>>> ddb2375 (fix: console error)
         ]]>
         </code>
     </code_comparison>

@@ -54,11 +54,7 @@ abstract class Tokenizer
     /**
      * A list of tokens that end the scope.
      *
-<<<<<<< HEAD
      * @var array<int|string, int|string>
-=======
-     * @var array
->>>>>>> ddb2375 (fix: console error)
      */
     public $endScopeTokens = [];
 
@@ -80,15 +76,9 @@ abstract class Tokenizer
     /**
      * Initialise and run the tokenizer.
      *
-<<<<<<< HEAD
      * @param string                       $content The content to tokenize.
      * @param \PHP_CodeSniffer\Config|null $config  The config data for the run.
      * @param string                       $eolChar The EOL char used in the content.
-=======
-     * @param string                         $content The content to tokenize.
-     * @param \PHP_CodeSniffer\Config | null $config  The config data for the run.
-     * @param string                         $eolChar The EOL char used in the content.
->>>>>>> ddb2375 (fix: console error)
      *
      * @return void
      * @throws \PHP_CodeSniffer\Exceptions\TokenizerException If the file appears to be minified.

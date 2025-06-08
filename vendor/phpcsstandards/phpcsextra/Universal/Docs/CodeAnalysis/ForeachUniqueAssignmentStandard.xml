@@ -12,20 +12,12 @@
     ]]>
     </standard>
     <code_comparison>
-<<<<<<< HEAD
         <code title="Valid: Using unique variables.">
-=======
-        <code title="Valid: using unique variables.">
->>>>>>> ddb2375 (fix: console error)
         <![CDATA[
 foreach ($array as $k => $v ) {}
         ]]>
         </code>
-<<<<<<< HEAD
         <code title="Invalid: Using the same variable for both the key as well as the value.">
-=======
-        <code title="Invalid: using the same variable for both the key as well as the value.">
->>>>>>> ddb2375 (fix: console error)
         <![CDATA[
 foreach ($array as $k => $k ) {}
         ]]>

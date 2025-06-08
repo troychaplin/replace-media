@@ -70,10 +70,7 @@ class MyClass {
 interface Base {
     protected $anonymous;
 }
-<<<<<<< HEAD
 
 class PHP84FinalProperties {
     final int $final;
 }
-=======
->>>>>>> ddb2375 (fix: console error)

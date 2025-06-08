@@ -231,10 +231,7 @@ class PHP extends Tokenizer
                 T_CONTINUE => T_CONTINUE,
                 T_THROW    => T_THROW,
                 T_EXIT     => T_EXIT,
-<<<<<<< HEAD
                 T_GOTO     => T_GOTO,
-=======
->>>>>>> ddb2375 (fix: console error)
             ],
             'strict' => true,
             'shared' => true,
@@ -255,10 +252,7 @@ class PHP extends Tokenizer
                 T_CONTINUE => T_CONTINUE,
                 T_THROW    => T_THROW,
                 T_EXIT     => T_EXIT,
-<<<<<<< HEAD
                 T_GOTO     => T_GOTO,
-=======
->>>>>>> ddb2375 (fix: console error)
             ],
             'strict' => true,
             'shared' => true,
@@ -297,11 +291,7 @@ class PHP extends Tokenizer
      * from the scopeOpeners array. The data is duplicated here to
      * save time during parsing of the file.
      *
-<<<<<<< HEAD
      * @var array<int|string, int|string>
-=======
-     * @var array
->>>>>>> ddb2375 (fix: console error)
      */
     public $endScopeTokens = [
         T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET,
@@ -413,16 +403,11 @@ class PHP extends Tokenizer
         T_PLUS_EQUAL               => 2,
         T_PRINT                    => 5,
         T_PRIVATE                  => 7,
-<<<<<<< HEAD
         T_PRIVATE_SET              => 12,
         T_PUBLIC                   => 6,
         T_PUBLIC_SET               => 11,
         T_PROTECTED                => 9,
         T_PROTECTED_SET            => 14,
-=======
-        T_PUBLIC                   => 6,
-        T_PROTECTED                => 9,
->>>>>>> ddb2375 (fix: console error)
         T_READONLY                 => 8,
         T_REQUIRE                  => 7,
         T_REQUIRE_ONCE             => 12,
@@ -822,7 +807,6 @@ class PHP extends Tokenizer
             }//end if
 
             /*
-<<<<<<< HEAD
                 Prior to PHP 7.4, PHP didn't support stand-alone PHP open tags at the end of a file
                 (without a new line), so we need to make sure that the tokenization in PHPCS is consistent
                 cross-version PHP by retokenizing to T_OPEN_TAG.
@@ -863,8 +847,6 @@ class PHP extends Tokenizer
             }//end if
 
             /*
-=======
->>>>>>> ddb2375 (fix: console error)
                 Parse doc blocks into something that can be easily iterated over.
             */
 
@@ -1287,7 +1269,6 @@ class PHP extends Tokenizer
             }//end if
 
             /*
-<<<<<<< HEAD
                 Asymmetric visibility for PHP < 8.4
             */
 
@@ -1331,8 +1312,6 @@ class PHP extends Tokenizer
             }//end if
 
             /*
-=======
->>>>>>> ddb2375 (fix: console error)
                 As of PHP 8.0 fully qualified, partially qualified and namespace relative
                 identifier names are tokenized differently.
                 This "undoes" the new tokenization so the tokenization will be the same in
@@ -1603,15 +1582,12 @@ class PHP extends Tokenizer
                     ];
                     $newStackPtr++;
 
-<<<<<<< HEAD
                     // Also modify the original token stack so that
                     // future checks (like looking for T_NULLABLE) can
                     // detect the T_READONLY token more easily.
                     $tokens[$stackPtr][0] = T_READONLY;
                     $token[0] = T_READONLY;
 
-=======
->>>>>>> ddb2375 (fix: console error)
                     if (PHP_CODESNIFFER_VERBOSITY > 1 && $type !== T_READONLY) {
                         echo "\t\t* token $stackPtr changed from $type to T_READONLY".PHP_EOL;
                     }
@@ -2259,13 +2235,9 @@ class PHP extends Tokenizer
                     if ($tokenType === T_FUNCTION
                         || $tokenType === T_FN
                         || isset(Tokens::$methodPrefixes[$tokenType]) === true
-<<<<<<< HEAD
                         || isset(Tokens::$scopeModifiers[$tokenType]) === true
                         || $tokenType === T_VAR
                         || $tokenType === T_READONLY
-=======
-                        || $tokenType === T_VAR
->>>>>>> ddb2375 (fix: console error)
                     ) {
                         if (PHP_CODESNIFFER_VERBOSITY > 1) {
                             echo "\t\t* token $stackPtr changed from ? to T_NULLABLE".PHP_EOL;
@@ -2373,11 +2345,7 @@ class PHP extends Tokenizer
                         ) {
                             // Non-empty content.
                             if (is_array($tokens[$x]) === true && $tokens[$x][0] === T_USE) {
-<<<<<<< HEAD
                                 // Found a use statement, so search ahead for the closing parenthesis.
-=======
-                                // Found a use statements, so search ahead for the closing parenthesis.
->>>>>>> ddb2375 (fix: console error)
                                 for ($x += 1; $x < $numTokens; $x++) {
                                     if (is_array($tokens[$x]) === false && $tokens[$x] === ')') {
                                         continue(2);
@@ -3507,12 +3475,8 @@ class PHP extends Tokenizer
                         && (isset(Tokens::$scopeModifiers[$this->tokens[$x]['code']]) === true
                         || $this->tokens[$x]['code'] === T_VAR
                         || $this->tokens[$x]['code'] === T_STATIC
-<<<<<<< HEAD
                         || $this->tokens[$x]['code'] === T_READONLY
                         || $this->tokens[$x]['code'] === T_FINAL)
-=======
-                        || $this->tokens[$x]['code'] === T_READONLY)
->>>>>>> ddb2375 (fix: console error)
                     ) {
                         // This will also confirm constructor property promotion parameters, but that's fine.
                         $confirmed = true;

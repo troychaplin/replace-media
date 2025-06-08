@@ -5,7 +5,6 @@
     >
     <standard>
     <![CDATA[
-<<<<<<< HEAD
     For single-line arrays, there should be <em>no</em> comma after the last array item.
 
     However, for multi-line arrays, there <em>should</em> be a comma after the last array item.
@@ -13,35 +12,18 @@
     </standard>
     <code_comparison>
         <code title="Valid: Single-line array without a comma after the last item.">
-=======
-      For single-line arrays, there should be <em>no</em> comma after the last array item.
-
-      However, for multi-line arrays, there <em>should</em> be a comma after the last array item.
-    ]]>
-    </standard>
-    <code_comparison>
-        <code title="Valid: Single-line array without a comma after the last item">
->>>>>>> ddb2375 (fix: console error)
         <![CDATA[
 $args = array(1, 2, 3);
         ]]>
         </code>
-<<<<<<< HEAD
         <code title="Invalid: Single-line array with a comma after the last item.">
-=======
-        <code title="Invalid: Single-line array with a comma after the last item">
->>>>>>> ddb2375 (fix: console error)
         <![CDATA[
 $args = array(1, 2, 3<em>,</em> );
         ]]>
         </code>
     </code_comparison>
     <code_comparison>
-<<<<<<< HEAD
         <code title="Valid: Multi-line array with a comma after the last item.">
-=======
-        <code title="Valid: Multi-line array with a comma after the last item">
->>>>>>> ddb2375 (fix: console error)
         <![CDATA[
 $args = [
     1 => 'foo',
@@ -49,11 +31,7 @@ $args = [
 ];
         ]]>
         </code>
-<<<<<<< HEAD
         <code title="Invalid: Multi-line array without a comma after the last item.">
-=======
-        <code title="Invalid: Multi-line array without a comma after the last item">
->>>>>>> ddb2375 (fix: console error)
         <![CDATA[
 $args = [
     1 => 'foo',

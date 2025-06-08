@@ -85,7 +85,6 @@ class ReadOnlyProp {
 
     readonly protected ?string $wrongOrder2;
 }
-<<<<<<< HEAD
 
 class FinalProperties {
     final public int $foo,
@@ -111,5 +110,3 @@ class AsymmetricVisibility {
 
     private(set) protected ?string $wrongOrder2;
 }
-=======
->>>>>>> ddb2375 (fix: console error)

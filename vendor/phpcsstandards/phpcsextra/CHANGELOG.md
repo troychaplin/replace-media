@@ -2,11 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-<<<<<<< HEAD
 This projects adheres to [Keep a CHANGELOG](https://keepachangelog.com/) and uses [Semantic Versioning](https://semver.org/).
-=======
-This projects adheres to [Keep a CHANGELOG](http://keepachangelog.com/) and uses [Semantic Versioning](http://semver.org/).
->>>>>>> ddb2375 (fix: console error)
 
 **Legend**:
 :wrench: = Includes auto-fixer.
@@ -18,7 +14,6 @@ This projects adheres to [Keep a CHANGELOG](http://keepachangelog.com/) and uses
 
 _Nothing yet._
 
-<<<<<<< HEAD
 
 ## [1.3.0] - 2025-04-21
 
@@ -48,8 +43,6 @@ _Nothing yet._
 [#330]: https://github.com/PHPCSStandards/PHPCSExtra/pull/330
 
 
-=======
->>>>>>> ddb2375 (fix: console error)
 ## [1.2.1] - 2023-12-08
 
 ### Changed
@@ -437,11 +430,7 @@ The upgrade to PHPCSUtils 1.0.0-alpha4 took care of a number of bugs, which pote
 
 [php-manual-dirname]:           https://www.php.net/function.dirname
 [php-rfc-negative_array_index]: https://wiki.php.net/rfc/negative_array_index
-<<<<<<< HEAD
 [ESLint "no lonely if"]:        https://eslint.org/docs/latest/rules/no-lonely-if
-=======
-[ESLint "no lonely if"]:        https://eslint.org/docs/rules/no-lonely-if
->>>>>>> ddb2375 (fix: console error)
 [PHPCSUtils 1.0.0-alpha4]:      https://github.com/PHPCSStandards/PHPCSUtils/releases/tag/1.0.0-alpha4
 
 
@@ -607,10 +596,7 @@ This initial alpha release contains the following sniffs:
 [php_version-config]:    https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki/Configuration-Options#setting-the-php-version
 
 [Unreleased]: https://github.com/PHPCSStandards/PHPCSExtra/compare/stable...HEAD
-<<<<<<< HEAD
 [1.3.0]: https://github.com/PHPCSStandards/PHPCSExtra/compare/1.2.1...1.3.0
-=======
->>>>>>> ddb2375 (fix: console error)
 [1.2.1]: https://github.com/PHPCSStandards/PHPCSExtra/compare/1.2.0...1.2.1
 [1.2.0]: https://github.com/PHPCSStandards/PHPCSExtra/compare/1.1.2...1.2.0
 [1.1.2]: https://github.com/PHPCSStandards/PHPCSExtra/compare/1.1.1...1.1.2
@@ -625,7 +611,6 @@ This initial alpha release contains the following sniffs:
 [1.0.0-alpha3]: https://github.com/PHPCSStandards/PHPCSExtra/compare/1.0.0-alpha2...1.0.0-alpha3
 [1.0.0-alpha2]: https://github.com/PHPCSStandards/PHPCSExtra/compare/1.0.0-alpha1...1.0.0-alpha2
 
-<<<<<<< HEAD
 [@anomiex]:      https://github.com/anomiex
 [@derickr]:      https://github.com/derickr
 [@diedexx]:      https://github.com/diedexx
@@ -634,12 +619,3 @@ This initial alpha release contains the following sniffs:
 [@rodrigoprimo]: https://github.com/rodrigoprimo
 [@stronk7]:      https://github.com/stronk7
 [@szepeviktor]:  https://github.com/szepeviktor
-=======
-[@anomiex]:     https://github.com/anomiex
-[@derickr]:     https://github.com/derickr
-[@diedexx]:     https://github.com/diedexx
-[@fredden]:     https://github.com/fredden
-[@GaryJones]:   https://github.com/GaryJones
-[@stronk7]:     https://github.com/stronk7
-[@szepeviktor]: https://github.com/szepeviktor
->>>>>>> ddb2375 (fix: console error)

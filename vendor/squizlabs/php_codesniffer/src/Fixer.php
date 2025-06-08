@@ -12,10 +12,7 @@
 
 namespace PHP_CodeSniffer;
 
-<<<<<<< HEAD
 use InvalidArgumentException;
-=======
->>>>>>> ddb2375 (fix: console error)
 use PHP_CodeSniffer\Exceptions\RuntimeException;
 use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Util\Common;
@@ -204,11 +201,7 @@ class Fixer
 
         $this->enabled = false;
 
-<<<<<<< HEAD
         if ($this->numFixes > 0 || $this->inConflict === true) {
-=======
-        if ($this->numFixes > 0) {
->>>>>>> ddb2375 (fix: console error)
             if (PHP_CODESNIFFER_VERBOSITY > 1) {
                 if (ob_get_level() > 0) {
                     ob_end_clean();
@@ -410,11 +403,7 @@ class Fixer
             if ($bt[1]['class'] === __CLASS__) {
                 $sniff = 'Fixer';
             } else {
-<<<<<<< HEAD
                 $sniff = $this->getSniffCodeForDebug($bt[1]['class']);
-=======
-                $sniff = Common::getSniffCode($bt[1]['class']);
->>>>>>> ddb2375 (fix: console error)
             }
 
             $line = $bt[0]['line'];
@@ -499,11 +488,7 @@ class Fixer
                     $line  = $bt[0]['line'];
                 }
 
-<<<<<<< HEAD
                 $sniff = $this->getSniffCodeForDebug($sniff);
-=======
-                $sniff = Common::getSniffCode($sniff);
->>>>>>> ddb2375 (fix: console error)
 
                 $numChanges = count($this->changeset);
 
@@ -560,11 +545,7 @@ class Fixer
                 $line  = $bt[0]['line'];
             }
 
-<<<<<<< HEAD
             $sniff = $this->getSniffCodeForDebug($sniff);
-=======
-            $sniff = Common::getSniffCode($sniff);
->>>>>>> ddb2375 (fix: console error)
 
             $tokens     = $this->currentFile->getTokens();
             $type       = $tokens[$stackPtr]['type'];
@@ -679,11 +660,7 @@ class Fixer
                 $line  = $bt[0]['line'];
             }
 
-<<<<<<< HEAD
             $sniff = $this->getSniffCodeForDebug($sniff);
-=======
-            $sniff = Common::getSniffCode($sniff);
->>>>>>> ddb2375 (fix: console error)
 
             $tokens     = $this->currentFile->getTokens();
             $type       = $tokens[$stackPtr]['type'];
@@ -867,7 +844,6 @@ class Fixer
     }//end changeCodeBlockIndent()
 
 
-<<<<<<< HEAD
     /**
      * Get the sniff code for the current sniff or the class name if the passed class is not a sniff.
      *
@@ -888,6 +864,4 @@ class Fixer
     }//end getSniffCodeForDebug()
 
 
-=======
->>>>>>> ddb2375 (fix: console error)
 }//end class

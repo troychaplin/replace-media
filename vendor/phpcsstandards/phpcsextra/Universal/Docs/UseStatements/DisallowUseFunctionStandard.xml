@@ -15,11 +15,7 @@ use Vendor\Sub\ClassName;
 use const Vendor\Sub\CONST;
         ]]>
         </code>
-<<<<<<< HEAD
         <code title="Invalid: `use function` import statements.">
-=======
-        <code title="Invalid: use function import statements.">
->>>>>>> ddb2375 (fix: console error)
         <![CDATA[
 use function Vendor\Sub\functionName;
 use function Vendor\Sub\functionName as other;

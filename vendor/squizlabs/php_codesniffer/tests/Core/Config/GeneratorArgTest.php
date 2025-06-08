@@ -21,7 +21,6 @@ final class GeneratorArgTest extends TestCase
 
 
     /**
-<<<<<<< HEAD
      * Skip these tests when in CBF mode.
      *
      * @before
@@ -38,8 +37,6 @@ final class GeneratorArgTest extends TestCase
 
 
     /**
-=======
->>>>>>> ddb2375 (fix: console error)
      * Ensure that the generator property is set when the parameter is passed a valid value.
      *
      * @param string $argumentValue         Generator name passed on the command line.
@@ -63,11 +60,7 @@ final class GeneratorArgTest extends TestCase
      *
      * @see self::testValidGenerators()
      *
-<<<<<<< HEAD
      * @return array<string, array<string, string>>
-=======
-     * @return array<int, array<string>>
->>>>>>> ddb2375 (fix: console error)
      */
     public static function dataValidGeneratorNames()
     {
@@ -154,11 +147,7 @@ final class GeneratorArgTest extends TestCase
      *
      * @see self::testInvalidGenerator()
      *
-<<<<<<< HEAD
      * @return array<array<string>>
-=======
-     * @return array<int, array<string>>
->>>>>>> ddb2375 (fix: console error)
      */
     public static function dataInvalidGeneratorNames()
     {

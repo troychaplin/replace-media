@@ -400,7 +400,6 @@ final class BlankLinesBetweenVsAttributesWithoutCommentIssueSquiz3594
     #[SingleAttribute]
     public $property2;
 }
-<<<<<<< HEAD
 
 class PHP84FinalProperties {
 
@@ -432,5 +431,3 @@ class MultilineCommentShouldNotBeSplitUp {
      */
     public $prop;
 }
-=======
->>>>>>> ddb2375 (fix: console error)

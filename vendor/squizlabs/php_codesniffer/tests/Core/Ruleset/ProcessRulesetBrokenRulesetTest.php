@@ -23,11 +23,8 @@ use PHP_CodeSniffer\Tests\Core\Ruleset\AbstractRulesetTestCase;
  * @runTestsInSeparateProcesses
  * @preserveGlobalState         disabled
  *
-<<<<<<< HEAD
  * @group Windows
  *
-=======
->>>>>>> ddb2375 (fix: console error)
  * @covers \PHP_CodeSniffer\Ruleset::processRuleset
  */
 final class ProcessRulesetBrokenRulesetTest extends AbstractRulesetTestCase
@@ -65,11 +62,7 @@ final class ProcessRulesetBrokenRulesetTest extends AbstractRulesetTestCase
         $config   = new ConfigDouble(["--standard=$standard"]);
 
         $regex  = '`^ERROR: Ruleset \S+ProcessRulesetBrokenRulesetSingleErrorTest\.xml is not valid\R';
-<<<<<<< HEAD
         $regex .= '- On line 3, column 1: (Premature end of data in tag ruleset line 2|EndTag: \'</\' not found)\R$`';
-=======
-        $regex .= '- On line 3, column 1: Premature end of data in tag ruleset line 2\R$`';
->>>>>>> ddb2375 (fix: console error)
 
         $this->expectRuntimeExceptionRegex($regex);
 
@@ -90,13 +83,8 @@ final class ProcessRulesetBrokenRulesetTest extends AbstractRulesetTestCase
 
         $regex  = '`^ERROR: Ruleset \S+ProcessRulesetBrokenRulesetMultiErrorTest\.xml is not valid\R';
         $regex .= '- On line 8, column 12: Opening and ending tag mismatch: property line 7 and rule\R';
-<<<<<<< HEAD
         $regex .= '- On line 10, column 11: Opening and ending tag mismatch: properties line [57] and ruleset\R';
         $regex .= '(- On line 11, column 1: (Premature end of data in tag rule(set)? line [24]|EndTag: \'</\' not found)\R)*$`';
-=======
-        $regex .= '- On line 10, column 11: Opening and ending tag mismatch: properties line 5 and ruleset\R';
-        $regex .= '(- On line 11, column 1: Premature end of data in tag rule line 4\R)?$`';
->>>>>>> ddb2375 (fix: console error)
 
         $this->expectRuntimeExceptionRegex($regex);
 

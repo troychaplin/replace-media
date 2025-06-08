@@ -56,7 +56,6 @@ final class DocCommentAlignmentUnitTest extends AbstractSniffUnitTest
             $errors[91] = 1;
             $errors[95] = 1;
             $errors[96] = 1;
-<<<<<<< HEAD
 
             $errors[106] = 1;
             $errors[107] = 1;
@@ -64,8 +63,6 @@ final class DocCommentAlignmentUnitTest extends AbstractSniffUnitTest
             $errors[112] = 1;
             $errors[113] = 1;
             $errors[114] = 1;
-=======
->>>>>>> ddb2375 (fix: console error)
         }
 
         return $errors;

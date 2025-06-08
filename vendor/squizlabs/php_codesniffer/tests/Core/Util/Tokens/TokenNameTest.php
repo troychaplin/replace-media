@@ -28,10 +28,7 @@ final class TokenNameTest extends TestCase
      * @param string     $expected  The expected token name.
      *
      * @dataProvider dataTokenName
-<<<<<<< HEAD
      * @dataProvider dataPolyfilledPHPNativeTokens
-=======
->>>>>>> ddb2375 (fix: console error)
      *
      * @return void
      */
@@ -82,7 +79,6 @@ final class TokenNameTest extends TestCase
     }//end dataTokenName()
 
 
-<<<<<<< HEAD
     /**
      * Data provider.
      *
@@ -198,6 +194,4 @@ final class TokenNameTest extends TestCase
     }//end dataPolyfilledPHPNativeTokens()
 
 
-=======
->>>>>>> ddb2375 (fix: console error)
 }//end class

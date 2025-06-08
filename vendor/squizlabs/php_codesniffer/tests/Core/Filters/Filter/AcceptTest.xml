@@ -8,11 +8,8 @@
     <exclude-pattern>*/Other/Main\.php$</exclude-pattern>
 
     <rule ref="Generic">
-<<<<<<< HEAD
         <exclude name="Generic.Debug"/>
 
-=======
->>>>>>> ddb2375 (fix: console error)
         <!-- Standard specific directory pattern. -->
         <exclude-pattern>/anything/*</exclude-pattern>
         <!-- Standard specific file pattern. -->

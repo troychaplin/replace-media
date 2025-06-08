@@ -12,16 +12,10 @@
 namespace PHP_CodeSniffer\Standards\Squiz\Sniffs\CSS;
 
 use PHP_CodeSniffer\Files\File;
-<<<<<<< HEAD
 use PHP_CodeSniffer\Sniffs\DeprecatedSniff;
 use PHP_CodeSniffer\Sniffs\Sniff;
 
 class MissingColonSniff implements Sniff, DeprecatedSniff
-=======
-use PHP_CodeSniffer\Sniffs\Sniff;
-
-class MissingColonSniff implements Sniff
->>>>>>> ddb2375 (fix: console error)
 {
 
     /**
@@ -97,7 +91,6 @@ class MissingColonSniff implements Sniff
     }//end process()
 
 
-<<<<<<< HEAD
     /**
      * Provide the version number in which the sniff was deprecated.
      *
@@ -134,6 +127,4 @@ class MissingColonSniff implements Sniff
     }//end getDeprecationMessage()
 
 
-=======
->>>>>>> ddb2375 (fix: console error)
 }//end class

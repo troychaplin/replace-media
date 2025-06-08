@@ -12,16 +12,10 @@
 namespace PHP_CodeSniffer\Standards\Squiz\Sniffs\Objects;
 
 use PHP_CodeSniffer\Files\File;
-<<<<<<< HEAD
 use PHP_CodeSniffer\Sniffs\DeprecatedSniff;
 use PHP_CodeSniffer\Sniffs\Sniff;
 
 class DisallowObjectStringIndexSniff implements Sniff, DeprecatedSniff
-=======
-use PHP_CodeSniffer\Sniffs\Sniff;
-
-class DisallowObjectStringIndexSniff implements Sniff
->>>>>>> ddb2375 (fix: console error)
 {
 
     /**
@@ -91,7 +85,6 @@ class DisallowObjectStringIndexSniff implements Sniff
     }//end process()
 
 
-<<<<<<< HEAD
     /**
      * Provide the version number in which the sniff was deprecated.
      *
@@ -128,6 +121,4 @@ class DisallowObjectStringIndexSniff implements Sniff
     }//end getDeprecationMessage()
 
 
-=======
->>>>>>> ddb2375 (fix: console error)
 }//end class

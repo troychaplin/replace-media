@@ -311,11 +311,7 @@ class FunctionCommentSniff extends PEARFunctionCommentSniff
             $commentLines = [];
             if ($tokens[($tag + 2)]['code'] === T_DOC_COMMENT_STRING) {
                 $matches = [];
-<<<<<<< HEAD
                 preg_match('/((?:(?![$.]|&(?=\$)).)*)(?:((?:\.\.\.)?(?:\$|&)[^\s]+)(?:(\s+)(.*))?)?/', $tokens[($tag + 2)]['content'], $matches);
-=======
-                preg_match('/([^$&.]+)(?:((?:\.\.\.)?(?:\$|&)[^\s]+)(?:(\s+)(.*))?)?/', $tokens[($tag + 2)]['content'], $matches);
->>>>>>> ddb2375 (fix: console error)
 
                 if (empty($matches) === false) {
                     $typeLen   = strlen($matches[1]);
@@ -327,14 +323,10 @@ class FunctionCommentSniff extends PEARFunctionCommentSniff
                     }
                 }
 
-<<<<<<< HEAD
                 if ($tokens[($tag + 2)]['content'][0] === '$') {
                     $error = 'Missing parameter type';
                     $phpcsFile->addError($error, $tag, 'MissingParamType');
                 } else if (isset($matches[2]) === true) {
-=======
-                if (isset($matches[2]) === true) {
->>>>>>> ddb2375 (fix: console error)
                     $var    = $matches[2];
                     $varLen = strlen($var);
                     if ($varLen > $maxVar) {
@@ -377,12 +369,6 @@ class FunctionCommentSniff extends PEARFunctionCommentSniff
                         $phpcsFile->addError($error, $tag, 'MissingParamComment');
                         $commentLines[] = ['comment' => ''];
                     }//end if
-<<<<<<< HEAD
-=======
-                } else if ($tokens[($tag + 2)]['content'][0] === '$') {
-                    $error = 'Missing parameter type';
-                    $phpcsFile->addError($error, $tag, 'MissingParamType');
->>>>>>> ddb2375 (fix: console error)
                 } else {
                     $error = 'Missing parameter name';
                     $phpcsFile->addError($error, $tag, 'MissingParamName');

@@ -14,10 +14,7 @@ readonly class MyClass
 $a = new class() {};
 
 $anon = new readonly class() {};
-<<<<<<< HEAD
 
 class FinalProperties {
     final int $prop = 1;
 }
-=======
->>>>>>> ddb2375 (fix: console error)

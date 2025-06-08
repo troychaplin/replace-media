@@ -25,11 +25,7 @@ final class AbstractArraySniffTest extends AbstractMethodUnitTest
      * This extends the \PHP_CodeSniffer\Sniffs\AbstractArraySniff class to make the
      * internal workings of the sniff observable.
      *
-<<<<<<< HEAD
      * @var \PHP_CodeSniffer\Tests\Core\Sniffs\AbstractArraySniffTestable
-=======
-     * @var \PHP_CodeSniffer\Sniffs\AbstractArraySniffTestable
->>>>>>> ddb2375 (fix: console error)
      */
     protected static $sniff;
 

@@ -75,11 +75,7 @@ final class OneStatementInShortEchoTagSniff implements Sniff
             return;
         }
 
-<<<<<<< HEAD
         // Semicolon, so check for any code between it and the close tag.
-=======
-        // Semi-colon, so check for any code between it and the close tag.
->>>>>>> ddb2375 (fix: console error)
         $nextNonEmpty = $phpcsFile->findNext(Tokens::$emptyTokens, ($endOfStatement + 1), null, true);
         if ($nextNonEmpty === false
             || $tokens[$nextNonEmpty]['code'] === \T_CLOSE_TAG

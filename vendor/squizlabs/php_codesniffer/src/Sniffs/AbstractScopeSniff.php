@@ -14,11 +14,7 @@
  *     protected function processTokenWithinScope(\PHP_CodeSniffer\Files\File $phpcsFile, $stackPtr, $currScope)
  *     {
  *         $className = $phpcsFile->getDeclarationName($currScope);
-<<<<<<< HEAD
  *         $phpcsFile->addWarning('encountered a method within class '.$className, $stackPtr, 'MethodFound');
-=======
- *         echo 'encountered a method within class '.$className;
->>>>>>> ddb2375 (fix: console error)
  *     }
  * }
  * </code>

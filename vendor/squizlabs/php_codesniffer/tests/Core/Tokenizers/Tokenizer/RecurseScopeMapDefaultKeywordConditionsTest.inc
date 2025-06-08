@@ -28,15 +28,10 @@ function switchWithDefaultAndCurlies($i) {
         case 2:
             return 2;
         /* testSimpleSwitchDefaultWithCurlies */
-<<<<<<< HEAD
         default: /* testSimpleSwitchDefaultWithCurliesScopeOpener */ {
             /* testSimpleSwitchDefaultWithCurliesConditionStop */
             return 'default';
         /* testSimpleSwitchDefaultWithCurliesScopeCloser */
-=======
-        default: {
-            return 'default';
->>>>>>> ddb2375 (fix: console error)
         }
     }
 }
@@ -67,10 +62,7 @@ function matchWithDefaultInSwitch() {
                 /* testMatchDefaultNestedInSwitchDefault */
                 default, => 'default',
             };
-<<<<<<< HEAD
             /* testSwitchDefaultCloserMarker */
-=======
->>>>>>> ddb2375 (fix: console error)
             break;
     }
 }
@@ -103,7 +95,6 @@ function switchWithDefaultInMatch() {
     };
 }
 
-<<<<<<< HEAD
 function switchAndDefaultSharingScopeCloser($i) {
     switch ($i):
         /* testSwitchAndDefaultSharingScopeCloser */
@@ -129,8 +120,6 @@ function switchDefaultNestedIfWithAndWithoutBraces($i, $foo, $baz) {
     }
 }
 
-=======
->>>>>>> ddb2375 (fix: console error)
 function shortArrayWithConstantKey() {
     $arr = [
         /* testClassConstantAsShortArrayKey */

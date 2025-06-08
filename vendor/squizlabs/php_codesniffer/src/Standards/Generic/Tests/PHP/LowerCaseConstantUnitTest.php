@@ -66,13 +66,10 @@ final class LowerCaseConstantUnitTest extends AbstractSniffUnitTest
                 129 => 1,
                 149 => 1,
                 153 => 1,
-<<<<<<< HEAD
                 167 => 1,
                 169 => 1,
                 171 => 1,
                 173 => 1,
-=======
->>>>>>> ddb2375 (fix: console error)
             ];
 
         case 'LowerCaseConstantUnitTest.js':

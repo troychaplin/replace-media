@@ -356,11 +356,7 @@ final class GetMethodPropertiesTest extends AbstractMethodUnitTest
 
 
     /**
-<<<<<<< HEAD
      * Test a method with a messy namespaced return type.
-=======
-     * Test a method with a messy namespaces return type.
->>>>>>> ddb2375 (fix: console error)
      *
      * @return void
      */

@@ -2,11 +2,7 @@
 /**
  * Test fixture.
  *
-<<<<<<< HEAD
  * @see \PHP_CodeSniffer\Tests\Core\Ruleset\PropertyTypeHandlingTest
-=======
- * @see \PHP_CodeSniffer\Tests\Core\Ruleset\SetSniffPropertyTest
->>>>>>> ddb2375 (fix: console error)
  */
 
 namespace Fixtures\TestStandard\Sniffs\SetProperty;

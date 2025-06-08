@@ -656,7 +656,6 @@ class File
     /**
      * Records an error against a specific token in the file.
      *
-<<<<<<< HEAD
      * @param string   $error    The error message.
      * @param int|null $stackPtr The stack position where the error occurred.
      * @param string   $code     A violation code unique to the sniff message.
@@ -664,15 +663,6 @@ class File
      * @param int      $severity The severity level for this error. A value of 0
      *                           will be converted into the default severity level.
      * @param boolean  $fixable  Can the error be fixed by the sniff?
-=======
-     * @param string  $error    The error message.
-     * @param int     $stackPtr The stack position where the error occurred.
-     * @param string  $code     A violation code unique to the sniff message.
-     * @param array   $data     Replacements for the error message.
-     * @param int     $severity The severity level for this error. A value of 0
-     *                          will be converted into the default severity level.
-     * @param boolean $fixable  Can the error be fixed by the sniff?
->>>>>>> ddb2375 (fix: console error)
      *
      * @return boolean
      */
@@ -700,7 +690,6 @@ class File
     /**
      * Records a warning against a specific token in the file.
      *
-<<<<<<< HEAD
      * @param string   $warning  The error message.
      * @param int|null $stackPtr The stack position where the error occurred.
      * @param string   $code     A violation code unique to the sniff message.
@@ -708,15 +697,6 @@ class File
      * @param int      $severity The severity level for this warning. A value of 0
      *                           will be converted into the default severity level.
      * @param boolean  $fixable  Can the warning be fixed by the sniff?
-=======
-     * @param string  $warning  The error message.
-     * @param int     $stackPtr The stack position where the error occurred.
-     * @param string  $code     A violation code unique to the sniff message.
-     * @param array   $data     Replacements for the warning message.
-     * @param int     $severity The severity level for this warning. A value of 0
-     *                          will be converted into the default severity level.
-     * @param boolean $fixable  Can the warning be fixed by the sniff?
->>>>>>> ddb2375 (fix: console error)
      *
      * @return boolean
      */
@@ -2578,10 +2558,7 @@ class File
                 && $this->tokens[$i]['code'] !== T_CONTINUE
                 && $this->tokens[$i]['code'] !== T_THROW
                 && $this->tokens[$i]['code'] !== T_EXIT
-<<<<<<< HEAD
                 && $this->tokens[$i]['code'] !== T_GOTO
-=======
->>>>>>> ddb2375 (fix: console error)
             ) {
                 // Found the end of the previous scope block.
                 return $lastNotEmpty;

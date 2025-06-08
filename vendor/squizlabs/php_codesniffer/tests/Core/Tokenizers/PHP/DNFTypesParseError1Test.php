@@ -52,11 +52,7 @@ final class DNFTypesParseError1Test extends AbstractTokenizerTestCase
      *
      * @see testBrokenDNFTypeCantEndOnOpenParenthesis()
      *
-<<<<<<< HEAD
      * @return array<string, array<string>>
-=======
-     * @return array<string, array<string, string>>
->>>>>>> ddb2375 (fix: console error)
      */
     public static function dataBrokenDNFTypeCantEndOnOpenParenthesis()
     {

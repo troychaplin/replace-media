@@ -23,7 +23,6 @@ echo "i = $i";
 end:
 echo 'j hit 17';
 
-<<<<<<< HEAD
 switch($x){
     case 3:
         print($x);
@@ -53,8 +52,6 @@ function hasGoto() {
     do_something();
 }
 
-=======
->>>>>>> ddb2375 (fix: console error)
 switch ($x) {
     /* testNotGotoDeclarationGlobalConstant */
     case CONSTANT:

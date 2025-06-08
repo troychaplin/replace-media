@@ -14,18 +14,11 @@ namespace PHP_CodeSniffer\Standards\Generic\Sniffs\Debug;
 
 use PHP_CodeSniffer\Config;
 use PHP_CodeSniffer\Files\File;
-<<<<<<< HEAD
 use PHP_CodeSniffer\Sniffs\DeprecatedSniff;
 use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Util\Common;
 
 class JSHintSniff implements Sniff, DeprecatedSniff
-=======
-use PHP_CodeSniffer\Sniffs\Sniff;
-use PHP_CodeSniffer\Util\Common;
-
-class JSHintSniff implements Sniff
->>>>>>> ddb2375 (fix: console error)
 {
 
     /**
@@ -102,7 +95,6 @@ class JSHintSniff implements Sniff
     }//end process()
 
 
-<<<<<<< HEAD
     /**
      * Provide the version number in which the sniff was deprecated.
      *
@@ -139,6 +131,4 @@ class JSHintSniff implements Sniff
     }//end getDeprecationMessage()
 
 
-=======
->>>>>>> ddb2375 (fix: console error)
 }//end class

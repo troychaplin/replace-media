@@ -164,14 +164,11 @@ class HTML extends Generator
      */
     protected function printHeader()
     {
-<<<<<<< HEAD
         trigger_error(
             'The '.__METHOD__.'() method is deprecated. Use "echo '.__CLASS__.'::getFormattedHeader()" instead.',
             E_USER_DEPRECATED
         );
 
-=======
->>>>>>> ddb2375 (fix: console error)
         echo $this->getFormattedHeader();
 
     }//end printHeader()
@@ -216,14 +213,11 @@ class HTML extends Generator
      */
     protected function printToc()
     {
-<<<<<<< HEAD
         trigger_error(
             'The '.__METHOD__.'() method is deprecated. Use "echo '.__CLASS__.'::getFormattedToc()" instead.',
             E_USER_DEPRECATED
         );
 
-=======
->>>>>>> ddb2375 (fix: console error)
         echo $this->getFormattedToc();
 
     }//end printToc()
@@ -276,14 +270,11 @@ class HTML extends Generator
      */
     protected function printFooter()
     {
-<<<<<<< HEAD
         trigger_error(
             'The '.__METHOD__.'() method is deprecated. Use "echo '.__CLASS__.'::getFormattedFooter()" instead.',
             E_USER_DEPRECATED
         );
 
-=======
->>>>>>> ddb2375 (fix: console error)
         echo $this->getFormattedFooter();
 
     }//end printFooter()
@@ -391,14 +382,11 @@ class HTML extends Generator
      */
     protected function printTextBlock(DOMNode $node)
     {
-<<<<<<< HEAD
         trigger_error(
             'The '.__METHOD__.'() method is deprecated. Use "echo '.__CLASS__.'::getFormattedTextBlock()" instead.',
             E_USER_DEPRECATED
         );
 
-=======
->>>>>>> ddb2375 (fix: console error)
         echo $this->getFormattedTextBlock($node);
 
     }//end printTextBlock()
@@ -469,14 +457,11 @@ class HTML extends Generator
      */
     protected function printCodeComparisonBlock(DOMNode $node)
     {
-<<<<<<< HEAD
         trigger_error(
             'The '.__METHOD__.'() method is deprecated. Use "echo '.__CLASS__.'::getFormattedCodeComparisonBlock()" instead.',
             E_USER_DEPRECATED
         );
 
-=======
->>>>>>> ddb2375 (fix: console error)
         echo $this->getFormattedCodeComparisonBlock($node);
 
     }//end printCodeComparisonBlock()

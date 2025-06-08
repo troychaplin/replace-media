@@ -41,10 +41,7 @@ final class LowercaseClassKeywordsUnitTest extends AbstractSniffUnitTest
             11 => 1,
             14 => 1,
             16 => 1,
-<<<<<<< HEAD
             19 => 1,
-=======
->>>>>>> ddb2375 (fix: console error)
         ];
 
         return $errors;

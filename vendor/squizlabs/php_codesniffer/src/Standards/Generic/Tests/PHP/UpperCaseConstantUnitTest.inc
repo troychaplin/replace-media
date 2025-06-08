@@ -82,7 +82,6 @@ function true() {}
 
 // Issue #3332 - ignore type declarations, but not default values.
 class TypedThings {
-<<<<<<< HEAD
     const MYCONST = false;
 
     public int|false $int = false;
@@ -92,23 +91,11 @@ class TypedThings {
     {
         if (true === false) {
             return null;
-=======
-	const MYCONST = false;
-
-	public int|false $int = false;
-	public Type|null $int = new MyObj(null);
-
-	private function typed(int|false $param = null, Type|null $obj = new MyObj(false)) : string|false|null
-	{
-		if (true === false) {
-			return null;
->>>>>>> ddb2375 (fix: console error)
         }
     }
 }
 
 $cl = function (int|false $param = null, Type|null $obj = new MyObj(false)) : string|false|null {};
-<<<<<<< HEAD
 
 class SkipOverPHP82DNFTypes {
     protected (\FullyQualified&Partially\Qualified)|false $propertyC;
@@ -118,5 +105,3 @@ class SkipOverPHP84FinalProperties {
     final MyType|false $propA;
     private static final null|MyClass $propB;
 }
-=======
->>>>>>> ddb2375 (fix: console error)
