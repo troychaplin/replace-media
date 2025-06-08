@@ -263,7 +263,7 @@ class ManageMedia {
 			// Delete the old files.
 			$this->delete_attachment_files( $attachment_id, $current_file, $is_scaled_image, $original_filename );
 
-			// Move the uploaded file to the correct location with the original filename
+			// Move the uploaded file to the correct location with the original filename.
 			$target_path = path_join( $current_dir, $original_filename );
 
 			// Move the uploaded file to the target location.
@@ -274,7 +274,7 @@ class ManageMedia {
 
 			$this->log_debug( 'File moved successfully to: ' . $target_path );
 
-			// Update the attachment metadata
+			// Update the attachment metadata.
 			$this->log_debug( 'Generating attachment metadata.' );
 			$attachment_data = wp_generate_attachment_metadata( $attachment_id, $target_path );
 
