@@ -168,7 +168,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		formData.append('nonce', window.replaceMediaData.nonce);
 		formData.append('attachment_id', attachmentId);
 		formData.append('replacement_file', file);
-		formData.append('dimension_confirmed', 'true');
 
 		// Send AJAX request
 		fetch(window.replaceMediaData.ajaxUrl, {
@@ -243,26 +242,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			// Show loading state
 			button.disabled = true;
-			button.textContent = __('Checking…', 'replace-media');
+			button.textContent = __('Replacing…', 'replace-media');
 
-			// First, check dimensions
-			checkDimensions(attachmentId, selectedFile, function (shouldProceed) {
-				if (shouldProceed) {
-					// Update button text for replacement
-					button.textContent = __('Replacing…', 'replace-media');
-
-					// Perform the actual replacement
-					performReplacement(attachmentId, selectedFile, button);
-				} else {
-					// User cancelled, reset button
-					button.disabled = false;
-					button.textContent = __('Replace File', 'replace-media');
-				}
-			}).catch(error => {
-				showErrorMessage(error.message);
-				button.disabled = false;
-				button.textContent = __('Replace File', 'replace-media');
-			});
+			// Perform the replacement directly (strict dimension checking is now server-side)
+			performReplacement(attachmentId, selectedFile, button);
 
 			// Clean up file input
 			document.body.removeChild(fileInput);

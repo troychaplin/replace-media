@@ -139,12 +139,6 @@ class ManageMedia {
 			wp_send_json_error( __( 'Invalid attachment ID.', 'replace-media' ) );
 		}
 
-		// Check if this is a dimension check request.
-		if ( isset( $_POST['check_dimensions_only'] ) && sanitize_text_field( wp_unslash( $_POST['check_dimensions_only'] ) ) ) {
-			$this->handle_dimension_check( $attachment_id );
-			return;
-		}
-
 		if ( ! isset( $_FILES['replacement_file'] ) ) {
 			$this->log_debug( 'No file uploaded.' );
 			wp_send_json_error( __( 'No file was uploaded.', 'replace-media' ) );
@@ -196,7 +190,7 @@ class ManageMedia {
 				if ( $is_scaled_image ) {
 					wp_send_json_error(
 						sprintf(
-						/* translators: 1: The original filename without -scaled, 2: The current scaled filename */
+							/* translators: 1: The original filename without -scaled, 2: The current scaled filename */
 							__( 'This image was automatically scaled by WordPress. Please upload your replacement file with the original filename: %1$s (not %2$s)', 'replace-media' ),
 							$original_filename,
 							$current_filename
@@ -205,7 +199,7 @@ class ManageMedia {
 				} else {
 					wp_send_json_error(
 						sprintf(
-						/* translators: %s: The original filename that must be matched. */
+							/* translators: %s: The original filename that must be matched. */
 							__( 'The new file must have the same name as the original file (%s). Please rename your file and try again.', 'replace-media' ),
 							$original_filename
 						)
@@ -213,10 +207,57 @@ class ManageMedia {
 				}
 			}
 
-			// Check if user confirmed dimension differences (if any).
-			$dimension_confirmed = isset( $_POST['dimension_confirmed'] ) && 'true' === sanitize_text_field( wp_unslash( $_POST['dimension_confirmed'] ) );
-			if ( ! $dimension_confirmed ) {
-				wp_send_json_error( __( 'Please confirm the dimension changes before proceeding.', 'replace-media' ) );
+			// Validate dimensions for images.
+			$current_image_info = getimagesize( $current_file );
+			if ( $current_image_info ) {
+				// This is an image, check dimensions.
+				$new_image_info = getimagesize( $file['tmp_name'] );
+				if ( ! $new_image_info ) {
+					wp_send_json_error( __( 'The uploaded file is not a valid image.', 'replace-media' ) );
+				}
+
+				$current_width  = $current_image_info[0];
+				$current_height = $current_image_info[1];
+				$new_width      = $new_image_info[0];
+				$new_height     = $new_image_info[1];
+
+				// Check if current image is scaled and try to get original dimensions.
+				$comparison_width  = $current_width;
+				$comparison_height = $current_height;
+
+				if ( $is_scaled_image ) {
+					// Try to get dimensions from the original file.
+					$original_file_path = path_join( $current_dir, $original_filename );
+
+					if ( file_exists( $original_file_path ) ) {
+						$original_image_info = getimagesize( $original_file_path );
+						if ( $original_image_info ) {
+							$comparison_width  = $original_image_info[0];
+							$comparison_height = $original_image_info[1];
+							$this->log_debug( "Using original dimensions for comparison: {$comparison_width}x{$comparison_height}" );
+						} else {
+							$this->log_debug( "Original file exists but couldn't get dimensions, using scaled dimensions" );
+						}
+					} else {
+						$this->log_debug( "Original file doesn't exist, using scaled dimensions for comparison" );
+					}
+				}
+
+				$this->log_debug( "Current dimensions: {$current_width}x{$current_height}" );
+				$this->log_debug( "Comparison dimensions: {$comparison_width}x{$comparison_height}" );
+				$this->log_debug( "New dimensions: {$new_width}x{$new_height}" );
+
+				// Enforce strict dimension matching for all images to prevent layout issues.
+				if ( $new_width !== $comparison_width || $new_height !== $comparison_height ) {
+					wp_send_json_error(
+						sprintf(
+							/* translators: 1: required dimensions, 2: uploaded dimensions */
+							__( 'The replacement must have the exact same dimensions as the original image. Required: %1$s, Uploaded: %2$s.', 'replace-media' ),
+							"{$comparison_width}x{$comparison_height}",
+							"{$new_width}x{$new_height}"
+						)
+					);
+				}
 			}
 
 			// Delete the old files.
@@ -358,77 +399,16 @@ class ManageMedia {
 		$this->log_debug( "Comparison dimensions: {$comparison_width}x{$comparison_height}" );
 		$this->log_debug( "New dimensions: {$new_width}x{$new_height}" );
 
-		// For scaled images, enforce strict dimension matching to prevent layout issues
-		if ( $is_scaled_image && $comparison_label === 'original' ) {
-			// Strict matching for scaled images - must match original dimensions exactly
-			if ( $new_width !== $comparison_width || $new_height !== $comparison_height ) {
-				wp_send_json_error(
-					sprintf(
-					/* translators: 1: required dimensions, 2: uploaded dimensions, 3: current scaled dimensions */
-						__( 'For scaled images, the replacement must have the exact same dimensions as the original image. Required: %1$s, Uploaded: %2$s. The current scaled version is %3$s.', 'replace-media' ),
-						"{$comparison_width}x{$comparison_height}",
-						"{$new_width}x{$new_height}",
-						"{$current_width}x{$current_height}"
-					)
-				);
-			}
-		} else {
-			// For non-scaled images, use the warning system
-			$width_diff  = abs( $comparison_width - $new_width ) / $comparison_width * 100;
-			$height_diff = abs( $comparison_height - $new_height ) / $comparison_height * 100;
-
-			$threshold = 10; // 10% threshold for significant difference
-
-			if ( $width_diff > $threshold || $height_diff > $threshold ) {
-				// Create appropriate warning message
-				$warning_message = '';
-				if ( $is_scaled_image && $comparison_label === 'original' ) {
-					$warning_message = sprintf(
-					/* translators: 1: new dimensions, 2: original dimensions, 3: current scaled dimensions */
-						__( 'Warning: The new image has different dimensions (%1$s) compared to the original image (%2$s). The current image was scaled by WordPress to %3$s. This may cause layout issues in your content. Do you want to proceed?', 'replace-media' ),
-						"{$new_width}x{$new_height}",
-						"{$comparison_width}x{$comparison_height}",
-						"{$current_width}x{$current_height}"
-					);
-				} elseif ( $is_scaled_image ) {
-					$warning_message = sprintf(
-					/* translators: 1: new dimensions, 2: current scaled dimensions */
-						__( 'Warning: The new image has different dimensions (%1$s) compared to the current scaled image (%2$s). The original image file was not found for comparison. This may cause layout issues in your content. Do you want to proceed?', 'replace-media' ),
-						"{$new_width}x{$new_height}",
-						"{$comparison_width}x{$comparison_height}"
-					);
-				} else {
-					$warning_message = sprintf(
-					/* translators: 1: new dimensions, 2: current dimensions */
-						__( 'Warning: The new image has different dimensions (%1$s) compared to the current image (%2$s). This may cause layout issues in your content. Do you want to proceed?', 'replace-media' ),
-						"{$new_width}x{$new_height}",
-						"{$comparison_width}x{$comparison_height}"
-					);
-				}
-
-				wp_send_json_success(
-					array(
-						'dimension_warning'     => true,
-						'current_dimensions'    => array(
-							'width'  => $current_width,
-							'height' => $current_height,
-						),
-						'comparison_dimensions' => array(
-							'width'  => $comparison_width,
-							'height' => $comparison_height,
-						),
-						'new_dimensions'        => array(
-							'width'  => $new_width,
-							'height' => $new_height,
-						),
-						'is_scaled'             => $is_scaled_image,
-						'comparison_type'       => $comparison_label,
-						'message'               => $warning_message,
-					)
-				);
-			} else {
-				wp_send_json_success( array( 'dimension_warning' => false ) );
-			}
+		// Enforce strict dimension matching for all images to prevent layout issues
+		if ( $new_width !== $comparison_width || $new_height !== $comparison_height ) {
+			wp_send_json_error(
+				sprintf(
+					/* translators: 1: required dimensions, 2: uploaded dimensions */
+					__( 'The replacement must have the exact same dimensions as the original image. Required: %1$s, Uploaded: %2$s.', 'replace-media' ),
+					"{$comparison_width}x{$comparison_height}",
+					"{$new_width}x{$new_height}"
+				)
+			);
 		}
 
 		// If we reach here for scaled images, dimensions are acceptable
