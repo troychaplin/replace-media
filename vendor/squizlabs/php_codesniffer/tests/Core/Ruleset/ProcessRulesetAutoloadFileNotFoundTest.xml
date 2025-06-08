@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="ProcessRulesetAutoloadTest" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/PHPCSStandards/PHP_CodeSniffer/master/phpcs.xsd">
+
+    <autoload>./tests/Core/Ruleset/Fixtures/ThisFileDoesNotExist.php</autoload>
+
+<<<<<<< HEAD
+    <!-- Prevent a "no sniffs were registered" error. -->
+=======
+    <!-- Prevent a "no sniff were registered" error. -->
+>>>>>>> ddb2375 (fix: console error)
+    <rule ref="Generic.PHP.BacktickOperator"/>
+</ruleset>

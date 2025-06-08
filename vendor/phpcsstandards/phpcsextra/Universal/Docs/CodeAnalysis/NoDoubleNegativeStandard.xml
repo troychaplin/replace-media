@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<documentation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://phpcsstandards.github.io/PHPCSDevTools/phpcsdocs.xsd"
+    title="No Double Negative"
+    >
+    <standard>
+    <![CDATA[
+    Detects double negation in code, which is effectively the same as a boolean cast, but with a much higher cognitive load.
+    ]]>
+    </standard>
+    <code_comparison>
+<<<<<<< HEAD
+        <code title="Valid: Using singular negation or a boolean cast.">
+=======
+        <code title="Valid: using singular negation or a boolean cast.">
+>>>>>>> ddb2375 (fix: console error)
+        <![CDATA[
+$var = $a && <em>!</em> $b;
+
+if(<em>(bool)</em> callMe($a)) {}
+        ]]>
+        </code>
+<<<<<<< HEAD
+        <code title="Invalid: Using double negation (or more).">
+=======
+        <code title="Invalid: using double negation (or more).">
+>>>>>>> ddb2375 (fix: console error)
+        <![CDATA[
+$var = $a && <em>! !</em> $b;
+
+if(<em>! ! !</em> callMe($a)) {}
+        ]]>
+        </code>
+    </code_comparison>
+</documentation>

@@ -2,7 +2,7 @@
 
 namespace Replace_Media;
 
-use Replace_Media\Plugin_Paths;
+use Replace_Media\PluginPaths;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -28,11 +28,11 @@ class Enqueues {
 	 * Enqueues the block assets for the editor
 	 */
 	public function enqueue_admin_assets() {
-		$asset_file = include Plugin_Paths::plugin_path() . 'build/replace-media.asset.php';
+		$asset_file = include PluginPaths::plugin_path() . 'build/replace-media.asset.php';
 
 		wp_enqueue_script(
 			'replace-media-js',
-			Plugin_Paths::plugin_url() . 'build/replace-media.js',
+			PluginPaths::plugin_url() . 'build/replace-media.js',
 			$asset_file['dependencies'],
 			$asset_file['version'],
 			false

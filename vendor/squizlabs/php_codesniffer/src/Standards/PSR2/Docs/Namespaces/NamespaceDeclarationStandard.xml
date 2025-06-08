@@ -1,0 +1,34 @@
+<<<<<<< HEAD
+<documentation title="Namespace Declaration">
+=======
+<documentation title="Namespace Declarations">
+>>>>>>> ddb2375 (fix: console error)
+    <standard>
+    <![CDATA[
+    There must be one blank line after the namespace declaration.
+    ]]>
+    </standard>
+    <code_comparison>
+        <code title="Valid: One blank line after the namespace declaration.">
+        <![CDATA[
+<<<<<<< HEAD
+namespace Foo\Bar;
+=======
+namespace \Foo\Bar;
+>>>>>>> ddb2375 (fix: console error)
+<em></em>
+use \Baz;
+        ]]>
+        </code>
+        <code title="Invalid: No blank line after the namespace declaration.">
+        <![CDATA[
+<<<<<<< HEAD
+namespace Foo\Bar;
+=======
+namespace \Foo\Bar;
+>>>>>>> ddb2375 (fix: console error)
+use \Baz;
+        ]]>
+        </code>
+    </code_comparison>
+</documentation>

@@ -27,8 +27,8 @@ require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
 // Instantiate the classes.
 $replace_media_classes = array(
 	\Replace_Media\Enqueues::class,
-	\Replace_Media\Plugin_Paths::class,
-	\Replace_Media\Manage_Media::class,
+	\Replace_Media\PluginPaths::class,
+	\Replace_Media\ManageMedia::class,
 );
 
 foreach ( $replace_media_classes as $replace_media_class ) {
