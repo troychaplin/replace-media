@@ -196,7 +196,7 @@ class ManageMedia {
 				if ( $is_scaled_image ) {
 					wp_send_json_error(
 						sprintf(
-							/* translators: 1: The original filename without -scaled, 2: The current scaled filename */
+						/* translators: 1: The original filename without -scaled, 2: The current scaled filename */
 							__( 'This image was automatically scaled by WordPress. Please upload your replacement file with the original filename: %1$s (not %2$s)', 'replace-media' ),
 							$original_filename,
 							$current_filename
@@ -205,7 +205,7 @@ class ManageMedia {
 				} else {
 					wp_send_json_error(
 						sprintf(
-							/* translators: %s: The original filename that must be matched. */
+						/* translators: %s: The original filename that must be matched. */
 							__( 'The new file must have the same name as the original file (%s). Please rename your file and try again.', 'replace-media' ),
 							$original_filename
 						)
@@ -236,12 +236,45 @@ class ManageMedia {
 			// Update the attachment metadata
 			$this->log_debug( 'Generating attachment metadata.' );
 			$attachment_data = wp_generate_attachment_metadata( $attachment_id, $target_path );
+
+			$this->log_debug( 'Generated metadata: ' . print_r( $attachment_data, true ) );
+
 			wp_update_attachment_metadata( $attachment_id, $attachment_data );
 
-			// Update the attachment's file path in the database if it changed
-			if ( $is_scaled_image ) {
-				update_attached_file( $attachment_id, $target_path );
+			// Check if WordPress created a new scaled version and update the attachment file path accordingly
+			$final_file_path = $target_path;
+
+			if ( ! empty( $attachment_data['original_image'] ) ) {
+				$this->log_debug( 'WordPress created a scaled image.' );
+
+				// When WordPress creates a scaled image, the metadata structure is:
+				// - 'file' already points to the scaled version
+				// - 'big_image' contains info about the original
+				$scaled_relative_path = $attachment_data['file'];
+				$upload_dir           = wp_get_upload_dir();
+				$scaled_full_path     = path_join( $upload_dir['basedir'], $scaled_relative_path );
+
+				$this->log_debug( 'Scaled relative path from metadata: ' . $scaled_relative_path );
+				$this->log_debug( 'Scaled full path: ' . $scaled_full_path );
+
+				if ( file_exists( $scaled_full_path ) ) {
+					$final_file_path = $scaled_full_path;
+					$this->log_debug( 'Using scaled file as final path: ' . $final_file_path );
+				} else {
+					$this->log_debug( 'Scaled file does not exist, using original path' );
+				}
+			} else {
+				$this->log_debug( 'No scaled version was created, using original file.' );
 			}
+
+			// Update the attachment's file path in the database
+			$this->log_debug( 'Updating attached file to: ' . $final_file_path );
+			update_attached_file( $attachment_id, $final_file_path );
+
+			// Verify what was actually saved
+			$saved_file_path = get_attached_file( $attachment_id );
+			$this->log_debug( 'Verified attached file path: ' . $saved_file_path );
+			$this->log_debug( 'Final URL: ' . wp_get_attachment_url( $attachment_id ) );
 
 			$this->log_debug( 'File replaced successfully.' );
 			wp_send_json_success(
@@ -292,38 +325,114 @@ class ManageMedia {
 		$new_width      = $new_image_info[0];
 		$new_height     = $new_image_info[1];
 
-		$this->log_debug( "Current dimensions: {$current_width}x{$current_height}" );
+		// Check if current image is scaled and try to get original dimensions
+		$current_filename  = basename( $current_file );
+		$original_filename = $this->get_original_filename( $current_filename );
+		$is_scaled_image   = $original_filename !== $current_filename;
+
+		$comparison_width  = $current_width;
+		$comparison_height = $current_height;
+		$comparison_label  = 'current';
+
+		if ( $is_scaled_image ) {
+			// Try to get dimensions from the original file
+			$current_dir        = dirname( $current_file );
+			$original_file_path = path_join( $current_dir, $original_filename );
+
+			if ( file_exists( $original_file_path ) ) {
+				$original_image_info = getimagesize( $original_file_path );
+				if ( $original_image_info ) {
+					$comparison_width  = $original_image_info[0];
+					$comparison_height = $original_image_info[1];
+					$comparison_label  = 'original';
+					$this->log_debug( "Using original dimensions for comparison: {$comparison_width}x{$comparison_height}" );
+				} else {
+					$this->log_debug( "Original file exists but couldn't get dimensions, using scaled dimensions" );
+				}
+			} else {
+				$this->log_debug( "Original file doesn't exist, using scaled dimensions for comparison" );
+			}
+		}
+
+		$this->log_debug( "Current (scaled) dimensions: {$current_width}x{$current_height}" );
+		$this->log_debug( "Comparison dimensions: {$comparison_width}x{$comparison_height}" );
 		$this->log_debug( "New dimensions: {$new_width}x{$new_height}" );
 
-		// Calculate percentage difference
-		$width_diff  = abs( $current_width - $new_width ) / $current_width * 100;
-		$height_diff = abs( $current_height - $new_height ) / $current_height * 100;
-
-		$threshold = 10; // 10% threshold for significant difference
-
-		if ( $width_diff > $threshold || $height_diff > $threshold ) {
-			wp_send_json_success(
-				array(
-					'dimension_warning'  => true,
-					'current_dimensions' => array(
-						'width'  => $current_width,
-						'height' => $current_height,
-					),
-					'new_dimensions'     => array(
-						'width'  => $new_width,
-						'height' => $new_height,
-					),
-					'message'            => sprintf(
-						/* translators: 1: current dimensions, 2: new dimensions */
-						__( 'Warning: The new image has different dimensions (%1$s) compared to the current image (%2$s). This may cause layout issues in your content. Do you want to proceed?', 'replace-media' ),
+		// For scaled images, enforce strict dimension matching to prevent layout issues
+		if ( $is_scaled_image && $comparison_label === 'original' ) {
+			// Strict matching for scaled images - must match original dimensions exactly
+			if ( $new_width !== $comparison_width || $new_height !== $comparison_height ) {
+				wp_send_json_error(
+					sprintf(
+					/* translators: 1: required dimensions, 2: uploaded dimensions, 3: current scaled dimensions */
+						__( 'For scaled images, the replacement must have the exact same dimensions as the original image. Required: %1$s, Uploaded: %2$s. The current scaled version is %3$s.', 'replace-media' ),
+						"{$comparison_width}x{$comparison_height}",
 						"{$new_width}x{$new_height}",
 						"{$current_width}x{$current_height}"
-					),
-				)
-			);
+					)
+				);
+			}
 		} else {
-			wp_send_json_success( array( 'dimension_warning' => false ) );
+			// For non-scaled images, use the warning system
+			$width_diff  = abs( $comparison_width - $new_width ) / $comparison_width * 100;
+			$height_diff = abs( $comparison_height - $new_height ) / $comparison_height * 100;
+
+			$threshold = 10; // 10% threshold for significant difference
+
+			if ( $width_diff > $threshold || $height_diff > $threshold ) {
+				// Create appropriate warning message
+				$warning_message = '';
+				if ( $is_scaled_image && $comparison_label === 'original' ) {
+					$warning_message = sprintf(
+					/* translators: 1: new dimensions, 2: original dimensions, 3: current scaled dimensions */
+						__( 'Warning: The new image has different dimensions (%1$s) compared to the original image (%2$s). The current image was scaled by WordPress to %3$s. This may cause layout issues in your content. Do you want to proceed?', 'replace-media' ),
+						"{$new_width}x{$new_height}",
+						"{$comparison_width}x{$comparison_height}",
+						"{$current_width}x{$current_height}"
+					);
+				} elseif ( $is_scaled_image ) {
+					$warning_message = sprintf(
+					/* translators: 1: new dimensions, 2: current scaled dimensions */
+						__( 'Warning: The new image has different dimensions (%1$s) compared to the current scaled image (%2$s). The original image file was not found for comparison. This may cause layout issues in your content. Do you want to proceed?', 'replace-media' ),
+						"{$new_width}x{$new_height}",
+						"{$comparison_width}x{$comparison_height}"
+					);
+				} else {
+					$warning_message = sprintf(
+					/* translators: 1: new dimensions, 2: current dimensions */
+						__( 'Warning: The new image has different dimensions (%1$s) compared to the current image (%2$s). This may cause layout issues in your content. Do you want to proceed?', 'replace-media' ),
+						"{$new_width}x{$new_height}",
+						"{$comparison_width}x{$comparison_height}"
+					);
+				}
+
+				wp_send_json_success(
+					array(
+						'dimension_warning'     => true,
+						'current_dimensions'    => array(
+							'width'  => $current_width,
+							'height' => $current_height,
+						),
+						'comparison_dimensions' => array(
+							'width'  => $comparison_width,
+							'height' => $comparison_height,
+						),
+						'new_dimensions'        => array(
+							'width'  => $new_width,
+							'height' => $new_height,
+						),
+						'is_scaled'             => $is_scaled_image,
+						'comparison_type'       => $comparison_label,
+						'message'               => $warning_message,
+					)
+				);
+			} else {
+				wp_send_json_success( array( 'dimension_warning' => false ) );
+			}
 		}
+
+		// If we reach here for scaled images, dimensions are acceptable
+		wp_send_json_success( array( 'dimension_warning' => false ) );
 	}
 
 	/**
