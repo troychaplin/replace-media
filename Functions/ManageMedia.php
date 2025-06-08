@@ -24,7 +24,7 @@ class ManageMedia {
 		add_filter( 'attachment_fields_to_edit', array( $this, 'add_replace_media_button' ), 10, 2 );
 
 		// TODO: delete.
-		add_filter( 'big_image_size_threshold', '__return_false' );
+		// add_filter( 'big_image_size_threshold', '__return_false' );
 	}
 
 	/**
@@ -139,6 +139,12 @@ class ManageMedia {
 			wp_send_json_error( __( 'Invalid attachment ID.', 'replace-media' ) );
 		}
 
+		// Check if this is a dimension check request.
+		if ( isset( $_POST['check_dimensions_only'] ) && sanitize_text_field( wp_unslash( $_POST['check_dimensions_only'] ) ) ) {
+			$this->handle_dimension_check( $attachment_id );
+			return;
+		}
+
 		if ( ! isset( $_FILES['replacement_file'] ) ) {
 			$this->log_debug( 'No file uploaded.' );
 			wp_send_json_error( __( 'No file was uploaded.', 'replace-media' ) );
@@ -175,40 +181,49 @@ class ManageMedia {
 			$this->log_debug( 'Current file path: ' . $current_file );
 			$this->log_debug( 'Current filename: ' . $current_filename );
 
-			// Validate that the new file has the same name.
+			// Extract original filename (handle scaled images).
+			$original_filename = $this->get_original_filename( $current_filename );
+			$is_scaled_image   = $original_filename !== $current_filename;
+
+			$this->log_debug( 'Original filename: ' . $original_filename );
+			$this->log_debug( 'Is scaled image: ' . ( $is_scaled_image ? 'yes' : 'no' ) );
+
+			// Validate that the new file has the correct name.
 			$new_filename = basename( $file['name'] );
-			if ( $new_filename !== $current_filename ) {
-				$this->log_debug( 'Filename mismatch. Current: ' . $current_filename . ', New: ' . $new_filename );
-				wp_send_json_error(
-					sprintf(
-						/* translators: %s: The original filename that must be matched. */
-						__( 'The new file must have the same name as the original file (%s). Please rename your file and try again.', 'replace-media' ),
-						$current_filename
-					)
-				);
-			}
+			if ( $new_filename !== $original_filename ) {
+				$this->log_debug( 'Filename mismatch. Expected: ' . $original_filename . ', New: ' . $new_filename );
 
-			// Delete the old file and its metadata.
-			$meta = wp_get_attachment_metadata( $attachment_id );
-			if ( ! empty( $meta['file'] ) ) {
-				$file_path = path_join( $current_dir, $meta['file'] );
-				if ( file_exists( $file_path ) ) {
-					wp_delete_file( $file_path );
+				if ( $is_scaled_image ) {
+					wp_send_json_error(
+						sprintf(
+							/* translators: 1: The original filename without -scaled, 2: The current scaled filename */
+							__( 'This image was automatically scaled by WordPress. Please upload your replacement file with the original filename: %1$s (not %2$s)', 'replace-media' ),
+							$original_filename,
+							$current_filename
+						)
+					);
+				} else {
+					wp_send_json_error(
+						sprintf(
+							/* translators: %s: The original filename that must be matched. */
+							__( 'The new file must have the same name as the original file (%s). Please rename your file and try again.', 'replace-media' ),
+							$original_filename
+						)
+					);
 				}
 			}
 
-			// Delete all image sizes.
-			if ( ! empty( $meta['sizes'] ) ) {
-				foreach ( $meta['sizes'] as $size => $size_info ) {
-					$size_file = path_join( $current_dir, $size_info['file'] );
-					if ( file_exists( $size_file ) ) {
-						wp_delete_file( $size_file );
-					}
-				}
+			// Check if user confirmed dimension differences (if any).
+			$dimension_confirmed = isset( $_POST['dimension_confirmed'] ) && 'true' === sanitize_text_field( wp_unslash( $_POST['dimension_confirmed'] ) );
+			if ( ! $dimension_confirmed ) {
+				wp_send_json_error( __( 'Please confirm the dimension changes before proceeding.', 'replace-media' ) );
 			}
 
-			// Move the uploaded file to the correct location with the original filename.
-			$target_path = path_join( $current_dir, $current_filename );
+			// Delete the old files.
+			$this->delete_attachment_files( $attachment_id, $current_file, $is_scaled_image, $original_filename );
+
+			// Move the uploaded file to the correct location with the original filename
+			$target_path = path_join( $current_dir, $original_filename );
 
 			// Move the uploaded file to the target location.
 			if ( ! move_uploaded_file( $file['tmp_name'], $target_path ) ) {
@@ -218,10 +233,15 @@ class ManageMedia {
 
 			$this->log_debug( 'File moved successfully to: ' . $target_path );
 
-			// Update the attachment metadata.
+			// Update the attachment metadata
 			$this->log_debug( 'Generating attachment metadata.' );
 			$attachment_data = wp_generate_attachment_metadata( $attachment_id, $target_path );
 			wp_update_attachment_metadata( $attachment_id, $attachment_data );
+
+			// Update the attachment's file path in the database if it changed
+			if ( $is_scaled_image ) {
+				update_attached_file( $attachment_id, $target_path );
+			}
 
 			$this->log_debug( 'File replaced successfully.' );
 			wp_send_json_success(
@@ -233,6 +253,129 @@ class ManageMedia {
 		} catch ( Exception $e ) {
 			$this->log_debug( 'Exception caught - ' . $e->getMessage() );
 			wp_send_json_error( $e->getMessage() );
+		}
+	}
+
+	/**
+	 * Handle dimension checking for uploaded file.
+	 *
+	 * @param int $attachment_id The attachment ID.
+	 */
+	private function handle_dimension_check( $attachment_id ) {
+		if ( ! isset( $_FILES['replacement_file'] ) ) {
+			wp_send_json_error( __( 'No file was uploaded for dimension check.', 'replace-media' ) );
+		}
+
+		$file         = $_FILES['replacement_file'];
+		$current_file = get_attached_file( $attachment_id );
+
+		if ( ! $current_file ) {
+			wp_send_json_error( __( 'Current file not found.', 'replace-media' ) );
+		}
+
+		// Get dimensions of current file
+		$current_image_info = getimagesize( $current_file );
+		if ( ! $current_image_info ) {
+			// If current file is not an image, skip dimension check
+			wp_send_json_success( array( 'skip_check' => true ) );
+			return;
+		}
+
+		// Get dimensions of new file
+		$new_image_info = getimagesize( $file['tmp_name'] );
+		if ( ! $new_image_info ) {
+			wp_send_json_error( __( 'The uploaded file is not a valid image.', 'replace-media' ) );
+		}
+
+		$current_width  = $current_image_info[0];
+		$current_height = $current_image_info[1];
+		$new_width      = $new_image_info[0];
+		$new_height     = $new_image_info[1];
+
+		$this->log_debug( "Current dimensions: {$current_width}x{$current_height}" );
+		$this->log_debug( "New dimensions: {$new_width}x{$new_height}" );
+
+		// Calculate percentage difference
+		$width_diff  = abs( $current_width - $new_width ) / $current_width * 100;
+		$height_diff = abs( $current_height - $new_height ) / $current_height * 100;
+
+		$threshold = 10; // 10% threshold for significant difference
+
+		if ( $width_diff > $threshold || $height_diff > $threshold ) {
+			wp_send_json_success(
+				array(
+					'dimension_warning'  => true,
+					'current_dimensions' => array(
+						'width'  => $current_width,
+						'height' => $current_height,
+					),
+					'new_dimensions'     => array(
+						'width'  => $new_width,
+						'height' => $new_height,
+					),
+					'message'            => sprintf(
+						/* translators: 1: current dimensions, 2: new dimensions */
+						__( 'Warning: The new image has different dimensions (%1$s) compared to the current image (%2$s). This may cause layout issues in your content. Do you want to proceed?', 'replace-media' ),
+						"{$new_width}x{$new_height}",
+						"{$current_width}x{$current_height}"
+					),
+				)
+			);
+		} else {
+			wp_send_json_success( array( 'dimension_warning' => false ) );
+		}
+	}
+
+	/**
+	 * Extract original filename from a potentially scaled filename.
+	 *
+	 * @param string $filename The filename to process.
+	 * @return string The original filename without -scaled suffix.
+	 */
+	private function get_original_filename( $filename ) {
+		// Check if filename contains -scaled
+		if ( preg_match( '/^(.+)-scaled(\.[^.]+)$/', $filename, $matches ) ) {
+			return $matches[1] . $matches[2];
+		}
+		return $filename;
+	}
+
+	/**
+	 * Delete all files associated with an attachment.
+	 *
+	 * @param int    $attachment_id The attachment ID.
+	 * @param string $current_file The current file path.
+	 * @param bool   $is_scaled_image Whether the current file is scaled.
+	 * @param string $original_filename The original filename.
+	 */
+	private function delete_attachment_files( $attachment_id, $current_file, $is_scaled_image, $original_filename ) {
+		$current_dir = dirname( $current_file );
+		$meta        = wp_get_attachment_metadata( $attachment_id );
+
+		// Delete the current main file
+		if ( file_exists( $current_file ) ) {
+			wp_delete_file( $current_file );
+			$this->log_debug( 'Deleted current file: ' . $current_file );
+		}
+
+		// If this is a scaled image, also delete the original file if it exists
+		if ( $is_scaled_image ) {
+			$original_file_path = path_join( $current_dir, $original_filename );
+			if ( file_exists( $original_file_path ) ) {
+				wp_delete_file( $original_file_path );
+				$this->log_debug( 'Deleted original file: ' . $original_file_path );
+			}
+		}
+
+		// Delete all generated image sizes
+		if ( ! empty( $meta['sizes'] ) ) {
+			foreach ( $meta['sizes'] as $size => $size_info ) {
+				$size_file = path_join( $current_dir, $size_info['file'] );
+				if ( file_exists( $size_file ) ) {
+					wp_delete_file( $size_file );
+					$this->log_debug( 'Deleted size file: ' . $size_file );
+				}
+			}
 		}
 	}
 }
