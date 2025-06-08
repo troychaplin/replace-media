@@ -111,7 +111,7 @@ class ManageMedia {
 			wp_send_json_error( __( 'No file was uploaded.', 'replace-media' ) );
 		}
 
-		$file       = wp_unslash( $_FILES['replacement_file'] );
+		$file       = $_FILES['replacement_file'];
 		$attachment = \get_post( $attachment_id );
 
 		if ( ! $attachment ) {
@@ -254,82 +254,6 @@ class ManageMedia {
 		} catch ( Exception $e ) {
 			wp_send_json_error( $e->getMessage() );
 		}
-	}
-
-	/**
-	 * Handle dimension checking for uploaded file.
-	 *
-	 * @param int $attachment_id The attachment ID.
-	 */
-	private function handle_dimension_check( $attachment_id ) {
-		if ( ! isset( $_FILES['replacement_file'] ) ) {
-			wp_send_json_error( __( 'No file was uploaded for dimension check.', 'replace-media' ) );
-		}
-
-		$file         = $_FILES['replacement_file'];
-		$current_file = get_attached_file( $attachment_id );
-
-		if ( ! $current_file ) {
-			wp_send_json_error( __( 'Current file not found.', 'replace-media' ) );
-		}
-
-		// Get dimensions of current file.
-		$current_image_info = getimagesize( $current_file );
-		if ( ! $current_image_info ) {
-			// If current file is not an image, skip dimension check.
-			wp_send_json_success( array( 'skip_check' => true ) );
-			return;
-		}
-
-		// Get dimensions of new file.
-		$new_image_info = getimagesize( $file['tmp_name'] );
-		if ( ! $new_image_info ) {
-			wp_send_json_error( __( 'The uploaded file is not a valid image.', 'replace-media' ) );
-		}
-
-		$current_width  = $current_image_info[0];
-		$current_height = $current_image_info[1];
-		$new_width      = $new_image_info[0];
-		$new_height     = $new_image_info[1];
-
-		// Check if current image is scaled and try to get original dimensions.
-		$current_filename  = basename( $current_file );
-		$original_filename = $this->get_original_filename( $current_filename );
-		$is_scaled_image   = $original_filename !== $current_filename;
-
-		$comparison_width  = $current_width;
-		$comparison_height = $current_height;
-		$comparison_label  = 'current';
-
-		if ( $is_scaled_image ) {
-			// Try to get dimensions from the original file.
-			$current_dir        = dirname( $current_file );
-			$original_file_path = path_join( $current_dir, $original_filename );
-
-			if ( file_exists( $original_file_path ) ) {
-				$original_image_info = getimagesize( $original_file_path );
-				if ( $original_image_info ) {
-					$comparison_width  = $original_image_info[0];
-					$comparison_height = $original_image_info[1];
-					$comparison_label  = 'original';
-				}
-			}
-		}
-
-		// Enforce strict dimension matching for all images to prevent layout issues.
-		if ( $new_width !== $comparison_width || $new_height !== $comparison_height ) {
-			wp_send_json_error(
-				sprintf(
-					/* translators: 1: required dimensions, 2: uploaded dimensions */
-					__( 'The replacement must have the exact same dimensions as the original image. Required: %1$s, Uploaded: %2$s.', 'replace-media' ),
-					"{$comparison_width}x{$comparison_height}",
-					"{$new_width}x{$new_height}"
-				)
-			);
-		}
-
-		// If we reach here for scaled images, dimensions are acceptable.
-		wp_send_json_success( array( 'dimension_warning' => false ) );
 	}
 
 	/**
