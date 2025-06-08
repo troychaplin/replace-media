@@ -2936,6 +2936,7 @@ final class GetMethodParametersTest extends AbstractMethodUnitTest
 
 
     /**
+<<<<<<< HEAD
      * Verify handling of a closure T_USE token with variables imported by reference.
      *
      * @return void
@@ -2981,6 +2982,8 @@ final class GetMethodParametersTest extends AbstractMethodUnitTest
 
 
     /**
+=======
+>>>>>>> ddb2375 (fix: console error)
      * Verify function declarations with trailing commas are handled correctly.
      *
      * @return void

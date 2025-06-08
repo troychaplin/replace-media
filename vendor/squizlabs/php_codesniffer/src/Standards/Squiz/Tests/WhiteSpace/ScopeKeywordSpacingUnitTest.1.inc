@@ -187,8 +187,11 @@ class ConstantVisibility {
     protected  const PROTECTED_SPACING_INCORRECT = true;
     private    const PRIVATE_SPACING_INCORRECT = true;
 }
+<<<<<<< HEAD
 
 class FinalProperties {
     final readonly public ?MyType $spacing_correct;
     protected   final   $spacing_incorrect = 'foo';
 }
+=======
+>>>>>>> ddb2375 (fix: console error)

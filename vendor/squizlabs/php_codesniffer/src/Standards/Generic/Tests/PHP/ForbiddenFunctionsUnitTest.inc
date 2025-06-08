@@ -48,7 +48,11 @@ class RightSideVisTest {
 }
 
 namespace Something\sizeof;
+<<<<<<< HEAD
 $var = new   /*comment*/   Sizeof();
+=======
+$var = new Sizeof();
+>>>>>>> ddb2375 (fix: console error)
 class SizeOf implements Something {}
 
 function mymodule_form_callback(SizeOf $sizeof) {
@@ -58,5 +62,8 @@ $size = $class?->sizeof($array);
 
 #[SizeOf(10)]
 function doSomething() {}
+<<<<<<< HEAD
 
 $size = sizeof /*comment*/ ($array);
+=======
+>>>>>>> ddb2375 (fix: console error)

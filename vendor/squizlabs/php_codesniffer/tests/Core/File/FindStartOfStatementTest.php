@@ -659,6 +659,7 @@ final class FindStartOfStatementTest extends AbstractMethodUnitTest
                 'targets'        => T_CLOSE_PARENTHESIS,
                 'expectedTarget' => T_THROW,
             ],
+<<<<<<< HEAD
             'Goto should be start for contents of the goto statement - goto label'                    => [
                 'testMarker'     => '/* testInsideCaseGotoStatement */',
                 'targets'        => T_STRING,
@@ -669,6 +670,8 @@ final class FindStartOfStatementTest extends AbstractMethodUnitTest
                 'targets'        => T_SEMICOLON,
                 'expectedTarget' => T_GOTO,
             ],
+=======
+>>>>>>> ddb2375 (fix: console error)
             'Default keyword should be start of default statement - default itself'                   => [
                 'testMarker'     => '/* testDefaultStatement */',
                 'targets'        => T_DEFAULT,

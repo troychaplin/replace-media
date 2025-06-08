@@ -44,7 +44,11 @@ class ComparisonOperatorUsageSniff implements Sniff
     /**
      * A list of invalid operators with their alternatives.
      *
+<<<<<<< HEAD
      * @var array<string, array<int|string, string>>
+=======
+     * @var array<string, array<int, string>>
+>>>>>>> ddb2375 (fix: console error)
      */
     private static $invalidOps = [
         'PHP' => [

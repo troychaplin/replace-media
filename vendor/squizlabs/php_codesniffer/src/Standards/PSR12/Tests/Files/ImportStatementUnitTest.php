@@ -31,10 +31,16 @@ final class ImportStatementUnitTest extends AbstractSniffUnitTest
     public function getErrorList()
     {
         return [
+<<<<<<< HEAD
             2  => 1,
             4  => 1,
             7  => 1,
             10 => 1,
+=======
+            2 => 1,
+            4 => 1,
+            7 => 1,
+>>>>>>> ddb2375 (fix: console error)
         ];
 
     }//end getErrorList()

@@ -5,6 +5,10 @@
 
     <rule ref="TestStandard.InvalidSniffs.RegisterNoArray"/>
 
+<<<<<<< HEAD
     <!-- Prevent a "no sniffs were registered" error. -->
+=======
+    <!-- Prevent a "no sniff were registered" error. -->
+>>>>>>> ddb2375 (fix: console error)
     <rule ref="Generic.PHP.BacktickOperator"/>
 </ruleset>

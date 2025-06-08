@@ -136,7 +136,11 @@ final class DisplayCachedMessagesTest extends AbstractRulesetTestCase
      *
      * @see testNonBlockingErrorsGenerateOutput()
      *
+<<<<<<< HEAD
      * @return array<string, array<string, string|array<string, int>>>
+=======
+     * @return array<string, array<string, string|array<string>>>
+>>>>>>> ddb2375 (fix: console error)
      */
     public static function dataNonBlockingErrorsGenerateOutput()
     {
@@ -229,6 +233,7 @@ final class DisplayCachedMessagesTest extends AbstractRulesetTestCase
      */
     public static function dataSelectiveDisplayOfMessages()
     {
+<<<<<<< HEAD
         $data = [
             'Explain mode' => [
                 'configArgs' => ['-e'],
@@ -246,6 +251,19 @@ final class DisplayCachedMessagesTest extends AbstractRulesetTestCase
         }
 
         return $data;
+=======
+        return [
+            'Explain mode'               => [
+                'configArgs' => ['-e'],
+            ],
+            'Quiet mode'                 => [
+                'configArgs' => ['-q'],
+            ],
+            'Documentation is requested' => [
+                'configArgs' => ['--generator=text'],
+            ],
+        ];
+>>>>>>> ddb2375 (fix: console error)
 
     }//end dataSelectiveDisplayOfMessages()
 

@@ -62,11 +62,14 @@ class Text extends Generator
      */
     protected function printTitle(DOMNode $doc)
     {
+<<<<<<< HEAD
         trigger_error(
             'The '.__METHOD__.'() method is deprecated. Use "echo '.__CLASS__.'::getFormattedTitle()" instead.',
             E_USER_DEPRECATED
         );
 
+=======
+>>>>>>> ddb2375 (fix: console error)
         echo $this->getFormattedTitle($doc);
 
     }//end printTitle()
@@ -114,11 +117,14 @@ class Text extends Generator
      */
     protected function printTextBlock(DOMNode $node)
     {
+<<<<<<< HEAD
         trigger_error(
             'The '.__METHOD__.'() method is deprecated. Use "echo '.__CLASS__.'::getFormattedTextBlock()" instead.',
             E_USER_DEPRECATED
         );
 
+=======
+>>>>>>> ddb2375 (fix: console error)
         echo $this->getFormattedTextBlock($node);
 
     }//end printTextBlock()
@@ -165,11 +171,14 @@ class Text extends Generator
      */
     protected function printCodeComparisonBlock(DOMNode $node)
     {
+<<<<<<< HEAD
         trigger_error(
             'The '.__METHOD__.'() method is deprecated. Use "echo '.__CLASS__.'::getFormattedCodeComparisonBlock()" instead.',
             E_USER_DEPRECATED
         );
 
+=======
+>>>>>>> ddb2375 (fix: console error)
         echo $this->getFormattedCodeComparisonBlock($node);
 
     }//end printCodeComparisonBlock()

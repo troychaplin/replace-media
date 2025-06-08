@@ -11,11 +11,18 @@
 
 namespace PHP_CodeSniffer\Standards\MySource\Sniffs\Objects;
 
+<<<<<<< HEAD
 use PHP_CodeSniffer\Sniffs\DeprecatedSniff;
 use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
 
 class DisallowNewWidgetSniff implements Sniff, DeprecatedSniff
+=======
+use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Files\File;
+
+class DisallowNewWidgetSniff implements Sniff
+>>>>>>> ddb2375 (fix: console error)
 {
 
 
@@ -59,6 +66,7 @@ class DisallowNewWidgetSniff implements Sniff, DeprecatedSniff
     }//end process()
 
 
+<<<<<<< HEAD
     /**
      * Provide the version number in which the sniff was deprecated.
      *
@@ -95,4 +103,6 @@ class DisallowNewWidgetSniff implements Sniff, DeprecatedSniff
     }//end getDeprecationMessage()
 
 
+=======
+>>>>>>> ddb2375 (fix: console error)
 }//end class

@@ -9,7 +9,11 @@
     ]]>
     </standard>
     <code_comparison>
+<<<<<<< HEAD
         <code title="Valid: Using curly brace syntax for control structures.">
+=======
+        <code title="Valid: using curly brace syntax for control structures.">
+>>>>>>> ddb2375 (fix: console error)
         <![CDATA[
 if ($foo) <em>{</em>
     $var = 1;
@@ -20,7 +24,11 @@ while (++$i < 10) <em>{</em>
 <em>}</em>
         ]]>
         </code>
+<<<<<<< HEAD
         <code title="Invalid: Using the alternative syntax for control structures.">
+=======
+        <code title="Invalid: using the alternative syntax for control structures.">
+>>>>>>> ddb2375 (fix: console error)
         <![CDATA[
 if ($foo) <em>:</em>
     $var = 1;

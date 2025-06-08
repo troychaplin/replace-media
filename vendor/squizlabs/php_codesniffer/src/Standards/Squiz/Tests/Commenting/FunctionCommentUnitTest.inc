@@ -1158,6 +1158,7 @@ function paramVariation3($hasTypeNoComment): void {}
  * @return void
  */
 function paramVariation4($hasTypehasComment): void {}
+<<<<<<< HEAD
 
 /**
  * @param (Foo&Bar)|null $a Comment.
@@ -1167,3 +1168,5 @@ public function setTranslator($a): void
 {
     $this->translator = $translator;
 }
+=======
+>>>>>>> ddb2375 (fix: console error)

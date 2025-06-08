@@ -71,10 +71,17 @@ $a = [
 /* testYield */
 $a = fn($x) => yield 'k' => $x;
 
+<<<<<<< HEAD
 /* testNullableUnqualifiedClassName */
 $a = fn(?\DateTime $x) : ?\DateTime => $x;
 
 /* testNamespaceRelativeClassNameInTypes */
+=======
+/* testNullableNamespace */
+$a = fn(?\DateTime $x) : ?\DateTime => $x;
+
+/* testNamespaceOperatorInTypes */
+>>>>>>> ddb2375 (fix: console error)
 $fn = fn(namespace\Foo $a) : ?namespace\Foo => $a;
 
 /* testSelfReturnType */
@@ -114,6 +121,7 @@ $arrowWithUnionReturn = fn($param) : int|true => $param | 10;
 $arrowWithUnionReturn = fn($param) : string|FALSE => $param | 10;
 
 /* testIntersectionParamType */
+<<<<<<< HEAD
 $arrowWithIntersectionParam = fn(Traversable&Countable $param) : int => (new SomeClass($param))->getValue();
 
 /* testIntersectionReturnType */
@@ -127,6 +135,21 @@ $arrowWithDNFReturn = fn($param) : false|(\MyFoo&SomeInterface) => new \MyFoo($p
 
 /* testDNFParamTypeWithReturnByRef */
 $arrowWithDNFParamReturnByRef = fn &((A&B)|null $param) => $param * 10;
+=======
+$arrowWithUnionParam = fn(Traversable&Countable $param) : int => (new SomeClass($param))->getValue();
+
+/* testIntersectionReturnType */
+$arrowWithUnionReturn = fn($param) : \MyFoo&SomeInterface => new SomeClass($param);
+
+/* testDNFParamType */
+$arrowWithUnionParam = fn((Traversable&Countable)|null $param) : SomeClass => new SomeClass($param) ?? null;
+
+/* testDNFReturnType */
+$arrowWithUnionReturn = fn($param) : false|(\MyFoo&SomeInterface) => new \MyFoo($param) ?? false;
+
+/* testDNFParamTypeWithReturnByRef */
+$arrowWithParamReturnByRef = fn &((A&B)|null $param) => $param * 10;
+>>>>>>> ddb2375 (fix: console error)
 
 /* testTernary */
 $fn = fn($a) => $a ? /* testTernaryThen */ fn() : string => 'a' : /* testTernaryElse */ fn() : string => 'b';

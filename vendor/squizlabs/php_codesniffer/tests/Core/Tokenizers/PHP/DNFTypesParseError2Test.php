@@ -61,7 +61,11 @@ final class DNFTypesParseError2Test extends AbstractTokenizerTestCase
      *
      * @see testBrokenDNFTypeParensShouldAlwaysBeAPairMissingCloseParens()
      *
+<<<<<<< HEAD
      * @return array<string, array<string>>
+=======
+     * @return array<string, array<string, string>>
+>>>>>>> ddb2375 (fix: console error)
      */
     public static function dataBrokenDNFTypeParensShouldAlwaysBeAPairMissingCloseParens()
     {
@@ -120,7 +124,11 @@ final class DNFTypesParseError2Test extends AbstractTokenizerTestCase
      *
      * @see testBrokenDNFTypeParensShouldAlwaysBeAPairMissingOpenParens()
      *
+<<<<<<< HEAD
      * @return array<string, array<string>>
+=======
+     * @return array<string, array<string, string>>
+>>>>>>> ddb2375 (fix: console error)
      */
     public static function dataBrokenDNFTypeParensShouldAlwaysBeAPairMissingOpenParens()
     {
@@ -201,7 +209,11 @@ final class DNFTypesParseError2Test extends AbstractTokenizerTestCase
      *
      * @see testBrokenDNFTypeParensShouldAlwaysBeAPairMatchedAndUnmatched()
      *
+<<<<<<< HEAD
      * @return array<string, array<string>>
+=======
+     * @return array<string, array<string, string>>
+>>>>>>> ddb2375 (fix: console error)
      */
     public static function dataBrokenDNFTypeParensShouldAlwaysBeAPairMatchedAndUnmatched()
     {

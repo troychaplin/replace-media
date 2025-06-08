@@ -35,6 +35,7 @@ class MarkdownDouble extends Markdown
     {
         return parent::getFormattedFooter();
     }
+<<<<<<< HEAD
 
     /**
      * [VISIBILITY WIDENING ONLY] Print the header of the HTML page.
@@ -65,4 +66,6 @@ class MarkdownDouble extends Markdown
     {
         parent::printFooter();
     }
+=======
+>>>>>>> ddb2375 (fix: console error)
 }

@@ -12,10 +12,16 @@
 namespace PHP_CodeSniffer\Standards\Squiz\Sniffs\CSS;
 
 use PHP_CodeSniffer\Files\File;
+<<<<<<< HEAD
 use PHP_CodeSniffer\Sniffs\DeprecatedSniff;
 use PHP_CodeSniffer\Sniffs\Sniff;
 
 class ColourDefinitionSniff implements Sniff, DeprecatedSniff
+=======
+use PHP_CodeSniffer\Sniffs\Sniff;
+
+class ColourDefinitionSniff implements Sniff
+>>>>>>> ddb2375 (fix: console error)
 {
 
     /**
@@ -88,6 +94,7 @@ class ColourDefinitionSniff implements Sniff, DeprecatedSniff
     }//end process()
 
 
+<<<<<<< HEAD
     /**
      * Provide the version number in which the sniff was deprecated.
      *
@@ -124,4 +131,6 @@ class ColourDefinitionSniff implements Sniff, DeprecatedSniff
     }//end getDeprecationMessage()
 
 
+=======
+>>>>>>> ddb2375 (fix: console error)
 }//end class

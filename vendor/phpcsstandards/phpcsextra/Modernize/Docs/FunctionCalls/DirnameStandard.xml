@@ -14,7 +14,11 @@
 $path = <em>__DIR__</em>;
         ]]>
         </code>
+<<<<<<< HEAD
         <code title="Invalid: Using dirname(__FILE__).">
+=======
+        <code title="Invalid: dirname(__FILE__).">
+>>>>>>> ddb2375 (fix: console error)
         <![CDATA[
 $path = <em>dirname(__FILE__)</em>;
         ]]>

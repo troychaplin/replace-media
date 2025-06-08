@@ -50,6 +50,7 @@ class ConstantVisibilitySniff implements Sniff
         $ignore   = Tokens::$emptyTokens;
         $ignore[] = T_FINAL;
 
+<<<<<<< HEAD
         $validVisibility = [
             T_PRIVATE   => T_PRIVATE,
             T_PUBLIC    => T_PUBLIC,
@@ -58,6 +59,10 @@ class ConstantVisibilitySniff implements Sniff
 
         $prev = $phpcsFile->findPrevious($ignore, ($stackPtr - 1), null, true);
         if (isset($validVisibility[$tokens[$prev]['code']]) === true) {
+=======
+        $prev = $phpcsFile->findPrevious($ignore, ($stackPtr - 1), null, true);
+        if (isset(Tokens::$scopeModifiers[$tokens[$prev]['code']]) === true) {
+>>>>>>> ddb2375 (fix: console error)
             return;
         }
 

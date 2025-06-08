@@ -572,7 +572,11 @@ class Ruleset
             $autoloadPath = (string) $autoload;
 
             // Try relative autoload paths first.
+<<<<<<< HEAD
             $relativePath = Common::realpath(dirname($rulesetPath).DIRECTORY_SEPARATOR.$autoloadPath);
+=======
+            $relativePath = Common::realPath(dirname($rulesetPath).DIRECTORY_SEPARATOR.$autoloadPath);
+>>>>>>> ddb2375 (fix: console error)
 
             if ($relativePath !== false && is_file($relativePath) === true) {
                 $autoloadPath = $relativePath;
@@ -892,6 +896,7 @@ class Ruleset
      */
     private function expandRulesetReference($ref, $rulesetDir, $depth=0)
     {
+<<<<<<< HEAD
         // Naming an (external) standard "Internal" is deprecated.
         if (strtolower($ref) === 'internal') {
             $message  = 'The name "Internal" is reserved for internal use. A PHP_CodeSniffer standard should not be called "Internal".'.PHP_EOL;
@@ -899,6 +904,8 @@ class Ruleset
             $this->msgCache->add($message, MessageCollector::DEPRECATED);
         }
 
+=======
+>>>>>>> ddb2375 (fix: console error)
         // Ignore internal sniffs codes as they are used to only
         // hide and change internal messages.
         if (substr($ref, 0, 9) === 'Internal.') {
@@ -1226,6 +1233,7 @@ class Ruleset
                             }
 
                             $printValue = rtrim($printValue, ',');
+<<<<<<< HEAD
                         } else if (isset($prop['value']) === true) {
                             $message  = 'Passing an array of values to a property using a comma-separated string'.PHP_EOL;
                             $message .= 'was deprecated in PHP_CodeSniffer 3.3.0. Support will be removed in PHPCS 4.0.0.'.PHP_EOL;
@@ -1234,6 +1242,9 @@ class Ruleset
                             $message .= 'Pass array values via <element [key="..." ]value="..."> nodes instead.';
                             $this->msgCache->add($message, MessageCollector::DEPRECATED);
 
+=======
+                        } else {
+>>>>>>> ddb2375 (fix: console error)
                             $value      = (string) $prop['value'];
                             $printValue = $value;
                             if ($value !== '') {
@@ -1423,12 +1434,16 @@ class Ruleset
                 continue;
             }
 
+<<<<<<< HEAD
             if ($reflection->implementsInterface('PHP_CodeSniffer\\Sniffs\\Sniff') === false) {
                 $message  = 'All sniffs must implement the PHP_CodeSniffer\\Sniffs\\Sniff interface.'.PHP_EOL;
                 $message .= "Interface not implemented for sniff $className.".PHP_EOL;
                 $message .= 'Contact the sniff author to fix the sniff.';
                 $this->msgCache->add($message, MessageCollector::DEPRECATED);
 
+=======
+            if ($reflection->implementsInterface('PHP_CodeSniffer\Sniffs\Sniff') === false) {
+>>>>>>> ddb2375 (fix: console error)
                 // Skip classes which don't implement the register() or process() methods.
                 if (method_exists($className, 'register') === false
                     || method_exists($className, 'process') === false
@@ -1474,6 +1489,7 @@ class Ruleset
             $this->sniffs[$sniffClass] = new $sniffClass();
 
             $sniffCode = Common::getSniffCode($sniffClass);
+<<<<<<< HEAD
 
             if (substr($sniffCode, 0, 1) === '.'
                 || substr($sniffCode, -1) === '.'
@@ -1492,6 +1508,11 @@ class Ruleset
             $isDeprecated = false;
             if ($this->sniffs[$sniffClass] instanceof DeprecatedSniff) {
                 $isDeprecated = true;
+=======
+            $this->sniffCodes[$sniffCode] = $sniffClass;
+
+            if ($this->sniffs[$sniffClass] instanceof DeprecatedSniff) {
+>>>>>>> ddb2375 (fix: console error)
                 $this->deprecatedSniffs[$sniffCode] = $sniffClass;
             }
 
@@ -1504,6 +1525,7 @@ class Ruleset
 
             $tokenizers = [];
             $vars       = get_class_vars($sniffClass);
+<<<<<<< HEAD
             if (empty($vars['supportedTokenizers']) === false
                 && $isDeprecated === false
                 && in_array('PHP', $vars['supportedTokenizers'], true) === false
@@ -1522,6 +1544,8 @@ class Ruleset
                 $this->msgCache->add($message, MessageCollector::DEPRECATED);
             }
 
+=======
+>>>>>>> ddb2375 (fix: console error)
             if (isset($vars['supportedTokenizers']) === true) {
                 foreach ($vars['supportedTokenizers'] as $tokenizer) {
                     $tokenizers[$tokenizer] = $tokenizer;

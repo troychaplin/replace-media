@@ -11,7 +11,6 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { dispatch } from '@wordpress/data';
 
 /**
  * Handle the media replacement functionality.
@@ -21,6 +20,24 @@ document.addEventListener('DOMContentLoaded', function () {
 	if (typeof window.replaceMediaData === 'undefined') {
 		// Silently fail if data is not available
 		return;
+	}
+
+	// Function to show error messages
+	function showErrorMessage(message) {
+		// Try to use WordPress admin notices if available
+		if (typeof wp !== 'undefined' && wp.data && wp.data.dispatch('core/notices')) {
+			try {
+				wp.data.dispatch('core/notices').createErrorNotice(message);
+				return;
+			} catch (error) {
+				// Fall back to alert if notices don't work
+				console.error('Notice system error:', error);
+			}
+		}
+
+		// Fallback to browser alert
+		alert(__('Error: ', 'replace-media') + message);
+		console.error('Replace Media Error:', message);
 	}
 
 	// Function to initialize replace buttons
@@ -89,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
 					} else {
 						const errorMessage =
 							data.data || __('Error replacing file.', 'replace-media');
-						dispatch('core/notices').createErrorNotice(errorMessage);
+						showErrorMessage(errorMessage);
 						if (button) {
 							button.disabled = false;
 							button.textContent = __('Replace File', 'replace-media');
@@ -97,9 +114,7 @@ document.addEventListener('DOMContentLoaded', function () {
 					}
 				})
 				.catch(error => {
-					dispatch('core/notices').createErrorNotice(
-						__('Error replacing file:', 'replace-media') + error.message
-					);
+					showErrorMessage(__('Error replacing file: ', 'replace-media') + error.message);
 					if (button) {
 						button.disabled = false;
 						button.textContent = __('Replace File', 'replace-media');

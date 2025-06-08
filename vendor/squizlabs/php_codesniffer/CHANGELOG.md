@@ -6,6 +6,7 @@ The file documents changes to the PHP_CodeSniffer project.
 
 _Nothing yet._
 
+<<<<<<< HEAD
 ## [3.13.0] - 2025-05-11
 
 ### Added
@@ -176,6 +177,8 @@ Upgrade guides for both [ruleset maintainers/end-users][wiki-upgrade-guide-users
 [#921]: https://github.com/PHPCSStandards/PHP_CodeSniffer/issues/921
 [#924]: https://github.com/PHPCSStandards/PHP_CodeSniffer/issues/924
 
+=======
+>>>>>>> ddb2375 (fix: console error)
 ## [3.12.0] - 2025-03-18
 
 ### Added
@@ -2400,7 +2403,11 @@ Additionally, thanks to [Alexander Turek][@derrabus] for consulting on the repo 
     - Thanks to [Juliette Reinders Folmer][@jrfnl] for the help with this patch
 - Array properties set inside a ruleset.xml file can now extend a previous value instead of always overwriting it
     - e.g., if you include a ruleset that defines forbidden functions, can you now add to that list instead of having to redefine it
+<<<<<<< HEAD
     - To use this feature, add extend="true" to the property tag
+=======
+    - To use this feature, add extends="true" to the property tag
+>>>>>>> ddb2375 (fix: console error)
         - e.g., property name="forbiddenFunctionNames" type="array" extend="true"
     - Thanks to [Michael Moravec][@Majkl578] for the patch
 - If $XDG_CACHE_HOME is set and points to a valid directory, it will be used for caching instead of the system temp directory
@@ -7582,9 +7589,12 @@ Additionally, thanks to [Alexander Turek][@derrabus] for consulting on the repo 
 -->
 
 [Unreleased]: https://github.com/PHPCSStandards/PHP_CodeSniffer/compare/master...HEAD
+<<<<<<< HEAD
 [3.13.0]:     https://github.com/PHPCSStandards/PHP_CodeSniffer/compare/3.12.2...3.13.0
 [3.12.2]:     https://github.com/PHPCSStandards/PHP_CodeSniffer/compare/3.12.1...3.12.2
 [3.12.1]:     https://github.com/PHPCSStandards/PHP_CodeSniffer/compare/3.12.0...3.12.1
+=======
+>>>>>>> ddb2375 (fix: console error)
 [3.12.0]:     https://github.com/PHPCSStandards/PHP_CodeSniffer/compare/3.11.3...3.12.0
 [3.11.3]:     https://github.com/PHPCSStandards/PHP_CodeSniffer/compare/3.11.2...3.11.3
 [3.11.2]:     https://github.com/PHPCSStandards/PHP_CodeSniffer/compare/3.11.1...3.11.2
@@ -7747,7 +7757,10 @@ Additionally, thanks to [Alexander Turek][@derrabus] for consulting on the repo 
 [@Decave]:              https://github.com/Decave
 [@dereuromark]:         https://github.com/dereuromark
 [@derrabus]:            https://github.com/derrabus
+<<<<<<< HEAD
 [@devfrey]:             https://github.com/devfrey
+=======
+>>>>>>> ddb2375 (fix: console error)
 [@deviantintegral]:     https://github.com/deviantintegral
 [@dhensby]:             https://github.com/dhensby
 [@dingo-d]:             https://github.com/dingo-d
@@ -7939,3 +7952,7 @@ Additionally, thanks to [Alexander Turek][@derrabus] for consulting on the repo 
 [pear-wloche]:          https://pear.php.net/user/wloche
 [pear-woellchen]:       https://pear.php.net/user/woellchen
 [pear-youngian]:        https://pear.php.net/user/youngian
+<<<<<<< HEAD
+=======
+
+>>>>>>> ddb2375 (fix: console error)

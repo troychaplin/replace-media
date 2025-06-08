@@ -36,7 +36,11 @@ class Standards
         $resolvedInstalledPaths = [];
         foreach ($installedPaths as $installedPath) {
             if (substr($installedPath, 0, 1) === '.') {
+<<<<<<< HEAD
                 $installedPath = Common::realpath(__DIR__.$ds.'..'.$ds.'..'.$ds.$installedPath);
+=======
+                $installedPath = Common::realPath(__DIR__.$ds.'..'.$ds.'..'.$ds.$installedPath);
+>>>>>>> ddb2375 (fix: console error)
                 if ($installedPath === false) {
                     continue;
                 }
@@ -239,7 +243,11 @@ class Standards
         } else {
             // This could be a custom standard, installed outside our
             // standards directory.
+<<<<<<< HEAD
             $standard = Common::realpath($standard);
+=======
+            $standard = Common::realPath($standard);
+>>>>>>> ddb2375 (fix: console error)
             if ($standard === false) {
                 return false;
             }

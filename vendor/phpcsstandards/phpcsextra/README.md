@@ -3,7 +3,11 @@ PHPCSExtra
 
 <div aria-hidden="true">
 
+<<<<<<< HEAD
 [![Latest Stable Version](https://img.shields.io/packagist/v/phpcsstandards/phpcsextra?label=stable)][phpcsextra-packagist]
+=======
+[![Latest Stable Version](https://poser.pugx.org/phpcsstandards/phpcsextra/v/stable)][phpcsextra-packagist]
+>>>>>>> ddb2375 (fix: console error)
 [![Release Date of the Latest Version](https://img.shields.io/github/release-date/PHPCSStandards/PHPCSExtra.svg?maxAge=1800)](https://github.com/PHPCSStandards/PHPCSExtra/releases)
 :construction:
 [![Latest Unstable Version](https://img.shields.io/badge/unstable-dev--develop-e68718.svg?maxAge=2419200)](https://packagist.org/packages/phpcsstandards/phpcsextra#dev-develop)
@@ -13,10 +17,17 @@ PHPCSExtra
 [![Test Build Status](https://github.com/PHPCSStandards/PHPCSExtra/actions/workflows/test.yml/badge.svg?branch=develop)][gha-test-results]
 [![Coverage Status](https://coveralls.io/repos/github/PHPCSStandards/PHPCSExtra/badge.svg)](https://coveralls.io/github/PHPCSStandards/PHPCSExtra)
 
+<<<<<<< HEAD
 [![Minimum PHP Version](https://img.shields.io/packagist/dependency-v/phpcsstandards/phpcsextra/php.svg)][phpcsextra-packagist]
 [![Tested on PHP 5.4 to 8.4](https://img.shields.io/badge/tested%20on-PHP%205.4%20|%205.5%20|%205.6%20|%207.0%20|%207.1%20|%207.2%20|%207.3%20|%207.4%20|%208.0%20|%208.1%20|%208.2%20|%208.3%20|%208.4-brightgreen.svg?maxAge=2419200)][gha-test-results]
 
 [![License: LGPLv3](https://img.shields.io/github/license/PHPCSStandards/PHPCSExtra)](https://github.com/PHPCSStandards/PHPCSExtra/blob/stable/LICENSE)
+=======
+[![Minimum PHP Version](https://img.shields.io/packagist/php-v/phpcsstandards/phpcsextra.svg?maxAge=3600)][phpcsextra-packagist]
+[![Tested on PHP 5.4 to 8.3](https://img.shields.io/badge/tested%20on-PHP%205.4%20|%205.5%20|%205.6%20|%207.0%20|%207.1%20|%207.2%20|%207.3%20|%207.4%20|%208.0%20|%208.1%20|%208.2%20|%208.3-brightgreen.svg?maxAge=2419200)][gha-test-results]
+
+[![License: LGPLv3](https://poser.pugx.org/phpcsstandards/phpcsextra/license)](https://github.com/PHPCSStandards/PHPCSExtra/blob/stable/LICENSE)
+>>>>>>> ddb2375 (fix: console error)
 ![Awesome](https://img.shields.io/badge/awesome%3F-yes!-brightgreen.svg)
 
 </div>
@@ -46,7 +57,11 @@ Minimum Requirements
 -------------------------------------------
 
 * PHP 5.4 or higher.
+<<<<<<< HEAD
 * [PHP_CodeSniffer][phpcs-gh] version **3.12.1** or higher.
+=======
+* [PHP_CodeSniffer][phpcs-gh] version **3.8.0** or higher.
+>>>>>>> ddb2375 (fix: console error)
 * [PHPCSUtils][phpcsutils-gh] version **1.0.9** or higher.
 
 
@@ -55,7 +70,11 @@ Installation
 
 Installing via Composer is highly recommended.
 
+<<<<<<< HEAD
 [Composer](https://getcomposer.org/) will automatically install the project dependencies and register the rulesets from PHPCSExtra and other external standards with PHP_CodeSniffer using the [Composer PHPCS plugin][composer-installer-gh].
+=======
+[Composer](http://getcomposer.org/) will automatically install the project dependencies and register the rulesets from PHPCSExtra and other external standards with PHP_CodeSniffer using the [Composer PHPCS plugin][composer-installer-gh].
+>>>>>>> ddb2375 (fix: console error)
 
 ### Composer Project-based Installation
 
@@ -403,6 +422,7 @@ This is considered a **_risky_ fixer**.
 
 #### `Universal.Operators.TypeSeparatorSpacing` :wrench: :bar_chart: :books:
 
+<<<<<<< HEAD
 Enforce spacing rules around the union, intersection and DNF type operators.
 * No space on either side of a union or intersection type operator.
 * No space on the inside of DNF type parenthesis or before/after if the previous/next "thing" is part of the type.
@@ -410,15 +430,23 @@ Enforce spacing rules around the union, intersection and DNF type operators.
 * One space after a DNF close parenthesis when it is at the end of a type.
 
 The available error codes are: `UnionTypeSpacesBefore`, `UnionTypeSpacesAfter`, `IntersectionTypeSpacesBefore`, `IntersectionTypeSpacesAfter`, `DNFOpenSpacesBefore`, `DNFOpenSpacesAfter`, `DNFCloseTypeSpacesBefore`, `DNFCloseTypeSpacesAfter`.
+=======
+Enforce no spaces around the union type and intersection type operators.
+
+The available error codes are: `UnionTypeSpacesBefore`, `UnionTypeSpacesAfter`, `IntersectionTypeSpacesBefore`, `IntersectionTypeSpacesAfter`.
+>>>>>>> ddb2375 (fix: console error)
 
 #### `Universal.PHP.LowercasePHPTag` :wrench: :bar_chart: :books:
 
 Enforces that the "PHP" in a PHP open tag is lowercase.
 
+<<<<<<< HEAD
 #### `Universal.PHP.NoFQNTrueFalseNull` :wrench: :books:
 
 Forbids using `true`, `false` and `null` as fully qualified constants.
 
+=======
+>>>>>>> ddb2375 (fix: console error)
 #### `Universal.PHP.OneStatementInShortEchoTag` :wrench: :books:
 
 Disallow short open echo tags `<?=` containing more than one PHP statement.

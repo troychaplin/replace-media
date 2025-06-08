@@ -155,6 +155,7 @@ final class ContextSensitiveKeywordsTest extends AbstractTokenizerTestCase
      */
     public function testKeywords($testMarker, $expectedTokenType)
     {
+<<<<<<< HEAD
         $tokenTargets   = Tokens::$contextSensitiveKeywords;
         $tokenTargets[] = T_STRING;
         $tokenTargets[] = T_ANON_CLASS;
@@ -165,6 +166,10 @@ final class ContextSensitiveKeywordsTest extends AbstractTokenizerTestCase
 
         $tokens     = $this->phpcsFile->getTokens();
         $target     = $this->getTargetToken($testMarker, $tokenTargets);
+=======
+        $tokens     = $this->phpcsFile->getTokens();
+        $target     = $this->getTargetToken($testMarker, (Tokens::$contextSensitiveKeywords + [T_ANON_CLASS, T_MATCH_DEFAULT, T_STRING]));
+>>>>>>> ddb2375 (fix: console error)
         $tokenArray = $tokens[$target];
 
         $this->assertSame(
@@ -186,7 +191,11 @@ final class ContextSensitiveKeywordsTest extends AbstractTokenizerTestCase
      *
      * @see testKeywords()
      *
+<<<<<<< HEAD
      * @return array<string, array<string, string>>
+=======
+     * @return array
+>>>>>>> ddb2375 (fix: console error)
      */
     public static function dataKeywords()
     {
@@ -252,6 +261,7 @@ final class ContextSensitiveKeywordsTest extends AbstractTokenizerTestCase
                 'testMarker'        => '/* testPublicIsKeyword */',
                 'expectedTokenType' => 'T_PUBLIC',
             ],
+<<<<<<< HEAD
             'private(set): property declaration'     => [
                 'testMarker'        => '/* testPrivateSetIsKeyword */',
                 'expectedTokenType' => 'T_PRIVATE_SET',
@@ -264,6 +274,8 @@ final class ContextSensitiveKeywordsTest extends AbstractTokenizerTestCase
                 'testMarker'        => '/* testPublicSetIsKeyword */',
                 'expectedTokenType' => 'T_PUBLIC_SET',
             ],
+=======
+>>>>>>> ddb2375 (fix: console error)
             'var: property declaration'              => [
                 'testMarker'        => '/* testVarIsKeyword */',
                 'expectedTokenType' => 'T_VAR',

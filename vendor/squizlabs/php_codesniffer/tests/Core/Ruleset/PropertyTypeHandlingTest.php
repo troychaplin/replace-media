@@ -39,6 +39,7 @@ final class PropertyTypeHandlingTest extends TestCase
 
 
     /**
+<<<<<<< HEAD
      * Verify a deprecation notice is shown when an array property is set from the ruleset using a comma-separated string.
      *
      * Support for this format was (soft) deprecated in PHPCS 3.3.0.
@@ -68,13 +69,18 @@ final class PropertyTypeHandlingTest extends TestCase
 
 
     /**
+=======
+>>>>>>> ddb2375 (fix: console error)
      * Test the value type handling for properties set via a ruleset.
      *
      * @param string $propertyName Property name.
      * @param mixed  $expected     Expected property value.
      *
      * @dataProvider dataTypeHandling
+<<<<<<< HEAD
      * @dataProvider dataArrayPropertyExtending
+=======
+>>>>>>> ddb2375 (fix: console error)
      *
      * @return void
      */
@@ -110,7 +116,10 @@ final class PropertyTypeHandlingTest extends TestCase
      * Data provider.
      *
      * @see self::testTypeHandlingWhenSetViaRuleset()
+<<<<<<< HEAD
      * @see self::testTypeHandlingWhenSetInline()
+=======
+>>>>>>> ddb2375 (fix: console error)
      *
      * @return array<string, array<string, mixed>>
      */
@@ -133,6 +142,7 @@ final class PropertyTypeHandlingTest extends TestCase
             'false'  => 'false',
         ];
 
+<<<<<<< HEAD
         return [
             'String value (default)'                         => [
                 'propertyName' => 'expectsString',
@@ -226,6 +236,8 @@ final class PropertyTypeHandlingTest extends TestCase
      */
     public static function dataArrayPropertyExtending()
     {
+=======
+>>>>>>> ddb2375 (fix: console error)
         $expectedArrayOnlyValuesExtended    = [
             'string',
             '15',
@@ -239,6 +251,69 @@ final class PropertyTypeHandlingTest extends TestCase
         ];
 
         return [
+<<<<<<< HEAD
+=======
+            'String value (default)'                          => [
+                'propertyName' => 'expectsString',
+                'expected'     => 'arbitraryvalue',
+            ],
+            'String value with whitespace gets trimmed'       => [
+                'propertyName' => 'expectsTrimmedString',
+                'expected'     => 'some value',
+            ],
+            'String with whitespace only value becomes null'  => [
+                'propertyName' => 'emptyStringBecomesNull',
+                'expected'     => null,
+            ],
+            'Integer value gets set as string'                => [
+                'propertyName' => 'expectsIntButAcceptsString',
+                'expected'     => '12345',
+            ],
+            'Float value gets set as string'                  => [
+                'propertyName' => 'expectsFloatButAcceptsString',
+                'expected'     => '12.345',
+            ],
+            'Null value gets set as string'                   => [
+                'propertyName' => 'expectsNull',
+                'expected'     => 'null',
+            ],
+            'Null (uppercase) value gets set as string'       => [
+                'propertyName' => 'expectsNullCase',
+                'expected'     => 'NULL',
+            ],
+            'True value gets set as boolean'                  => [
+                'propertyName' => 'expectsBooleanTrue',
+                'expected'     => true,
+            ],
+            'True (mixed case) value gets set as string'      => [
+                'propertyName' => 'expectsBooleanTrueCase',
+                'expected'     => 'True',
+            ],
+            'True (with spaces) value gets set as boolean'    => [
+                'propertyName' => 'expectsBooleanTrueTrimmed',
+                'expected'     => true,
+            ],
+            'False value gets set as boolean'                 => [
+                'propertyName' => 'expectsBooleanFalse',
+                'expected'     => false,
+            ],
+            'False (mixed case) value gets set as string'     => [
+                'propertyName' => 'expectsBooleanFalseCase',
+                'expected'     => 'fALSe',
+            ],
+            'False (with spaces) value gets set as boolean'   => [
+                'propertyName' => 'expectsBooleanFalseTrimmed',
+                'expected'     => false,
+            ],
+            'Array with only values (new style)'              => [
+                'propertyName' => 'expectsArrayWithOnlyValues',
+                'expected'     => $expectedArrayOnlyValues,
+            ],
+            'Array with keys and values (new style)'          => [
+                'propertyName' => 'expectsArrayWithKeysAndValues',
+                'expected'     => $expectedArrayKeysAndValues,
+            ],
+>>>>>>> ddb2375 (fix: console error)
             'Array with only values extended (new style)'     => [
                 'propertyName' => 'expectsArrayWithExtendedValues',
                 'expected'     => $expectedArrayOnlyValuesExtended,
@@ -247,6 +322,21 @@ final class PropertyTypeHandlingTest extends TestCase
                 'propertyName' => 'expectsArrayWithExtendedKeysAndValues',
                 'expected'     => $expectedArrayKeysAndValuesExtended,
             ],
+<<<<<<< HEAD
+=======
+            'Empty array (new style)'                         => [
+                'propertyName' => 'expectsEmptyArray',
+                'expected'     => [],
+            ],
+            'Array with only values (old style)'              => [
+                'propertyName' => 'expectsOldSchoolArrayWithOnlyValues',
+                'expected'     => $expectedArrayOnlyValues,
+            ],
+            'Array with keys and values (old style)'          => [
+                'propertyName' => 'expectsOldSchoolArrayWithKeysAndValues',
+                'expected'     => $expectedArrayKeysAndValues,
+            ],
+>>>>>>> ddb2375 (fix: console error)
             'Array with only values extended (old style)'     => [
                 'propertyName' => 'expectsOldSchoolArrayWithExtendedValues',
                 'expected'     => $expectedArrayOnlyValuesExtended,
@@ -255,17 +345,30 @@ final class PropertyTypeHandlingTest extends TestCase
                 'propertyName' => 'expectsOldSchoolArrayWithExtendedKeysAndValues',
                 'expected'     => $expectedArrayKeysAndValuesExtended,
             ],
+<<<<<<< HEAD
         ];
 
     }//end dataArrayPropertyExtending()
+=======
+            'Empty array (old style)'                         => [
+                'propertyName' => 'expectsOldSchoolEmptyArray',
+                'expected'     => [],
+            ],
+        ];
+
+    }//end dataTypeHandling()
+>>>>>>> ddb2375 (fix: console error)
 
 
     /**
      * Test Helper.
      *
+<<<<<<< HEAD
      * Note: the deprecations for using comma-separated string to pass an array, are silenced in this helper
      * as that's not what's being tested here.
      *
+=======
+>>>>>>> ddb2375 (fix: console error)
      * @see self::testTypeHandlingWhenSetViaRuleset()
      *
      * @return \PHP_CodeSniffer\Sniffs\Sniff
@@ -276,8 +379,13 @@ final class PropertyTypeHandlingTest extends TestCase
 
         if (isset($sniffObject) === false) {
             // Set up the ruleset.
+<<<<<<< HEAD
             $standard = __DIR__.'/PropertyTypeHandlingTest.xml';
             $config   = new ConfigDouble(["--standard=$standard", '-q']);
+=======
+            $standard = __DIR__."/PropertyTypeHandlingTest.xml";
+            $config   = new ConfigDouble(["--standard=$standard"]);
+>>>>>>> ddb2375 (fix: console error)
             $ruleset  = new Ruleset($config);
 
             // Verify that our target sniff has been registered.
@@ -306,7 +414,11 @@ final class PropertyTypeHandlingTest extends TestCase
 
         if (isset($sniffObject) === false) {
             // Set up the ruleset.
+<<<<<<< HEAD
             $standard = __DIR__.'/PropertyTypeHandlingInlineTest.xml';
+=======
+            $standard = __DIR__."/PropertyTypeHandlingInlineTest.xml";
+>>>>>>> ddb2375 (fix: console error)
             $config   = new ConfigDouble(["--standard=$standard"]);
             $ruleset  = new Ruleset($config);
 

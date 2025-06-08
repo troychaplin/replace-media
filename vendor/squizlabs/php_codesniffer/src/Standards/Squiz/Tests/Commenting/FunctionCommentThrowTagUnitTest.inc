@@ -509,6 +509,7 @@ namespace {
         }
     }
 }
+<<<<<<< HEAD
 
 $anon = new class {
     /**
@@ -531,3 +532,5 @@ $anon = new class {
 public function ImproveCommentTolerance() {
     throw /*comment*/ new /*comment*/ Right_Exception('Error');
 }
+=======
+>>>>>>> ddb2375 (fix: console error)

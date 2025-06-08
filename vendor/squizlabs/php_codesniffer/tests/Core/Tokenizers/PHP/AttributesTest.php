@@ -19,6 +19,10 @@ final class AttributesTest extends AbstractTokenizerTestCase
      * Test that attributes are parsed correctly.
      *
      * @param string            $testMarker The comment which prefaces the target token in the test file.
+<<<<<<< HEAD
+=======
+     * @param int               $length     The number of tokens between opener and closer.
+>>>>>>> ddb2375 (fix: console error)
      * @param array<int|string> $tokenCodes The codes of tokens inside the attributes.
      *
      * @dataProvider dataAttribute
@@ -28,6 +32,7 @@ final class AttributesTest extends AbstractTokenizerTestCase
      *
      * @return void
      */
+<<<<<<< HEAD
     public function testAttribute($testMarker, $tokenCodes)
     {
         $tokens = $this->phpcsFile->getTokens();
@@ -35,6 +40,12 @@ final class AttributesTest extends AbstractTokenizerTestCase
         // Calculate the number of tokens between opener and closer (excluding the opener, including the closer).
         $length = (count($tokenCodes) + 1);
 
+=======
+    public function testAttribute($testMarker, $length, $tokenCodes)
+    {
+        $tokens = $this->phpcsFile->getTokens();
+
+>>>>>>> ddb2375 (fix: console error)
         $attribute = $this->getTargetToken($testMarker, T_ATTRIBUTE);
         $this->assertArrayHasKey('attribute_closer', $tokens[$attribute]);
 
@@ -73,12 +84,22 @@ final class AttributesTest extends AbstractTokenizerTestCase
         return [
             'class attribute'                                                                   => [
                 'testMarker' => '/* testAttribute */',
+<<<<<<< HEAD
                 'tokenCodes' => [
                     T_STRING,
+=======
+                'length'     => 2,
+                'tokenCodes' => [
+                    T_STRING
+>>>>>>> ddb2375 (fix: console error)
                 ],
             ],
             'class attribute with param'                                                        => [
                 'testMarker' => '/* testAttributeWithParams */',
+<<<<<<< HEAD
+=======
+                'length'     => 7,
+>>>>>>> ddb2375 (fix: console error)
                 'tokenCodes' => [
                     T_STRING,
                     T_OPEN_PARENTHESIS,
@@ -90,6 +111,10 @@ final class AttributesTest extends AbstractTokenizerTestCase
             ],
             'class attribute with named param'                                                  => [
                 'testMarker' => '/* testAttributeWithNamedParam */',
+<<<<<<< HEAD
+=======
+                'length'     => 10,
+>>>>>>> ddb2375 (fix: console error)
                 'tokenCodes' => [
                     T_STRING,
                     T_OPEN_PARENTHESIS,
@@ -104,12 +129,22 @@ final class AttributesTest extends AbstractTokenizerTestCase
             ],
             'function attribute'                                                                => [
                 'testMarker' => '/* testAttributeOnFunction */',
+<<<<<<< HEAD
                 'tokenCodes' => [
                     T_STRING,
+=======
+                'length'     => 2,
+                'tokenCodes' => [
+                    T_STRING
+>>>>>>> ddb2375 (fix: console error)
                 ],
             ],
             'function attribute with params'                                                    => [
                 'testMarker' => '/* testAttributeOnFunctionWithParams */',
+<<<<<<< HEAD
+=======
+                'length'     => 17,
+>>>>>>> ddb2375 (fix: console error)
                 'tokenCodes' => [
                     T_STRING,
                     T_OPEN_PARENTHESIS,
@@ -131,6 +166,10 @@ final class AttributesTest extends AbstractTokenizerTestCase
             ],
             'function attribute with arrow function as param'                                   => [
                 'testMarker' => '/* testAttributeWithShortClosureParameter */',
+<<<<<<< HEAD
+=======
+                'length'     => 17,
+>>>>>>> ddb2375 (fix: console error)
                 'tokenCodes' => [
                     T_STRING,
                     T_OPEN_PARENTHESIS,
@@ -152,6 +191,10 @@ final class AttributesTest extends AbstractTokenizerTestCase
             ],
             'function attribute; multiple comma separated classes'                              => [
                 'testMarker' => '/* testAttributeGrouping */',
+<<<<<<< HEAD
+=======
+                'length'     => 26,
+>>>>>>> ddb2375 (fix: console error)
                 'tokenCodes' => [
                     T_STRING,
                     T_COMMA,
@@ -182,6 +225,10 @@ final class AttributesTest extends AbstractTokenizerTestCase
             ],
             'function attribute; multiple comma separated classes, one per line'                => [
                 'testMarker' => '/* testAttributeMultiline */',
+<<<<<<< HEAD
+=======
+                'length'     => 31,
+>>>>>>> ddb2375 (fix: console error)
                 'tokenCodes' => [
                     T_WHITESPACE,
                     T_WHITESPACE,
@@ -217,6 +264,10 @@ final class AttributesTest extends AbstractTokenizerTestCase
             ],
             'function attribute; multiple comma separated classes, one per line, with comments' => [
                 'testMarker' => '/* testAttributeMultilineWithComment */',
+<<<<<<< HEAD
+=======
+                'length'     => 34,
+>>>>>>> ddb2375 (fix: console error)
                 'tokenCodes' => [
                     T_WHITESPACE,
                     T_WHITESPACE,
@@ -255,6 +306,10 @@ final class AttributesTest extends AbstractTokenizerTestCase
             ],
             'function attribute; using partially qualified and fully qualified class names'     => [
                 'testMarker' => '/* testFqcnAttribute */',
+<<<<<<< HEAD
+=======
+                'length'     => 13,
+>>>>>>> ddb2375 (fix: console error)
                 'tokenCodes' => [
                     T_STRING,
                     T_NS_SEPARATOR,
@@ -327,6 +382,10 @@ final class AttributesTest extends AbstractTokenizerTestCase
      *
      * @param string            $testMarker The comment which prefaces the target token in the test file.
      * @param int               $position   The token position (starting from T_FUNCTION) of T_ATTRIBUTE token.
+<<<<<<< HEAD
+=======
+     * @param int               $length     The number of tokens between opener and closer.
+>>>>>>> ddb2375 (fix: console error)
      * @param array<int|string> $tokenCodes The codes of tokens inside the attributes.
      *
      * @dataProvider dataAttributeOnParameters
@@ -337,6 +396,7 @@ final class AttributesTest extends AbstractTokenizerTestCase
      *
      * @return void
      */
+<<<<<<< HEAD
     public function testAttributeOnParameters($testMarker, $position, array $tokenCodes)
     {
         $tokens = $this->phpcsFile->getTokens();
@@ -344,6 +404,12 @@ final class AttributesTest extends AbstractTokenizerTestCase
         // Calculate the number of tokens between opener and closer (excluding the opener, including the closer).
         $length = (count($tokenCodes) + 1);
 
+=======
+    public function testAttributeOnParameters($testMarker, $position, $length, array $tokenCodes)
+    {
+        $tokens = $this->phpcsFile->getTokens();
+
+>>>>>>> ddb2375 (fix: console error)
         $function  = $this->getTargetToken($testMarker, T_FUNCTION);
         $attribute = ($function + $position);
 
@@ -388,13 +454,23 @@ final class AttributesTest extends AbstractTokenizerTestCase
             'parameter attribute; single, inline'                   => [
                 'testMarker' => '/* testSingleAttributeOnParameter */',
                 'position'   => 4,
+<<<<<<< HEAD
                 'tokenCodes' => [
                     T_STRING,
+=======
+                'length'     => 2,
+                'tokenCodes' => [
+                    T_STRING
+>>>>>>> ddb2375 (fix: console error)
                 ],
             ],
             'parameter attribute; multiple comma separated, inline' => [
                 'testMarker' => '/* testMultipleAttributesOnParameter */',
                 'position'   => 4,
+<<<<<<< HEAD
+=======
+                'length'     => 10,
+>>>>>>> ddb2375 (fix: console error)
                 'tokenCodes' => [
                     T_STRING,
                     T_COMMA,
@@ -410,6 +486,10 @@ final class AttributesTest extends AbstractTokenizerTestCase
             'parameter attribute; single, multiline'                => [
                 'testMarker' => '/* testMultilineAttributesOnParameter */',
                 'position'   => 4,
+<<<<<<< HEAD
+=======
+                'length'     => 13,
+>>>>>>> ddb2375 (fix: console error)
                 'tokenCodes' => [
                     T_WHITESPACE,
                     T_WHITESPACE,
@@ -434,6 +514,10 @@ final class AttributesTest extends AbstractTokenizerTestCase
      * Test that an attribute containing text which looks like a PHP close tag is tokenized correctly.
      *
      * @param string               $testMarker              The comment which prefaces the target token in the test file.
+<<<<<<< HEAD
+=======
+     * @param int                  $length                  The number of tokens between opener and closer.
+>>>>>>> ddb2375 (fix: console error)
      * @param array<array<string>> $expectedTokensAttribute The codes of tokens inside the attributes.
      * @param array<int|string>    $expectedTokensAfter     The codes of tokens after the attributes.
      *
@@ -443,6 +527,7 @@ final class AttributesTest extends AbstractTokenizerTestCase
      *
      * @return void
      */
+<<<<<<< HEAD
     public function testAttributeContainingTextLookingLikeCloseTag($testMarker, array $expectedTokensAttribute, array $expectedTokensAfter)
     {
         $tokens = $this->phpcsFile->getTokens();
@@ -450,6 +535,12 @@ final class AttributesTest extends AbstractTokenizerTestCase
         // Calculate the number of tokens between opener and closer (excluding the opener, including the closer).
         $length = count($expectedTokensAttribute);
 
+=======
+    public function testAttributeContainingTextLookingLikeCloseTag($testMarker, $length, array $expectedTokensAttribute, array $expectedTokensAfter)
+    {
+        $tokens = $this->phpcsFile->getTokens();
+
+>>>>>>> ddb2375 (fix: console error)
         $attribute = $this->getTargetToken($testMarker, T_ATTRIBUTE);
 
         $this->assertSame('T_ATTRIBUTE', $tokens[$attribute]['type']);
@@ -494,6 +585,10 @@ final class AttributesTest extends AbstractTokenizerTestCase
         return [
             'function attribute; string param with "?>"'            => [
                 'testMarker'              => '/* testAttributeContainingTextLookingLikeCloseTag */',
+<<<<<<< HEAD
+=======
+                'length'                  => 5,
+>>>>>>> ddb2375 (fix: console error)
                 'expectedTokensAttribute' => [
                     [
                         'T_STRING',
@@ -530,6 +625,10 @@ final class AttributesTest extends AbstractTokenizerTestCase
             ],
             'function attribute; string param with "?>"; multiline' => [
                 'testMarker'              => '/* testAttributeContainingMultilineTextLookingLikeCloseTag */',
+<<<<<<< HEAD
+=======
+                'length'                  => 8,
+>>>>>>> ddb2375 (fix: console error)
                 'expectedTokensAttribute' => [
                     [
                         'T_STRING',
@@ -641,14 +740,21 @@ final class AttributesTest extends AbstractTokenizerTestCase
             T_CLOSE_PARENTHESIS,
         ];
 
+<<<<<<< HEAD
         // Calculate the number of tokens between opener and closer (excluding the opener, including the closer).
         $outerAttributeLength = (count($tokenCodes) + 1);
 
+=======
+>>>>>>> ddb2375 (fix: console error)
         $attribute = $this->getTargetToken('/* testNestedAttributes */', T_ATTRIBUTE);
         $this->assertArrayHasKey('attribute_closer', $tokens[$attribute]);
 
         $closer = $tokens[$attribute]['attribute_closer'];
+<<<<<<< HEAD
         $this->assertSame(($attribute + $outerAttributeLength), $closer);
+=======
+        $this->assertSame(($attribute + 24), $closer);
+>>>>>>> ddb2375 (fix: console error)
 
         $this->assertSame(T_ATTRIBUTE_END, $tokens[$closer]['code']);
 
@@ -657,16 +763,26 @@ final class AttributesTest extends AbstractTokenizerTestCase
 
         $this->assertArrayNotHasKey('nested_attributes', $tokens[$attribute]);
         $this->assertArrayHasKey('nested_attributes', $tokens[($attribute + 8)]);
+<<<<<<< HEAD
         $this->assertSame([$attribute => ($attribute + $outerAttributeLength)], $tokens[($attribute + 8)]['nested_attributes']);
 
         $test = function (array $tokens, $outerAttributeLength, $nestedMap) use ($attribute) {
             foreach ($tokens as $token) {
                 $this->assertArrayHasKey('attribute_closer', $token);
                 $this->assertSame(($attribute + $outerAttributeLength), $token['attribute_closer']);
+=======
+        $this->assertSame([$attribute => ($attribute + 24)], $tokens[($attribute + 8)]['nested_attributes']);
+
+        $test = function (array $tokens, $length, $nestedMap) use ($attribute) {
+            foreach ($tokens as $token) {
+                $this->assertArrayHasKey('attribute_closer', $token);
+                $this->assertSame(($attribute + $length), $token['attribute_closer']);
+>>>>>>> ddb2375 (fix: console error)
                 $this->assertSame($nestedMap, $token['nested_attributes']);
             }
         };
 
+<<<<<<< HEAD
         // Length here is 8 (nested attribute offset) + 5 (real length).
         $innerAttributeLength = (8 + 5);
 
@@ -678,18 +794,38 @@ final class AttributesTest extends AbstractTokenizerTestCase
             $innerAttributeLength,
             [
                 $attribute     => $attribute + $outerAttributeLength,
+=======
+        $test(array_slice($tokens, ($attribute + 1), 7), 24, [$attribute => $attribute + 24]);
+        $test(array_slice($tokens, ($attribute + 8), 1), 8 + 5, [$attribute => $attribute + 24]);
+
+        // Length here is 8 (nested attribute offset) + 5 (real length).
+        $test(
+            array_slice($tokens, ($attribute + 9), 4),
+            8 + 5,
+            [
+                $attribute     => $attribute + 24,
+>>>>>>> ddb2375 (fix: console error)
                 $attribute + 8 => $attribute + 13,
             ]
         );
 
+<<<<<<< HEAD
         $test(array_slice($tokens, ($attribute + 13), 1), $innerAttributeLength, [$attribute => $attribute + $outerAttributeLength]);
         $test(array_slice($tokens, ($attribute + 14), 10), $outerAttributeLength, [$attribute => $attribute + $outerAttributeLength]);
+=======
+        $test(array_slice($tokens, ($attribute + 13), 1), 8 + 5, [$attribute => $attribute + 24]);
+        $test(array_slice($tokens, ($attribute + 14), 10), 24, [$attribute => $attribute + 24]);
+>>>>>>> ddb2375 (fix: console error)
 
         $map = array_map(
             static function ($token) {
                 return $token['code'];
             },
+<<<<<<< HEAD
             array_slice($tokens, ($attribute + 1), ($outerAttributeLength - 1))
+=======
+            array_slice($tokens, ($attribute + 1), 23)
+>>>>>>> ddb2375 (fix: console error)
         );
 
         $this->assertSame($tokenCodes, $map);

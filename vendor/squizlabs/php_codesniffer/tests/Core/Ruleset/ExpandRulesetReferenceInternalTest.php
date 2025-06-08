@@ -51,11 +51,14 @@ final class ExpandRulesetReferenceInternalTest extends AbstractRulesetTestCase
      */
     public function testInternalStandardDoesGetExpanded()
     {
+<<<<<<< HEAD
         $message  = 'DEPRECATED: The name "Internal" is reserved for internal use. A PHP_CodeSniffer standard should not be called "Internal".'.PHP_EOL;
         $message .= 'Contact the maintainer of the standard to fix this.'.PHP_EOL.PHP_EOL;
 
         $this->expectOutputString($message);
 
+=======
+>>>>>>> ddb2375 (fix: console error)
         // Set up the ruleset.
         $standard = __DIR__.'/ExpandRulesetReferenceInternalStandardTest.xml';
         $config   = new ConfigDouble(["--standard=$standard"]);

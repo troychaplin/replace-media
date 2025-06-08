@@ -83,10 +83,13 @@ final class MemberVarSpacingUnitTest extends AbstractSniffUnitTest
                 412 => 1,
                 415 => 1,
                 416 => 1,
+<<<<<<< HEAD
                 420 => 1,
                 427 => 1,
                 437 => 1,
                 445 => 1,
+=======
+>>>>>>> ddb2375 (fix: console error)
             ];
 
         default:

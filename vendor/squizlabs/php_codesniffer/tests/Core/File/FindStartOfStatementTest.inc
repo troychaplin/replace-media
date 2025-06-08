@@ -157,20 +157,26 @@ switch ($foo) {
         /* testInsideCaseThrowStatement */
         throw new Exception();
 
+<<<<<<< HEAD
     case 6:
         $var = doSomething();
         /* testInsideCaseGotoStatement */
         goto myLabel;
 
+=======
+>>>>>>> ddb2375 (fix: console error)
     /* testDefaultStatement */
     default:
         /* testInsideDefaultContinueStatement */
         continue $var;
 }
 
+<<<<<<< HEAD
 myLabel:
 do_something();
 
+=======
+>>>>>>> ddb2375 (fix: console error)
 match ($var) {
     true =>
         /* test437ClosureDeclaration */

@@ -41,7 +41,11 @@ final class ConfigDouble extends Config
      *                                              the ruleset auto-discovery.
      *                                              Note: there is no need to set this to `true` when a standard
      *                                              is being passed via the `$cliArgs`. Those settings will always
+<<<<<<< HEAD
      *                                              be respected.
+=======
+     *                                              respected.
+>>>>>>> ddb2375 (fix: console error)
      *                                              Defaults to `false`. Will result in the standard being set
      *                                              to "PSR1" if not provided via `$cliArgs`.
      * @param bool          $skipSettingReportWidth Whether to skip setting a report-width to prevent

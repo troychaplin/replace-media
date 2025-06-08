@@ -152,7 +152,11 @@ class SwitchDeclarationSniff implements Sniff
                         $error = 'Terminating statement must be on a line by itself';
                         $fix   = $phpcsFile->addFixableError($error, $nextCloser, 'BreakNotNewLine');
                         if ($fix === true) {
+<<<<<<< HEAD
                             $phpcsFile->fixer->addNewline($prev);
+=======
+                            $phpcsFile->fixer->addNewLine($prev);
+>>>>>>> ddb2375 (fix: console error)
                             $phpcsFile->fixer->replaceToken($nextCloser, trim($tokens[$nextCloser]['content']));
                         }
                     } else {
@@ -380,7 +384,10 @@ class SwitchDeclarationSniff implements Sniff
                 T_CONTINUE => T_CONTINUE,
                 T_THROW    => T_THROW,
                 T_EXIT     => T_EXIT,
+<<<<<<< HEAD
                 T_GOTO     => T_GOTO,
+=======
+>>>>>>> ddb2375 (fix: console error)
             ];
 
             $terminator = $phpcsFile->findStartOfStatement(($lastToken - 1));

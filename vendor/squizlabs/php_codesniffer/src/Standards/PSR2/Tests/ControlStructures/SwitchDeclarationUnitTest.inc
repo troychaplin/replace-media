@@ -596,6 +596,7 @@ switch (rand()) {
     default:
         break;
 }
+<<<<<<< HEAD
 
 // Fix: goto should be recognized as terminating statement.
 switch ( $a ) {
@@ -609,3 +610,5 @@ switch ( $a ) {
 
 jumpOut:
 doSomething();
+=======
+>>>>>>> ddb2375 (fix: console error)

@@ -42,8 +42,11 @@ final class FunctionCommentThrowTagUnitTest extends AbstractSniffUnitTest
             219 => 1,
             287 => 1,
             397 => 1,
+<<<<<<< HEAD
             519 => 1,
             530 => 1,
+=======
+>>>>>>> ddb2375 (fix: console error)
         ];
 
     }//end getErrorList()

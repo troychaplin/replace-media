@@ -75,6 +75,7 @@ class TypeUnion
     /* testTypeUnionPropertyWithOnlyStaticKeyword */
     static Foo|Bar $obj;
 
+<<<<<<< HEAD
     /* testTypeUnionWithPHP84FinalKeyword */
     final int|string $finalKeywordA;
 
@@ -96,6 +97,8 @@ class TypeUnion
     /* testTypeUnionPropertyPublicProtected */
     public protected(set) Foo|Bar $asym4;
 
+=======
+>>>>>>> ddb2375 (fix: console error)
     public function paramTypes(
         /* testTypeUnionParam1 */
         int|float $paramA /* testBitwiseOrParamDefaultValue */ = CONSTANT_A | CONSTANT_B,

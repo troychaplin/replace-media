@@ -21,6 +21,7 @@ final class ScopeIndentUnitTest extends AbstractSniffUnitTest
 
 
     /**
+<<<<<<< HEAD
      * Get a list of CLI values to set before the file is tested.
      *
      * @param string                  $testFile The name of the file being tested.
@@ -36,6 +37,8 @@ final class ScopeIndentUnitTest extends AbstractSniffUnitTest
 
 
     /**
+=======
+>>>>>>> ddb2375 (fix: console error)
      * Returns the lines where errors should occur.
      *
      * The key of the array should represent the line number and the value

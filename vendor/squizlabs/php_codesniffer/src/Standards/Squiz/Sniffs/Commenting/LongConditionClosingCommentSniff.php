@@ -28,7 +28,11 @@ class LongConditionClosingCommentSniff implements Sniff
     /**
      * The openers that we are interested in.
      *
+<<<<<<< HEAD
      * @var array<int|string>
+=======
+     * @var integer[]
+>>>>>>> ddb2375 (fix: console error)
      */
     private static $openers = [
         T_SWITCH,

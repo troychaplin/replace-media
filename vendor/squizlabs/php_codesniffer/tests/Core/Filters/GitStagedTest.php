@@ -240,7 +240,11 @@ final class GitStagedTest extends AbstractFilterTestCase
      *            JRF: I've not managed to find a command which does so, let alone one, which then
      *            doesn't have side-effects of uncatchable output while running the tests.}
      *
+<<<<<<< HEAD
      * @return array<string, array<string, string|array<string>>>
+=======
+     * @return array<string, array<string, array<string>>>
+>>>>>>> ddb2375 (fix: console error)
      */
     public static function dataExecAlwaysReturnsArray()
     {

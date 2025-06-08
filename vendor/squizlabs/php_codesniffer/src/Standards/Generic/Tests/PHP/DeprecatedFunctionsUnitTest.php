@@ -40,10 +40,13 @@ final class DeprecatedFunctionsUnitTest extends AbstractSniffUnitTest
             $errors[4] = 1;
         }
 
+<<<<<<< HEAD
         if (PHP_VERSION_ID >= 80000) {
             $errors[5] = 1;
         }
 
+=======
+>>>>>>> ddb2375 (fix: console error)
         return $errors;
 
     }//end getErrorList()

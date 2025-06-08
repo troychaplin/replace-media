@@ -80,8 +80,11 @@ final class SwitchDeclarationUnitTest extends AbstractSniffUnitTest
                 327 => 1,
                 329 => 1,
                 330 => 1,
+<<<<<<< HEAD
                 339 => 2,
                 342 => 1,
+=======
+>>>>>>> ddb2375 (fix: console error)
             ];
 
         case 'SwitchDeclarationUnitTest.js':

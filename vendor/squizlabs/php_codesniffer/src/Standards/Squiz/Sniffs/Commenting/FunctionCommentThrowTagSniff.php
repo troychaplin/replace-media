@@ -47,6 +47,7 @@ class FunctionCommentThrowTagSniff implements Sniff
             return;
         }
 
+<<<<<<< HEAD
         $ignore = Tokens::$methodPrefixes;
         $ignore[T_WHITESPACE] = T_WHITESPACE;
 
@@ -65,6 +66,12 @@ class FunctionCommentThrowTagSniff implements Sniff
             break;
         }
 
+=======
+        $find   = Tokens::$methodPrefixes;
+        $find[] = T_WHITESPACE;
+
+        $commentEnd = $phpcsFile->findPrevious($find, ($stackPtr - 1), null, true);
+>>>>>>> ddb2375 (fix: console error)
         if ($tokens[$commentEnd]['code'] !== T_DOC_COMMENT_CLOSE_TAG) {
             // Function doesn't have a doc comment or is using the wrong type of comment.
             return;
@@ -104,7 +111,11 @@ class FunctionCommentThrowTagSniff implements Sniff
                 don't know the exception class.
             */
 
+<<<<<<< HEAD
             $nextToken = $phpcsFile->findNext(Tokens::$emptyTokens, ($currPos + 1), null, true);
+=======
+            $nextToken = $phpcsFile->findNext(T_WHITESPACE, ($currPos + 1), null, true);
+>>>>>>> ddb2375 (fix: console error)
             if ($tokens[$nextToken]['code'] === T_NEW
                 || $tokens[$nextToken]['code'] === T_NS_SEPARATOR
                 || $tokens[$nextToken]['code'] === T_STRING

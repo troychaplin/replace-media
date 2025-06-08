@@ -26,7 +26,11 @@ final class OneTraitPerFileUnitTest extends AbstractSniffUnitTest
      * The key of the array should represent the line number and the value
      * should represent the number of errors that should occur on that line.
      *
+<<<<<<< HEAD
      * @return array<int, int>
+=======
+     * @return array(int => int)
+>>>>>>> ddb2375 (fix: console error)
      */
     public function getErrorList()
     {
@@ -44,7 +48,11 @@ final class OneTraitPerFileUnitTest extends AbstractSniffUnitTest
      * The key of the array should represent the line number and the value
      * should represent the number of warnings that should occur on that line.
      *
+<<<<<<< HEAD
      * @return array<int, int>
+=======
+     * @return array(int => int)
+>>>>>>> ddb2375 (fix: console error)
      */
     public function getWarningList()
     {

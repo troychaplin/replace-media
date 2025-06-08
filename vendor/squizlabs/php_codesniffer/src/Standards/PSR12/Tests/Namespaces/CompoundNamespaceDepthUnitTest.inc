@@ -29,6 +29,9 @@ use Vendor\Package\SomeNamespace\{
     SubnamespaceOne\ClassB,
     ClassZ,
 };
+<<<<<<< HEAD
 
 // Reset the property to its default value.
 // phpcs:set PSR12.Namespaces.CompoundNamespaceDepth maxDepth 2
+=======
+>>>>>>> ddb2375 (fix: console error)

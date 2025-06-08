@@ -510,6 +510,7 @@ class SpacingAfter {
 
     public function multipleLinesSomeEmpty() {}
 }
+<<<<<<< HEAD
 
 class HandleBlankLinesBetweenDocblockAndDeclarationWithAttributes
 {
@@ -548,3 +549,5 @@ class HandleBlankLinesBetweenDocblockAndDeclarationWithAttributes
 
     }//end blankLineDetectionB()
 }//end class
+=======
+>>>>>>> ddb2375 (fix: console error)

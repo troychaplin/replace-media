@@ -62,7 +62,11 @@ function multiple_attributes_on_parameter_test(#[ParamAttribute, AttributeWithPa
 
 /* testFqcnAttribute */
 #[Boo\QualifiedName, \Foo\FullyQualifiedName('foo')]
+<<<<<<< HEAD
 function fqcn_attribute_test() {}
+=======
+function fqcn_attrebute_test() {}
+>>>>>>> ddb2375 (fix: console error)
 
 /* testNestedAttributes */
 #[Boo\QualifiedName(fn (#[AttributeOne('boo')] $value) => (string) $value)]

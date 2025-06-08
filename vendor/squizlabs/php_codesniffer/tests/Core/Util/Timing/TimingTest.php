@@ -41,7 +41,11 @@ final class TimingTest extends TestCase
 
 
     /**
+<<<<<<< HEAD
      * Verify that getDuration() returns the time in milliseconds.
+=======
+     * Verify that getDuration() returns 0 when the timer wasn't started.
+>>>>>>> ddb2375 (fix: console error)
      *
      * @return void
      */

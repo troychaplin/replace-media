@@ -13,11 +13,18 @@
 namespace PHP_CodeSniffer\Standards\Generic\Sniffs\Formatting;
 
 use PHP_CodeSniffer\Files\File;
+<<<<<<< HEAD
 use PHP_CodeSniffer\Sniffs\DeprecatedSniff;
 use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Util\Tokens;
 
 class NoSpaceAfterCastSniff implements Sniff, DeprecatedSniff
+=======
+use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Util\Tokens;
+
+class NoSpaceAfterCastSniff implements Sniff
+>>>>>>> ddb2375 (fix: console error)
 {
 
 
@@ -59,6 +66,7 @@ class NoSpaceAfterCastSniff implements Sniff, DeprecatedSniff
     }//end process()
 
 
+<<<<<<< HEAD
     /**
      * Provide the version number in which the sniff was deprecated.
      *
@@ -95,4 +103,6 @@ class NoSpaceAfterCastSniff implements Sniff, DeprecatedSniff
     }//end getDeprecationMessage()
 
 
+=======
+>>>>>>> ddb2375 (fix: console error)
 }//end class

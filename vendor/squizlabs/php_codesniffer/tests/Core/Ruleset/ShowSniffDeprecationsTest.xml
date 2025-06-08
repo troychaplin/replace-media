@@ -5,10 +5,15 @@
 
     <rule ref="TestStandard">
         <exclude name="TestStandard.DeprecatedInvalid"/>
+<<<<<<< HEAD
         <exclude name="TestStandard.SupportedTokenizers"/>
         <exclude name="TestStandard.InvalidSniffs"/>
         <exclude name="TestStandard.InvalidSniffError"/>
         <exclude name="TestStandard.MissingInterface"/>
+=======
+        <exclude name="TestStandard.InvalidSniffs"/>
+        <exclude name="TestStandard.InvalidSniffError"/>
+>>>>>>> ddb2375 (fix: console error)
     </rule>
 
 </ruleset>

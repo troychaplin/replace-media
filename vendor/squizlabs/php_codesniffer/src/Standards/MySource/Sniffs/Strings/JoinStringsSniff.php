@@ -11,12 +11,19 @@
 
 namespace PHP_CodeSniffer\Standards\MySource\Sniffs\Strings;
 
+<<<<<<< HEAD
 use PHP_CodeSniffer\Sniffs\DeprecatedSniff;
+=======
+>>>>>>> ddb2375 (fix: console error)
 use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Util\Tokens;
 
+<<<<<<< HEAD
 class JoinStringsSniff implements Sniff, DeprecatedSniff
+=======
+class JoinStringsSniff implements Sniff
+>>>>>>> ddb2375 (fix: console error)
 {
 
     /**
@@ -76,6 +83,7 @@ class JoinStringsSniff implements Sniff, DeprecatedSniff
     }//end process()
 
 
+<<<<<<< HEAD
     /**
      * Provide the version number in which the sniff was deprecated.
      *
@@ -112,4 +120,6 @@ class JoinStringsSniff implements Sniff, DeprecatedSniff
     }//end getDeprecationMessage()
 
 
+=======
+>>>>>>> ddb2375 (fix: console error)
 }//end class

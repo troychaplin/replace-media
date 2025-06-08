@@ -9,12 +9,20 @@
     ]]>
     </standard>
     <code_comparison>
+<<<<<<< HEAD
         <code title="Valid: Parameter names do not use reserved keywords.">
+=======
+        <code title="Valid: parameter names do not use reserved keywords.">
+>>>>>>> ddb2375 (fix: console error)
         <![CDATA[
 function foo( $input, $description ) {}
         ]]>
         </code>
+<<<<<<< HEAD
         <code title="Invalid: Parameter names use reserved keywords.">
+=======
+        <code title="Invalid: parameter names use reserved keywords.">
+>>>>>>> ddb2375 (fix: console error)
         <![CDATA[
 function foo( $string, $echo = true ) {}
         ]]>

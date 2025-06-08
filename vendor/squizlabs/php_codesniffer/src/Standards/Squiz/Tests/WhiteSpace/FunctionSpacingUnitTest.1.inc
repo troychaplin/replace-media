@@ -726,6 +726,7 @@ class SilenceBeforeErrorIfPreviousThingWasAFunctionBug
 
     }//end blankLineDetectionB()
 }//end class
+<<<<<<< HEAD
 
 // Issue #945.
 class OnlyAcceptFirstDocblockAsBelongingWithFunction {
@@ -750,3 +751,5 @@ class OnlyAcceptFirstDocblockAsBelongingWithFunction {
 
 
 }
+=======
+>>>>>>> ddb2375 (fix: console error)

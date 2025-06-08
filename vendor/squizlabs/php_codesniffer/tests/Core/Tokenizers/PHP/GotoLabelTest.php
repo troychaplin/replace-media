@@ -11,11 +11,14 @@ namespace PHP_CodeSniffer\Tests\Core\Tokenizers\PHP;
 
 use PHP_CodeSniffer\Tests\Core\Tokenizers\AbstractTokenizerTestCase;
 
+<<<<<<< HEAD
 /**
  * Tests the tokenization of goto declarations and statements.
  *
  * @covers PHP_CodeSniffer\Tokenizers\PHP::tokenize
  */
+=======
+>>>>>>> ddb2375 (fix: console error)
 final class GotoLabelTest extends AbstractTokenizerTestCase
 {
 
@@ -27,6 +30,10 @@ final class GotoLabelTest extends AbstractTokenizerTestCase
      * @param string $testContent The token content to expect.
      *
      * @dataProvider dataGotoStatement
+<<<<<<< HEAD
+=======
+     * @covers       PHP_CodeSniffer\Tokenizers\PHP::tokenize
+>>>>>>> ddb2375 (fix: console error)
      *
      * @return void
      */
@@ -60,6 +67,7 @@ final class GotoLabelTest extends AbstractTokenizerTestCase
                 'testMarker'  => '/* testGotoStatementInLoop */',
                 'testContent' => 'end',
             ],
+<<<<<<< HEAD
             'label for goto statement in switch'                    => [
                 'testMarker'  => '/* testGotoStatementInSwitch */',
                 'testContent' => 'def',
@@ -68,6 +76,8 @@ final class GotoLabelTest extends AbstractTokenizerTestCase
                 'testMarker'  => '/* testGotoStatementInFunction */',
                 'testContent' => 'label',
             ],
+=======
+>>>>>>> ddb2375 (fix: console error)
         ];
 
     }//end dataGotoStatement()
@@ -80,6 +90,10 @@ final class GotoLabelTest extends AbstractTokenizerTestCase
      * @param string $testContent The token content to expect.
      *
      * @dataProvider dataGotoDeclaration
+<<<<<<< HEAD
+=======
+     * @covers       PHP_CodeSniffer\Tokenizers\PHP::tokenize
+>>>>>>> ddb2375 (fix: console error)
      *
      * @return void
      */
@@ -113,6 +127,7 @@ final class GotoLabelTest extends AbstractTokenizerTestCase
                 'testMarker'  => '/* testGotoDeclarationOutsideLoop */',
                 'testContent' => 'end:',
             ],
+<<<<<<< HEAD
             'label in goto declaration - def'    => [
                 'testMarker'  => '/* testGotoDeclarationInSwitch */',
                 'testContent' => 'def:',
@@ -121,6 +136,8 @@ final class GotoLabelTest extends AbstractTokenizerTestCase
                 'testMarker'  => '/* testGotoDeclarationInFunction */',
                 'testContent' => 'label:',
             ],
+=======
+>>>>>>> ddb2375 (fix: console error)
         ];
 
     }//end dataGotoDeclaration()
@@ -133,6 +150,10 @@ final class GotoLabelTest extends AbstractTokenizerTestCase
      * @param string $testContent The token content to expect.
      *
      * @dataProvider dataNotAGotoDeclaration
+<<<<<<< HEAD
+=======
+     * @covers       PHP_CodeSniffer\Tokenizers\PHP::tokenize
+>>>>>>> ddb2375 (fix: console error)
      *
      * @return void
      */

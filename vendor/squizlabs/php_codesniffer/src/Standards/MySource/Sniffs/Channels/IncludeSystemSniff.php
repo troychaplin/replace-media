@@ -12,11 +12,18 @@
 namespace PHP_CodeSniffer\Standards\MySource\Sniffs\Channels;
 
 use PHP_CodeSniffer\Sniffs\AbstractScopeSniff;
+<<<<<<< HEAD
 use PHP_CodeSniffer\Sniffs\DeprecatedSniff;
 use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Util\Tokens;
 
 class IncludeSystemSniff extends AbstractScopeSniff implements DeprecatedSniff
+=======
+use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Util\Tokens;
+
+class IncludeSystemSniff extends AbstractScopeSniff
+>>>>>>> ddb2375 (fix: console error)
 {
 
     /**
@@ -314,6 +321,7 @@ class IncludeSystemSniff extends AbstractScopeSniff implements DeprecatedSniff
     }//end getIncludedClassFromToken()
 
 
+<<<<<<< HEAD
     /**
      * Provide the version number in which the sniff was deprecated.
      *
@@ -350,4 +358,6 @@ class IncludeSystemSniff extends AbstractScopeSniff implements DeprecatedSniff
     }//end getDeprecationMessage()
 
 
+=======
+>>>>>>> ddb2375 (fix: console error)
 }//end class

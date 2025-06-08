@@ -72,7 +72,10 @@ class DocCommentAlignmentSniff implements Sniff
             T_PROTECTED => true,
             T_STATIC    => true,
             T_ABSTRACT  => true,
+<<<<<<< HEAD
             T_FINAL     => true,
+=======
+>>>>>>> ddb2375 (fix: console error)
             T_PROPERTY  => true,
             T_OBJECT    => true,
             T_PROTOTYPE => true,

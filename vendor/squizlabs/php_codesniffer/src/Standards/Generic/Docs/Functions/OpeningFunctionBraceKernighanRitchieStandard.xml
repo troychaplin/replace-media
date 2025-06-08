@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <documentation title="Opening Function Brace Kerninghan Ritchie">
     <standard>
     <![CDATA[
@@ -19,6 +20,27 @@ function fooFunction($arg1, $arg2 = '')<em> {</em>
 function fooFunction($arg1, $arg2 = '')
 <em>{</em>
     // Do something.
+=======
+<documentation title="Opening Brace in Function Declarations">
+    <standard>
+    <![CDATA[
+    Function declarations follow the "Kernighan/Ritchie style". The function brace is on the same line as the function declaration. One space is required between the closing parenthesis and the brace.
+    ]]>
+    </standard>
+    <code_comparison>
+        <code title="Valid: Brace on same line.">
+        <![CDATA[
+function fooFunction($arg1, $arg2 = '')<em> {</em>
+    ...
+}
+        ]]>
+        </code>
+        <code title="Invalid: Brace on next line.">
+        <![CDATA[
+function fooFunction($arg1, $arg2 = '')
+<em>{</em>
+    ...
+>>>>>>> ddb2375 (fix: console error)
 }
         ]]>
         </code>

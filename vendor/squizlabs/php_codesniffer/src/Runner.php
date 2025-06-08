@@ -856,6 +856,7 @@ class Runner
             return;
         }
 
+<<<<<<< HEAD
         $showColors  = $this->config->colors;
         $colorOpen   = '';
         $progressDot = '.';
@@ -864,6 +865,11 @@ class Runner
         // Show progress information.
         if ($file->ignored === true) {
             $progressDot = 'S';
+=======
+        // Show progress information.
+        if ($file->ignored === true) {
+            echo 'S';
+>>>>>>> ddb2375 (fix: console error)
         } else {
             $errors   = $file->getErrorCount();
             $warnings = $file->getWarningCount();
@@ -875,6 +881,7 @@ class Runner
                 // Files with unfixable errors or warnings are E (red).
                 // Files with no errors or warnings are . (black).
                 if ($fixable > 0) {
+<<<<<<< HEAD
                     $progressDot = 'E';
 
                     if ($showColors === true) {
@@ -888,6 +895,29 @@ class Runner
                         $colorOpen  = "\033[32m";
                         $colorClose = "\033[0m";
                     }
+=======
+                    if ($this->config->colors === true) {
+                        echo "\033[31m";
+                    }
+
+                    echo 'E';
+
+                    if ($this->config->colors === true) {
+                        echo "\033[0m";
+                    }
+                } else if ($fixed > 0) {
+                    if ($this->config->colors === true) {
+                        echo "\033[32m";
+                    }
+
+                    echo 'F';
+
+                    if ($this->config->colors === true) {
+                        echo "\033[0m";
+                    }
+                } else {
+                    echo '.';
+>>>>>>> ddb2375 (fix: console error)
                 }//end if
             } else {
                 // Files with errors are E (red).
@@ -896,6 +926,7 @@ class Runner
                 // Files with fixable warnings are W (green).
                 // Files with no errors or warnings are . (black).
                 if ($errors > 0) {
+<<<<<<< HEAD
                     $progressDot = 'E';
 
                     if ($showColors === true) {
@@ -919,12 +950,46 @@ class Runner
 
                         $colorClose = "\033[0m";
                     }
+=======
+                    if ($this->config->colors === true) {
+                        if ($fixable > 0) {
+                            echo "\033[32m";
+                        } else {
+                            echo "\033[31m";
+                        }
+                    }
+
+                    echo 'E';
+
+                    if ($this->config->colors === true) {
+                        echo "\033[0m";
+                    }
+                } else if ($warnings > 0) {
+                    if ($this->config->colors === true) {
+                        if ($fixable > 0) {
+                            echo "\033[32m";
+                        } else {
+                            echo "\033[33m";
+                        }
+                    }
+
+                    echo 'W';
+
+                    if ($this->config->colors === true) {
+                        echo "\033[0m";
+                    }
+                } else {
+                    echo '.';
+>>>>>>> ddb2375 (fix: console error)
                 }//end if
             }//end if
         }//end if
 
+<<<<<<< HEAD
         echo $colorOpen.$progressDot.$colorClose;
 
+=======
+>>>>>>> ddb2375 (fix: console error)
         $numPerLine = 60;
         if ($numProcessed !== $numFiles && ($numProcessed % $numPerLine) !== 0) {
             return;

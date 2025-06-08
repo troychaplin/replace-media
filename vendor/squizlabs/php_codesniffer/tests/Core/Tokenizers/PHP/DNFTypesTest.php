@@ -98,7 +98,11 @@ final class DNFTypesTest extends AbstractTokenizerTestCase
      *
      * @see testNormalParentheses()
      *
+<<<<<<< HEAD
      * @return array<string, array<string, string|bool>>
+=======
+     * @return array<string, array<string, string|int|false>>
+>>>>>>> ddb2375 (fix: console error)
      */
     public static function dataNormalParentheses()
     {
@@ -386,6 +390,7 @@ final class DNFTypesTest extends AbstractTokenizerTestCase
     {
         return [
             'arrow function return type: in named parameter'              => [
+<<<<<<< HEAD
                 'testMarker' => '/* testDNFTypeArrowFnReturnInNamedParam */',
             ],
             'closure return type: in named parameter'                     => [
@@ -541,6 +546,146 @@ final class DNFTypesTest extends AbstractTokenizerTestCase
             ],
             'illegal syntax: nested parentheses'                          => [
                 'testMarker' => '/* testDNFTypeParamIllegalNestedParens */',
+=======
+                'testMarker'  => '/* testDNFTypeArrowFnReturnInNamedParam */',
+            ],
+            'closure return type: in named parameter'                     => [
+                'testMarker'  => '/* testDNFTypeClosureReturnInNamedParam */',
+            ],
+
+            'OO const type: unqualified classes'                          => [
+                'testMarker'  => '/* testDNFTypeOOConstUnqualifiedClasses */',
+            ],
+            'OO const type: modifiers in reverse order'                   => [
+                'testMarker'  => '/* testDNFTypeOOConstReverseModifierOrder */',
+            ],
+            'OO const type: multi-dnf part 1'                             => [
+                'testMarker'  => '/* testDNFTypeOOConstMulti1 */',
+            ],
+            'OO const type: multi-dnf part 2'                             => [
+                'testMarker'  => '/* testDNFTypeOOConstMulti2 */',
+            ],
+            'OO const type: multi-dnf part 3'                             => [
+                'testMarker'  => '/* testDNFTypeOOConstMulti3 */',
+            ],
+            'OO const type: namespace relative classes'                   => [
+                'testMarker'  => '/* testDNFTypeOOConstNamespaceRelative */',
+            ],
+            'OO const type: partially qualified classes'                  => [
+                'testMarker'  => '/* testDNFTypeOOConstPartiallyQualified */',
+            ],
+            'OO const type: fully qualified classes'                      => [
+                'testMarker'  => '/* testDNFTypeOOConstFullyQualified */',
+            ],
+
+            'OO property type: unqualified classes'                       => [
+                'testMarker'  => '/* testDNFTypePropertyUnqualifiedClasses */',
+            ],
+            'OO property type: modifiers in reverse order'                => [
+                'testMarker'  => '/* testDNFTypePropertyReverseModifierOrder */',
+            ],
+            'OO property type: multi-dnf namespace relative classes'      => [
+                'testMarker'  => '/* testDNFTypePropertyMultiNamespaceRelative */',
+            ],
+            'OO property type: multi-dnf partially qualified classes'     => [
+                'testMarker'  => '/* testDNFTypePropertyMultiPartiallyQualified */',
+            ],
+            'OO property type: multi-dnf fully qualified classes'         => [
+                'testMarker'  => '/* testDNFTypePropertyMultiFullyQualified */',
+            ],
+
+            'OO property type: multi-dnf with readonly keyword 1'         => [
+                'testMarker'  => '/* testDNFTypePropertyWithReadOnlyKeyword1 */',
+            ],
+            'OO property type: multi-dnf with readonly keyword 2'         => [
+                'testMarker'  => '/* testDNFTypePropertyWithReadOnlyKeyword2 */',
+            ],
+            'OO property type: with static and readonly keywords'         => [
+                'testMarker'  => '/* testDNFTypePropertyWithStaticAndReadOnlyKeywords */',
+            ],
+            'OO property type: with only static keyword'                  => [
+                'testMarker'  => '/* testDNFTypePropertyWithOnlyStaticKeyword */',
+            ],
+            'OO method param type: first param'                           => [
+                'testMarker'  => '/* testDNFTypeParam1WithAttribute */',
+            ],
+            'OO method param type: second param, first DNF'               => [
+                'testMarker'  => '/* testDNFTypeParam2 */',
+            ],
+            'OO method param type: second param, second DNF'              => [
+                'testMarker'  => '/* testDNFTypeParam3 */',
+            ],
+            'OO method param type: namespace relative classes'            => [
+                'testMarker'  => '/* testDNFTypeParamNamespaceRelative */',
+            ],
+            'OO method param type: partially qualified classes'           => [
+                'testMarker'  => '/* testDNFTypeParamPartiallyQualified */',
+            ],
+            'OO method param type: fully qualified classes'               => [
+                'testMarker'  => '/* testDNFTypeParamFullyQualified */',
+            ],
+            'Constructor property promotion with multi DNF 1'             => [
+                'testMarker'  => '/* testDNFTypeConstructorPropertyPromotion1 */',
+            ],
+            'Constructor property promotion with multi DNF 2'             => [
+                'testMarker'  => '/* testDNFTypeConstructorPropertyPromotion2 */',
+            ],
+            'OO method return type: multi DNF 1'                          => [
+                'testMarker'  => '/* testDNFTypeReturnType1 */',
+            ],
+            'OO method return type: multi DNF 2'                          => [
+                'testMarker'  => '/* testDNFTypeReturnType2 */',
+            ],
+            'OO abstract method return type: multi DNF 1'                 => [
+                'testMarker'  => '/* testDNFTypeAbstractMethodReturnType1 */',
+            ],
+            'OO abstract method return type: multi DNF 2'                 => [
+                'testMarker'  => '/* testDNFTypeAbstractMethodReturnType2 */',
+            ],
+            'OO method return type: namespace relative classes'           => [
+                'testMarker'  => '/* testDNFTypeReturnTypeNamespaceRelative */',
+            ],
+            'OO method return type: partially qualified classes'          => [
+                'testMarker'  => '/* testDNFTypeReturnPartiallyQualified */',
+            ],
+            'OO method return type: fully qualified classes'              => [
+                'testMarker'  => '/* testDNFTypeReturnFullyQualified */',
+            ],
+            'function param type: with reference'                         => [
+                'testMarker'  => '/* testDNFTypeWithReference */',
+            ],
+            'function param type: with spread'                            => [
+                'testMarker'  => '/* testDNFTypeWithSpreadOperator */',
+            ],
+            'closure param type: with illegal nullable'                   => [
+                'testMarker'  => '/* testDNFTypeClosureParamIllegalNullable */',
+            ],
+            'closure return type'                                         => [
+                'testMarker'  => '/* testDNFTypeClosureReturn */',
+            ],
+            'closure with use return type'                                => [
+                'testMarker'  => '/* testDNFTypeClosureWithUseReturn */',
+            ],
+
+            'arrow function param type'                                   => [
+                'testMarker'  => '/* testDNFTypeArrowParam */',
+            ],
+            'arrow function return type'                                  => [
+                'testMarker'  => '/* testDNFTypeArrowReturnType */',
+            ],
+            'arrow function param type with return by ref'                => [
+                'testMarker'  => '/* testDNFTypeArrowParamWithReturnByRef */',
+            ],
+
+            'illegal syntax: unnecessary parentheses (no union)'          => [
+                'testMarker'  => '/* testDNFTypeParamIllegalUnnecessaryParens */',
+            ],
+            'illegal syntax: union within parentheses, intersect outside' => [
+                'testMarker'  => '/* testDNFTypeParamIllegalIntersectUnionReversed */',
+            ],
+            'illegal syntax: nested parentheses'                          => [
+                'testMarker'  => '/* testDNFTypeParamIllegalNestedParens */',
+>>>>>>> ddb2375 (fix: console error)
             ],
         ];
 

@@ -88,7 +88,11 @@ final class ProcessRulesetShouldProcessElementTest extends TestCase
 
 
     /**
+<<<<<<< HEAD
      * Destroy the Config object and restore the ini values after the tests.
+=======
+     * Destroy the Config object and restor the ini values after the tests.
+>>>>>>> ddb2375 (fix: console error)
      *
      * @afterClass
      *

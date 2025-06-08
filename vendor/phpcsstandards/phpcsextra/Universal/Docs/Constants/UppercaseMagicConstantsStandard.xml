@@ -9,13 +9,21 @@
     ]]>
     </standard>
     <code_comparison>
+<<<<<<< HEAD
         <code title="Valid: Using uppercase.">
+=======
+        <code title="Valid: using uppercase.">
+>>>>>>> ddb2375 (fix: console error)
         <![CDATA[
 echo <em>__LINE__</em>;
 include <em>__DIR__</em> . '/file.php';
         ]]>
         </code>
+<<<<<<< HEAD
         <code title="Invalid: Using lowercase or mixed case.">
+=======
+        <code title="Invalid: using lowercase or mixed case.">
+>>>>>>> ddb2375 (fix: console error)
         <![CDATA[
 echo <em>__NameSpace__</em>;
 include dirname(<em>__file__</em>) . '/file.php';

@@ -110,7 +110,10 @@ final class FunctionSpacingUnitTest extends AbstractSniffUnitTest
                 714 => 1,
                 717 => 1,
                 727 => 1,
+<<<<<<< HEAD
                 749 => 1,
+=======
+>>>>>>> ddb2375 (fix: console error)
             ];
 
         case 'FunctionSpacingUnitTest.2.inc':

@@ -37,6 +37,7 @@ class HTMLDouble extends HTML
     {
         return parent::getFormattedFooter();
     }
+<<<<<<< HEAD
 
     /**
      * [VISIBILITY WIDENING ONLY] Print the header of the HTML page.
@@ -67,4 +68,6 @@ class HTMLDouble extends HTML
     {
         parent::printFooter();
     }
+=======
+>>>>>>> ddb2375 (fix: console error)
 }

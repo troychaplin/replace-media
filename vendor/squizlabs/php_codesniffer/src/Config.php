@@ -85,7 +85,11 @@ class Config
      *
      * @var string
      */
+<<<<<<< HEAD
     const VERSION = '3.13.0';
+=======
+    const VERSION = '3.12.0';
+>>>>>>> ddb2375 (fix: console error)
 
     /**
      * Package stability; either stable, beta or alpha.
@@ -1010,8 +1014,13 @@ class Config
                 }
 
                 self::$overriddenDefaults['stdinPath'] = true;
+<<<<<<< HEAD
             } else if (substr($arg, 0, 12) === 'report-file=') {
                 if (PHP_CODESNIFFER_CBF === true || isset(self::$overriddenDefaults['reportFile']) === true) {
+=======
+            } else if (PHP_CODESNIFFER_CBF === false && substr($arg, 0, 12) === 'report-file=') {
+                if (isset(self::$overriddenDefaults['reportFile']) === true) {
+>>>>>>> ddb2375 (fix: console error)
                     break;
                 }
 

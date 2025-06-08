@@ -96,7 +96,12 @@ final class ConcatPositionSniff implements Sniff
      * @param int                         $stackPtr  The position of the current token
      *                                               in the stack passed in $tokens.
      *
+<<<<<<< HEAD
      * @return void
+=======
+     * @return int|void Integer stack pointer to skip forward or void to continue
+     *                  normal file processing.
+>>>>>>> ddb2375 (fix: console error)
      */
     public function process(File $phpcsFile, $stackPtr)
     {

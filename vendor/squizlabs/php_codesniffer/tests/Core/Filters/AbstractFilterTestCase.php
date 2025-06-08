@@ -223,10 +223,17 @@ abstract class AbstractFilterTestCase extends TestCase
      * These type of tests should be able to run and pass on both *nix as well as Windows
      * based dev systems. This method is a helper to allow for this.
      *
+<<<<<<< HEAD
      * @param array<string|array<string>> $paths A single or multi-dimensional array containing
      *                                           file paths.
      *
      * @return array<string|array<string>>
+=======
+     * @param array<string|array> $paths A single or multi-dimensional array containing
+     *                                   file paths.
+     *
+     * @return array<string|array>
+>>>>>>> ddb2375 (fix: console error)
      */
     protected static function mapPathsToRuntimeOs(array $paths)
     {

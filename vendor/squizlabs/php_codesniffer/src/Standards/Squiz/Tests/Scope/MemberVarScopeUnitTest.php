@@ -39,7 +39,10 @@ final class MemberVarScopeUnitTest extends AbstractSniffUnitTest
             41 => 1,
             66 => 2,
             67 => 1,
+<<<<<<< HEAD
             75 => 1,
+=======
+>>>>>>> ddb2375 (fix: console error)
         ];
 
     }//end getErrorList()

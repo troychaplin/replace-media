@@ -312,9 +312,12 @@ function() use() {};
 /* testClosureUse */
 function() use( $foo, $bar ) {};
 
+<<<<<<< HEAD
 /* testClosureUseWithReference */
 $cl = function() use (&$foo, &$bar) {};
 
+=======
+>>>>>>> ddb2375 (fix: console error)
 /* testFunctionParamListWithTrailingComma */
 function trailingComma(
     ?string $foo  /*comment*/ ,

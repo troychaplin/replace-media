@@ -106,6 +106,13 @@ class ScopeIndentSniff implements Sniff
      */
     public function register()
     {
+<<<<<<< HEAD
+=======
+        if (defined('PHP_CODESNIFFER_IN_TESTS') === true) {
+            $this->debug = false;
+        }
+
+>>>>>>> ddb2375 (fix: console error)
         return [T_OPEN_TAG];
 
     }//end register()
@@ -157,7 +164,11 @@ class ScopeIndentSniff implements Sniff
 
         if ($this->debug === true) {
             $line = $tokens[$stackPtr]['line'];
+<<<<<<< HEAD
             echo PHP_EOL."Start with token $stackPtr on line $line with indent $currentIndent".PHP_EOL;
+=======
+            echo "Start with token $stackPtr on line $line with indent $currentIndent".PHP_EOL;
+>>>>>>> ddb2375 (fix: console error)
         }
 
         if (empty($this->ignoreIndentation) === true) {
@@ -640,7 +651,11 @@ class ScopeIndentSniff implements Sniff
                 }
 
                 $conditionToken = array_pop($openScopes);
+<<<<<<< HEAD
                 if ($this->debug === true && $conditionToken !== null) {
+=======
+                if ($this->debug === true) {
+>>>>>>> ddb2375 (fix: console error)
                     $line = $tokens[$conditionToken]['line'];
                     $type = $tokens[$conditionToken]['type'];
                     echo "\t=> removed open scope $conditionToken ($type) on line $line".PHP_EOL;

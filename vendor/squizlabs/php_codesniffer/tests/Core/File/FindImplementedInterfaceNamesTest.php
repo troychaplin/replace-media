@@ -71,7 +71,11 @@ final class FindImplementedInterfaceNamesTest extends AbstractMethodUnitTest
      *
      * @see testFindImplementedInterfaceNames()
      *
+<<<<<<< HEAD
      * @return array<string, array<string, string|array<string>|false>>
+=======
+     * @return array<string, array<string, string|array<string>>>
+>>>>>>> ddb2375 (fix: console error)
      */
     public static function dataImplementedInterface()
     {

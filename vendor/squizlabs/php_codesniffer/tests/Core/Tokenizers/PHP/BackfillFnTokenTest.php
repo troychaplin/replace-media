@@ -45,10 +45,17 @@ final class BackfillFnTokenTest extends AbstractTokenizerTestCase
     {
         return [
             'standard'   => [
+<<<<<<< HEAD
                 'testMarker' => '/* testStandard */',
             ],
             'mixed case' => [
                 'testMarker' => '/* testMixedCase */',
+=======
+                'testMarker'  => '/* testStandard */',
+            ],
+            'mixed case' => [
+                'testMarker'  => '/* testMixedCase */',
+>>>>>>> ddb2375 (fix: console error)
             ],
         ];
 
@@ -362,12 +369,17 @@ final class BackfillFnTokenTest extends AbstractTokenizerTestCase
 
 
     /**
+<<<<<<< HEAD
      * Test arrow functions that use nullable type with unqualified class name.
+=======
+     * Test arrow functions that use nullable namespace types.
+>>>>>>> ddb2375 (fix: console error)
      *
      * @covers PHP_CodeSniffer\Tokenizers\PHP::processAdditional
      *
      * @return void
      */
+<<<<<<< HEAD
     public function testNullableUnqualifiedClassName()
     {
         $token = $this->getTargetToken('/* testNullableUnqualifiedClassName */', T_FN);
@@ -379,11 +391,25 @@ final class BackfillFnTokenTest extends AbstractTokenizerTestCase
 
     /**
      * Test arrow functions that use namespace relative class name in the return type.
+=======
+    public function testNullableNamespace()
+    {
+        $token = $this->getTargetToken('/* testNullableNamespace */', T_FN);
+        $this->backfillHelper($token);
+        $this->scopePositionTestHelper($token, 15, 18);
+
+    }//end testNullableNamespace()
+
+
+    /**
+     * Test arrow functions that use the namespace operator in the return type.
+>>>>>>> ddb2375 (fix: console error)
      *
      * @covers PHP_CodeSniffer\Tokenizers\PHP::processAdditional
      *
      * @return void
      */
+<<<<<<< HEAD
     public function testNamespaceRelativeClassNameInTypes()
     {
         $token = $this->getTargetToken('/* testNamespaceRelativeClassNameInTypes */', T_FN);
@@ -391,6 +417,15 @@ final class BackfillFnTokenTest extends AbstractTokenizerTestCase
         $this->scopePositionTestHelper($token, 16, 19);
 
     }//end testNamespaceRelativeClassNameInTypes()
+=======
+    public function testNamespaceOperatorInTypes()
+    {
+        $token = $this->getTargetToken('/* testNamespaceOperatorInTypes */', T_FN);
+        $this->backfillHelper($token);
+        $this->scopePositionTestHelper($token, 16, 19);
+
+    }//end testNamespaceOperatorInTypes()
+>>>>>>> ddb2375 (fix: console error)
 
 
     /**
@@ -423,6 +458,7 @@ final class BackfillFnTokenTest extends AbstractTokenizerTestCase
     {
         return [
             'self'     => [
+<<<<<<< HEAD
                 'testMarker' => '/* testSelfReturnType */',
             ],
             'parent'   => [
@@ -445,6 +481,30 @@ final class BackfillFnTokenTest extends AbstractTokenizerTestCase
             ],
             'null'     => [
                 'testMarker' => '/* testNullReturnType */',
+=======
+                'testMarker'  => '/* testSelfReturnType */',
+            ],
+            'parent'   => [
+                'testMarker'  => '/* testParentReturnType */',
+            ],
+            'callable' => [
+                'testMarker'  => '/* testCallableReturnType */',
+            ],
+            'array'    => [
+                'testMarker'  => '/* testArrayReturnType */',
+            ],
+            'static'   => [
+                'testMarker'  => '/* testStaticReturnType */',
+            ],
+            'false'    => [
+                'testMarker'  => '/* testFalseReturnType */',
+            ],
+            'true'     => [
+                'testMarker'  => '/* testTrueReturnType */',
+            ],
+            'null'     => [
+                'testMarker'  => '/* testNullReturnType */',
+>>>>>>> ddb2375 (fix: console error)
             ],
         ];
 

@@ -43,7 +43,10 @@ class PropertyDeclarationSniff extends AbstractVariableSniff
         $find[] = T_VARIABLE;
         $find[] = T_VAR;
         $find[] = T_READONLY;
+<<<<<<< HEAD
         $find[] = T_FINAL;
+=======
+>>>>>>> ddb2375 (fix: console error)
         $find[] = T_SEMICOLON;
         $find[] = T_OPEN_CURLY_BRACKET;
 
@@ -131,11 +134,17 @@ class PropertyDeclarationSniff extends AbstractVariableSniff
          *
          * Ref: https://www.php-fig.org/per/coding-style/#46-modifier-keywords
          *
+<<<<<<< HEAD
          * The `static` and `readonly` modifiers are mutually exclusive and cannot be used together.
+=======
+         * At this time (PHP 8.2), inheritance modifiers cannot be applied to properties and
+         * the `static` and `readonly` modifiers are mutually exclusive and cannot be used together.
+>>>>>>> ddb2375 (fix: console error)
          *
          * Based on that, the below modifier keyword order checks are sufficient (for now).
          */
 
+<<<<<<< HEAD
         if ($propertyInfo['scope_specified'] === true && $propertyInfo['is_final'] === true) {
             $scopePtr = $phpcsFile->findPrevious(Tokens::$scopeModifiers, ($stackPtr - 1));
             $finalPtr = $phpcsFile->findPrevious(T_FINAL, ($stackPtr - 1));
@@ -161,6 +170,8 @@ class PropertyDeclarationSniff extends AbstractVariableSniff
             }
         }//end if
 
+=======
+>>>>>>> ddb2375 (fix: console error)
         if ($propertyInfo['scope_specified'] === true && $propertyInfo['is_static'] === true) {
             $scopePtr  = $phpcsFile->findPrevious(Tokens::$scopeModifiers, ($stackPtr - 1));
             $staticPtr = $phpcsFile->findPrevious(T_STATIC, ($stackPtr - 1));

@@ -271,7 +271,11 @@ final class TypedConstantsTest extends AbstractTokenizerTestCase
      *
      * @see testTypedConstant()
      *
+<<<<<<< HEAD
      * @return array<string, array<string, string|array<int|string>>>
+=======
+     * @return array<string, array<string, string>>
+>>>>>>> ddb2375 (fix: console error)
      */
     public static function dataNullableTypedConstant()
     {
@@ -386,7 +390,11 @@ final class TypedConstantsTest extends AbstractTokenizerTestCase
      *
      * @see testTypedConstant()
      *
+<<<<<<< HEAD
      * @return array<string, array<string, string|array<int|string>>>
+=======
+     * @return array<string, array<string, string>>
+>>>>>>> ddb2375 (fix: console error)
      */
     public static function dataUnionTypedConstant()
     {
@@ -475,7 +483,11 @@ final class TypedConstantsTest extends AbstractTokenizerTestCase
      *
      * @see testTypedConstant()
      *
+<<<<<<< HEAD
      * @return array<string, array<string, string|array<int|string>>>
+=======
+     * @return array<string, array<string, string>>
+>>>>>>> ddb2375 (fix: console error)
      */
     public static function dataIntersectionTypedConstant()
     {
@@ -520,7 +532,11 @@ final class TypedConstantsTest extends AbstractTokenizerTestCase
      *
      * @see testTypedConstant()
      *
+<<<<<<< HEAD
      * @return array<string, array<string, string|array<int|string>>>
+=======
+     * @return array<string, array<string, string>>
+>>>>>>> ddb2375 (fix: console error)
      */
     public static function dataDNFTypedConstant()
     {
