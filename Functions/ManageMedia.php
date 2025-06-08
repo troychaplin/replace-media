@@ -111,11 +111,11 @@ class ManageMedia {
 			wp_send_json_error( __( 'No file was uploaded.', 'replace-media' ) );
 		}
 
-		$file       = $_FILES['replacement_file'];
-		$attachment = get_post( $attachment_id );
+		$file       = wp_unslash( $_FILES['replacement_file'] );
+		$attachment = \get_post( $attachment_id );
 
 		if ( ! $attachment ) {
-			$this->log_debug( 'Attachment not found.' );
+			$this->logger->debug( 'Attachment not found.' );
 			wp_send_json_error( __( 'Attachment not found.', 'replace-media' ) );
 		}
 
