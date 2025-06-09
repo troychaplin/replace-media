@@ -111,7 +111,36 @@ class ManageMedia {
 			wp_send_json_error( __( 'No file was uploaded.', 'replace-media' ) );
 		}
 
-		$file       = $_FILES['replacement_file'];
+		// Validate and sanitize file upload components.
+		$file_name  = isset( $_FILES['replacement_file']['name'] ) ? sanitize_file_name( $_FILES['replacement_file']['name'] ) : '';
+		$file_type  = isset( $_FILES['replacement_file']['type'] ) ? sanitize_mime_type( $_FILES['replacement_file']['type'] ) : '';
+		$file_size  = isset( $_FILES['replacement_file']['size'] ) ? absint( $_FILES['replacement_file']['size'] ) : 0;
+		$file_error = isset( $_FILES['replacement_file']['error'] ) ? absint( $_FILES['replacement_file']['error'] ) : 0;
+
+		// Validate tmp_name exists and is a proper upload (tmp_name is system-generated, not user input).
+		$file_tmp_name = '';
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- tmp_name is system-generated, not user input
+		if ( isset( $_FILES['replacement_file']['tmp_name'] ) && is_uploaded_file( $_FILES['replacement_file']['tmp_name'] ) ) {
+			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- tmp_name is system-generated, not user input
+			$file_tmp_name = $_FILES['replacement_file']['tmp_name'];
+		} else {
+			wp_send_json_error( __( 'Invalid file upload.', 'replace-media' ) );
+		}
+
+		// Create sanitized file array.
+		$file = array(
+			'name'     => $file_name,
+			'tmp_name' => $file_tmp_name,
+			'type'     => $file_type,
+			'size'     => $file_size,
+			'error'    => $file_error,
+		);
+
+		// Check for upload errors.
+		if ( UPLOAD_ERR_OK !== $file['error'] ) {
+			wp_send_json_error( __( 'File upload error.', 'replace-media' ) );
+		}
+
 		$attachment = \get_post( $attachment_id );
 
 		if ( ! $attachment ) {
